@@ -1,5 +1,34 @@
 @import "../../assets/sass/main.scss";
 
-header {
-
+#header {
+  background-color: $bgColor;
+  padding: 40px 0;
+  .container {
+    .header-elements {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      nav {
+        ul {
+          display: flex;
+          column-gap: 12px;
+          li {
+            a {
+              color: $text-white;
+              font-family: $font-roboto;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 20px; /* 142.857% */
+              letter-spacing: 0.14px;
+            }
+          }
+        }
+      }
+      .header-buttons {
+        display: flex;
+        column-gap: 24px;
+      }
+    }
+  }
 }
