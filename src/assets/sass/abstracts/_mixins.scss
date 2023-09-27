@@ -1,0 +1,35 @@
+@mixin mobile {
+  @media (min-width: map-get($breakpoints, "S")) {
+    @content;
+  }
+}
+
+@mixin mobile-large {
+  @media (min-width: map-get($breakpoints, "M")) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: map-get($breakpoints, "L")) {
+    @content;
+  }
+}
+
+@mixin tablet-large {
+  @media (min-width: map-get($breakpoints, "XL")) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: map-get($breakpoints, "XXL")) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: map-get($breakpoints, "XXXL")) {
+    @content;
+  }
+}
