@@ -18,11 +18,7 @@ const WelcomeSection = () => {
             </p>
           </div>
           <div className="welcome__video">
-            <iframe
-              width="472"
-              height="265px"
-              src="https://www.youtube.com/embed/tgbNymZ7vqY"
-            ></iframe>
+            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
           </div>
         </div>
       </div>
