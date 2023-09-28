@@ -1,0 +1,44 @@
+@import "../../../assets/sass/main.scss";
+
+.welcome-section {
+  background-color: $bgColor;
+  .container {
+    .welcome {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &__title {
+        max-width: 570px;
+        h1 {
+          max-width: 436px;
+          color: $text-white;
+          font-family: $font-baiJamjuree;
+          font-size: 54px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 120%; /* 64.8px */
+          margin-bottom: 24px;
+          span {
+            border-radius: 50%;
+            border: 3px solid #f15828;
+            padding: 0px 9px 10px;
+          }
+        }
+        p {
+          color: $text-white;
+          font-family: $font-baiJamjuree;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 150%; /* 24px */
+        }
+      }
+      &__video {
+        iframe {
+          border-radius: 12px;
+          border: 1px solid #fff;
+        }
+      }
+    }
+  }
+}

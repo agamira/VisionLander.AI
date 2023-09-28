@@ -7,6 +7,7 @@ const Header = () => {
     <header id="header">
       <div className="container">
         <div className="header-elements">
+          <Logo />
           <nav>
             <ul>
               <li>
@@ -29,7 +30,6 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <Logo />
           <div className="header-buttons">
             <Button>Log In</Button>
             <Button className={"btn--outline"}>Sign Up</Button>
