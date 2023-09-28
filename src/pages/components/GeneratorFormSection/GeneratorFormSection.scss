@@ -16,6 +16,7 @@
             align-items: center;
             width: 100%;
             column-gap: 16px;
+
             .input-box {
               display: flex;
               align-items: center;
@@ -60,13 +61,21 @@
           .tags-group {
             display: flex;
             margin-bottom: 81px;
+            align-items: center;
             span {
+              display: flex;
+              align-items: center;
+              margin-right: 23px;
               color: $text-white;
               font-family: $font-baiJamjuree;
               font-size: 27px;
               font-style: normal;
               font-weight: 700;
               line-height: normal;
+            }
+            .tags-list {
+              display: flex;
+              gap: 16px;
             }
           }
         }
