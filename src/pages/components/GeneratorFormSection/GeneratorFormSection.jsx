@@ -6,19 +6,20 @@ import hardwell from "../../../assets/img/hardwell-template.png";
 import axios from "axios";
 
 const GeneratorFormSection = () => {
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const prompt = e.target.elements.prompt.value;
     const templateId = +e.target.elements.templateId.value;
     const formData = { prompt, templateId };
-    const response = await axios.post(
-      "http://localhost:5000/api/generate", /// Jenya, suda zapishesh url ///
-      formData
-    );
-    const data = await response.data;
 
-    console.log(data);
-  }
+    axios
+        .post("http://localhost:3000/submit_form", formData, { withCredentials: true })
+        .then((response) => {
+          if (response.status === 200) {
+            window.location.href = "http://localhost:3000/redactor";
+          }
+        })
+  };
 
   return (
     <section className="generator-form">
