@@ -17,4 +17,17 @@
     padding: 12px 24px;
     border: 1px solid $text-white;
   }
+
+  &--primary {
+    color: $text-white-200;
+    font-family: $font-baiJamjuree;
+    border-radius: 8px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 24px 60px;
+    background-color: $bgColor;
+    box-shadow: $box-shadow-primary;
+  }
 }

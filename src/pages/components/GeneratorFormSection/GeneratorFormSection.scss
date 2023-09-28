@@ -1,0 +1,112 @@
+@import "../../../assets/sass/main.scss";
+
+.generator-form {
+  background-color: $bgColor;
+  padding: 40px 0 60px;
+  .container {
+    .form-box {
+      form {
+        width: 100%;
+        .form-groups {
+          max-width: 965px;
+          margin: 0 auto;
+          .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            column-gap: 16px;
+            .input-box {
+              display: flex;
+              align-items: center;
+              width: 100%;
+              position: relative;
+              input {
+                box-sizing: border-box;
+                padding: 22px 12px;
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 8px;
+                background-color: $text-white-200;
+                //
+                color: $bgColor;
+                font-family: $font-baiJamjuree;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                &::placeholder {
+                  color: $bgColor;
+                  font-family: $font-baiJamjuree;
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 700;
+                  line-height: normal;
+                }
+              }
+              .btn {
+                position: absolute;
+                padding: 12px 60px;
+                max-height: 50px;
+                right: 12px;
+              }
+            }
+            .config-btn {
+              display: flex;
+              padding: 0;
+            }
+          }
+          .tags-group {
+            display: flex;
+            margin-bottom: 81px;
+            span {
+              color: $text-white;
+              font-family: $font-baiJamjuree;
+              font-size: 27px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+            }
+          }
+        }
+        .builder-templates {
+          text-align: center;
+          span {
+            color: $text-white;
+            font-family: $font-baiJamjuree;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+          .radio-buttons {
+            margin-top: 37px;
+            display: flex;
+            justify-content: center;
+            column-gap: 13px;
+            .radio-label {
+              display: inline-block;
+              cursor: pointer;
+              img {
+                width: 280px;
+                height: 329px;
+                border: 2px solid transparent; /* Add a border for styling */
+                transition: all 0.3s ease; /* Smooth transition for border color */
+              }
+
+              input[type="radio"] {
+                display: none; /* Hide the actual radio input */
+              }
+
+              input[type="radio"]:checked + img {
+                border-color: #007bff; /* Change border color when checked */
+                box-shadow: $box-shadow-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
