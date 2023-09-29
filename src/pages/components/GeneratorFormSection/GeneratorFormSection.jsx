@@ -32,7 +32,7 @@ const GeneratorFormSection = () => {
     <section className="generator-form">
       <div className="container">
         <div className="form-box">
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form name="generator-form" onSubmit={(e) => handleSubmit(e)}>
             <div className="form-groups">
               <div className="form-group">
                 <div className="input-box">

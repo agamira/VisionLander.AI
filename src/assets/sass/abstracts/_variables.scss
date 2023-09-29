@@ -7,6 +7,17 @@ $bgColor: #18012b;
 $blue-secondary: rgba(32, 211, 244, 0.3);
 
 // Gradients
+$gradient-primary: conic-gradient(
+  from 225deg at 50% 164.17%,
+  #331f53 0deg,
+  #4c177a 18.6963607371deg,
+  #9001e0 59.7033601999deg,
+  #ff005c 118.8361823559deg,
+  #fdbc51 181.8749928474deg,
+  #cdd2e5 247.2498464584deg,
+  #2290ec 300.6723690033deg,
+  #25164b 360deg
+);
 
 // Box Shadows
 

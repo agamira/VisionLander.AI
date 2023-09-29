@@ -95,21 +95,46 @@
             justify-content: center;
             column-gap: 13px;
             .radio-label {
-              display: inline-block;
+              display: flex;
+              align-items: center;
+              flex-direction: column-reverse;
               cursor: pointer;
               img {
                 width: 280px;
                 height: 329px;
-                border: 2px solid transparent; /* Add a border for styling */
-                transition: all 0.3s ease; /* Smooth transition for border color */
+                transition: all 0.4s ease; /* Smooth transition for border color */
               }
 
               input[type="radio"] {
-                display: none; /* Hide the actual radio input */
+                -webkit-appearance: none;
+                appearance: none;
+                display: grid;
+                place-content: center;
+                cursor: pointer;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #4b4b4b;
+                margin-top: 37px;
+                &::before {
+                  content: "";
+                  width: 12px;
+                  height: 12px;
+                  border-radius: 50%;
+                  transform: scale(0);
+                  transition: 120ms transform ease-in-out;
+                  box-shadow: inset 1em 1em $text-white;
+                }
+                &:checked {
+                  background-image: $gradient-primary;
+                  &::before {
+                    transform: scale(1);
+                  }
+                }
               }
 
               input[type="radio"]:checked + img {
-                border-color: #007bff; /* Change border color when checked */
+                /* Change border color when checked */
                 box-shadow: $box-shadow-primary;
               }
             }
