@@ -2,6 +2,7 @@
 $text-white: #ffffff;
 $text-white-200: #d9d9d9;
 $text-grey: #949494;
+$text-grey-light: #b7b7b7;
 $bgColor: #18012b;
 $blue-secondary: rgba(32, 211, 244, 0.3);
 
@@ -23,10 +24,10 @@ $font-poppins: "Poppins", sans-serif;
 
 /* Breakpoints */
 $breakpoints: (
-  S: 390px,
-  M: 480px,
-  L: 768px,
-  XL: 1000px,
-  XXL: 1440px,
-  XXXL: 1920px,
+  S: 389px,
+  M: 479px,
+  L: 767px,
+  XL: 1199px,
+  XXL: 1439px,
+  XXXL: 1919px,
 );

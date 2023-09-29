@@ -1,0 +1,84 @@
+@import "../../assets/sass/main.scss";
+
+.steps-card {
+  max-width: 275px;
+  &:last-child .card-arrow {
+    display: none;
+  }
+  @include tablet-large {
+    width: 33%;
+    max-width: unset;
+    &:nth-child(even) .card-arrow {
+      display: none;
+    }
+  }
+  .card-header {
+    margin-bottom: 23px;
+    .card-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 23px;
+      .number {
+        color: $text-white;
+        text-align: center;
+        font-family: $font-baiJamjuree;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        ///
+        position: absolute;
+        top: 50%; /* Move the element down by 50% of its container's height */
+        left: 50%; /* Move the element right by 50% of its container's width */
+        transform: translate(
+          -50%,
+          -50%
+        ); /* Translate the element back by half of its own width and height */
+      }
+      .card-arrow {
+        position: absolute;
+        right: -54px;
+      }
+    }
+    .card-title {
+      h5 {
+        color: $text-white;
+        text-align: center;
+        font-family: $font-baiJamjuree;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        min-height: 58px;
+      }
+    }
+  }
+  .card-image {
+    margin-bottom: 23px;
+    img {
+      max-width: 275px;
+      min-height: 275px;
+      @include tablet-large {
+        max-width: unset;
+        min-height: unset;
+        width: 100%;
+      }
+    }
+  }
+  .card-text {
+    padding-left: 23px;
+    ul {
+      list-style: disc;
+      li {
+        color: $text-grey-light;
+        font-family: $font-baiJamjuree;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+    }
+  }
+}

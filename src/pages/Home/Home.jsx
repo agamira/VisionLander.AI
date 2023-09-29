@@ -1,4 +1,8 @@
-import { GeneratorFormSection, WelcomeSection } from "../components";
+import {
+  GeneratorFormSection,
+  HowItWorksSection,
+  WelcomeSection,
+} from "../components";
 import "./Home.scss";
 
 const Home = () => {
@@ -6,6 +10,7 @@ const Home = () => {
     <main id="home">
       <WelcomeSection />
       <GeneratorFormSection />
+      <HowItWorksSection />
     </main>
   );
 };

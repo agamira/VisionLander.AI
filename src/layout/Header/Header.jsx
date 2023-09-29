@@ -1,5 +1,4 @@
 import "./Header.scss";
-import { NavLink } from "react-router-dom";
 import { Button, Logo } from "../../components";
 
 const Header = () => {
@@ -11,22 +10,22 @@ const Header = () => {
           <nav>
             <ul>
               <li>
-                <NavLink href="">Home</NavLink>
+                <a href="#home">Home</a>
+              </li>
+              {/* <li>
+                <a href="">Features</a>
               </li>
               <li>
-                <NavLink href="">Features</NavLink>
+                <a href="">Pricing</a>
+              </li> */}
+              <li>
+                <a href="#how-it-works">How it works</a>
               </li>
               <li>
-                <NavLink href="">Pricing</NavLink>
+                <a href="#">Testimonials</a>
               </li>
               <li>
-                <NavLink href="">How it works</NavLink>
-              </li>
-              <li>
-                <NavLink href="">Testimonials</NavLink>
-              </li>
-              <li>
-                <NavLink href="">FAQ</NavLink>
+                <a href="#">FAQ</a>
               </li>
             </ul>
           </nav>

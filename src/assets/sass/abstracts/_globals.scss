@@ -9,3 +9,8 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 106px;
+}
