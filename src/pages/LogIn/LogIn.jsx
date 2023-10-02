@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import "./LogIn.scss";
 import { Button, Checkbox, Form, Input } from "antd";
-const onFinish = (values) => {
+import axios from "axios";
+const onFinish = async (values) => {
   console.log("Success:", values);
+
+  try {
+    const res = await axios.post("http://localhost:3000/login", values);
+    const data = await res.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
