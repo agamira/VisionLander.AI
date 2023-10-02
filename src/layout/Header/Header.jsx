@@ -1,5 +1,6 @@
 import "./Header.scss";
 import { Button, Logo } from "../../components";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -30,7 +31,9 @@ const Header = () => {
             </ul>
           </nav>
           <div className="header-buttons">
-            <Button>Log In</Button>
+            <Link to={"login"} className="btn">
+              Log In
+            </Link>
             <Button className={"btn--outline"}>Sign Up</Button>
           </div>
         </div>

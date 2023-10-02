@@ -17,15 +17,20 @@ const GeneratorFormSection = () => {
 
     console.log(formData);
 
-    axios
-      .post("http://localhost:3000/submit_form", formData, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          window.location.href = "http://localhost:3000/redactor";
-        }
-      });
+    if (prompt.length > 2 && templateId) {
+      axios
+        .post("http://localhost:3000/submit_form", formData, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            window.location.href = "http://localhost:3000/redactor";
+          }
+        })
+        .catch((error) => console.error(error));
+    } else {
+      alert("Please fill all fields!");
+    }
   };
 
   return (

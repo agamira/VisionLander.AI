@@ -31,6 +31,10 @@
       .header-buttons {
         display: flex;
         column-gap: 24px;
+        .btn {
+          display: flex;
+          align-items: center;
+        }
       }
     }
   }
