@@ -1,0 +1,78 @@
+@import "../../assets/sass/main.scss";
+
+.register-form {
+  margin: 0 auto;
+  padding: 78px 73px;
+  box-sizing: border-box;
+  max-width: 585px;
+  border-radius: 8px;
+  border: 1.582px solid #f15828;
+  background: linear-gradient(
+    106deg,
+    rgba(255, 255, 255, 0.4) 3.04%,
+    rgba(255, 255, 255, 0) 96.05%
+  );
+  backdrop-filter: blur(18.075000762939453px);
+  .form-title {
+    text-align: center;
+    color: $text-white;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    margin-bottom: 8px;
+  }
+  .form-text {
+    text-align: center;
+    color: $text-white;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+  #register-form {
+    width: 100%;
+    .inputs {
+      padding: 36px 0 24px;
+      .input-field {
+        height: 94.5px;
+        input {
+          border-radius: 10px;
+          border: 1px solid #e6e6e6;
+          background: #fff;
+          padding: 25px 24px;
+          box-sizing: border-box;
+          width: 100%;
+          color: #18012a;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          &::placeholder {
+            opacity: 0.5;
+            color: #18012a;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+        .error-message {
+          color: #fd0000;
+          font-size: 16px;
+        }
+      }
+    }
+    .btn-login {
+      margin-top: 16px;
+      color: $text-white;
+      font-family: $font-baiJamjuree;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      border-radius: 8px;
+      border: 2px solid #fbc63c;
+    }
+  }
+}

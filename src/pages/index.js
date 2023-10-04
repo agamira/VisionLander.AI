@@ -1,3 +1,2 @@
-export { Root } from "./Root/Root.jsx";
-export { Home } from "./Home/Home.jsx";
-export { LogIn } from "./LogIn/LogIn.jsx";
+export { Root } from "./Root/Root";
+export { Home } from "./Home/Home";
