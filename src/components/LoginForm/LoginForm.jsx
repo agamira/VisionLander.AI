@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import "./LoginForm.scss";
 import { Button } from "..";
 
-const LoginForm = () => {
+const LoginForm = ({ signUpAction }) => {
   const {
     register,
     handleSubmit,
@@ -36,7 +36,7 @@ const LoginForm = () => {
                 },
               })}
             />
-            <p style={{ color: "red" }} className="error-message">
+            <p className="error-message">
               {errors.email && errors.email.message}
             </p>
           </div>
@@ -61,8 +61,9 @@ const LoginForm = () => {
           Log In
         </Button>
         <Button
+          onClick={signUpAction}
           style={{ width: "100%", padding: "21px 0" }}
-          className="btn--outline btn-login"
+          className="btn--outline btn-sign-up"
           type="button"
           disabled={isSubmitting}
         >

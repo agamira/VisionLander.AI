@@ -1,12 +1,12 @@
 @import "../../assets/sass/main.scss";
 
 .register-form {
-  margin: 0 auto;
   padding: 78px 73px;
   box-sizing: border-box;
   max-width: 585px;
+  margin: 0 auto;
   border-radius: 8px;
-  border: 1.582px solid #f15828;
+  border: 1px solid $text-white;
   background: linear-gradient(
     106deg,
     rgba(255, 255, 255, 0.4) 3.04%,
@@ -58,21 +58,56 @@
           }
         }
         .error-message {
-          color: #fd0000;
+          color: #ff4d00;
           font-size: 16px;
         }
       }
     }
     .btn-login {
-      margin-top: 16px;
+      margin: 16px auto 0;
       color: $text-white;
       font-family: $font-baiJamjuree;
       font-size: 20px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
-      border-radius: 8px;
-      border: 2px solid #fbc63c;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      background: none;
+      border: none;
+      border-top: 2px solid #00fff2;
+      border-bottom: 2px solid #fbc63c;
+      border-image: linear-gradient(126deg, #fbc63c -9.13%, #00fff2 56.75%);
+      border-image-slice: 1;
+      position: relative;
+      transition: all 0.3s;
+      width: 97% !important;
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        width: 2em;
+        height: 100%;
+        border-radius: 8px 0 0 8px;
+        border: 2px solid #fbc63c;
+        position: absolute;
+        border-right: none;
+        transition: all 0.3s;
+        left: -6px;
+        top: -2px;
+        z-index: -1;
+      }
+      &:after {
+        border-radius: 0 8px 8px 0;
+        border: 2px solid #00fff2;
+        position: absolute;
+        border-left: none;
+        left: auto;
+        right: -6px;
+        top: -2px;
+        z-index: -1;
+      }
     }
   }
 }

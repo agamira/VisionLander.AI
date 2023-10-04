@@ -70,12 +70,12 @@ const Header = () => {
       </div>
       {isLogInModalOpen ? (
         <Modal isOpen={isLogInModalOpen} closeModal={closeLogInModal}>
-          <LoginForm />
+          <LoginForm signUpAction={openSignUpModal} />
         </Modal>
       ) : null}
       {isSignUpModalOpen ? (
         <Modal isOpen={isSignUpModalOpen} closeModal={closeSignUpModal}>
-          <RegisterForm />
+          <RegisterForm logInAction={openLogInModal} />
         </Modal>
       ) : null}
     </header>

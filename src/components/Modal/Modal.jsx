@@ -26,7 +26,6 @@ function Modal({ children, isOpen, closeModal }) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
   };
 
