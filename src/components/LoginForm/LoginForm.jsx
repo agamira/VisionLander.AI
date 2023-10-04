@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import "./LoginForm.scss";
 import { Button } from "..";
 
-const LoginForm = ({ signUpAction }) => {
+const LoginForm = ({ logInAction, signUpAction }) => {
   const {
     register,
     handleSubmit,
@@ -11,6 +11,13 @@ const LoginForm = ({ signUpAction }) => {
   } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
+    logInAction(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     reset();
   };
   console.log(errors);

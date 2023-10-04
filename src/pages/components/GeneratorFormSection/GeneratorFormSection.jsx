@@ -4,10 +4,13 @@ import { Button } from "../../../components";
 import configIcon from "../../../assets/icon/config.svg";
 import corporate from "../../../assets/img/corporate-template.png";
 import hardwell from "../../../assets/img/hardwell-template.png";
+import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
+
+  const [isLoggedIn, openLogInModal] = useOutletContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +19,8 @@ const GeneratorFormSection = () => {
     const formData = { prompt, templateId };
 
     console.log(formData);
+
+    if (!isLoggedIn) return openLogInModal();
 
     if (prompt.length > 2 && templateId) {
       axios
