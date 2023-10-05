@@ -27,7 +27,7 @@ const GeneratorFormSection = () => {
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
-            window.location.href = "http://localhost:3000/redactor";
+            window.location.href = "http://localhost:8000/redactor";
           }
         })
         .catch((error) => console.error(error));
