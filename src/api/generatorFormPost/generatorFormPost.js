@@ -2,7 +2,7 @@ import { api } from "..";
 
 async function generatorFormPost(formData) {
   try {
-    const res = await api.post("submit_form", formData, {
+    const res = await api.post("/generate", formData, {
       withCredentials: true,
     });
     const data = await res.data;

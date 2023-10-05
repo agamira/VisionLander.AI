@@ -30,4 +30,14 @@ async function logOut() {
   }
 }
 
-export { login, register, logOut };
+async function auth() {
+  try {
+    const res = await api.post("/auth", { withCredentials: true });
+    const data = await res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { login, register, logOut, auth };

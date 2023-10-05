@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Footer, Header } from "../../layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth } from "../../api";
 
 const Root = () => {
   const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
@@ -34,6 +35,19 @@ const Root = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
+
+  useEffect(() => {
+    auth
+      .then((res) => {
+        if (res.status === 200) {
+          setIsLoggedIn(true);
+          setLoggedUser(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>
