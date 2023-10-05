@@ -2,7 +2,13 @@ import { useForm } from "react-hook-form";
 import "./LoginForm.scss";
 import { Button } from "..";
 
-const LoginForm = ({ logInAction, signUpAction }) => {
+const LoginForm = ({
+  logInAction,
+  signUpAction,
+  setLoggedIn,
+  setLoggedUser,
+  closeSignInModal,
+}) => {
   const {
     register,
     handleSubmit,
@@ -14,6 +20,17 @@ const LoginForm = ({ logInAction, signUpAction }) => {
     logInAction(data)
       .then((res) => {
         console.log(res);
+        if (res.status === 401) {
+          alert("Wrong email or password");
+          return;
+        }
+        if (res.status === 200) {
+          setLoggedIn(true);
+          setLoggedUser(res.email);
+          closeSignInModal();
+          alert("Success");
+          return;
+        }
       })
       .catch((err) => {
         console.log(err);

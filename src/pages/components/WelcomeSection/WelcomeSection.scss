@@ -21,14 +21,7 @@
           margin-bottom: 24px;
           span {
             border-radius: 50%;
-            border: 1px solid transparent;
-            border-image: linear-gradient(
-              126deg,
-              #f15828 -9.13%,
-              #00a3ff 56.75%
-            );
-            border-width: 1px;
-            border-image-slice: 1;
+            border: 1px solid #00a3ff;
             padding: 0px 9px 10px;
           }
         }

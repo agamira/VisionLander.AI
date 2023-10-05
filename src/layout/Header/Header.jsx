@@ -11,6 +11,8 @@ const Header = ({
   isSignUpModalOpen,
   openSignUpModal,
   closeSignUpModal,
+  loggedUser,
+  setLoggedUser,
 }) => {
   return (
     <header id="header">
@@ -45,7 +47,7 @@ const Header = ({
               </>
             ) : (
               <>
-                <Button className={"btn--outline"}>User</Button>
+                <Button className={"btn--outline"}>{loggedUser}</Button>
                 <Button
                   onClick={() => setIsLoggedIn(false)}
                   className={"btn--outline"}
@@ -61,7 +63,13 @@ const Header = ({
         // Modal for Log In
         isLogInModalOpen ? (
           <Modal isOpen={isLogInModalOpen} closeModal={closeLogInModal}>
-            <LoginForm logInAction={login} signUpAction={openSignUpModal} />
+            <LoginForm
+              logInAction={login}
+              closeLogInModal={closeLogInModal}
+              signUpAction={openSignUpModal}
+              setLoggedIn={setIsLoggedIn}
+              setLoggedUser={setLoggedUser}
+            />
           </Modal>
         ) : null
       }
@@ -71,6 +79,7 @@ const Header = ({
           <Modal isOpen={isSignUpModalOpen} closeModal={closeSignUpModal}>
             <RegisterForm
               signUpAction={register}
+              closeSignUpModal={closeSignUpModal}
               logInAction={openLogInModal}
             />
           </Modal>

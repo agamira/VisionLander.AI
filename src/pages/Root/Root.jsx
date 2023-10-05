@@ -33,6 +33,7 @@ const Root = () => {
   };
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedUser, setLoggedUser] = useState(null);
 
   return (
     <>
@@ -45,6 +46,8 @@ const Root = () => {
         closeSignUpModal={closeSignUpModal}
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
+        loggedUser={loggedUser}
+        setLoggedUser={setLoggedUser}
       />
       <Outlet context={[isLoggedIn, openLogInModal]} />
       <Footer />

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import "./RegisterForm.scss";
 import { Button } from "..";
 
-const RegisterForm = ({ signUpAction, logInAction }) => {
+const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
   const {
     register,
     handleSubmit,
@@ -15,6 +15,12 @@ const RegisterForm = ({ signUpAction, logInAction }) => {
     signUpAction(data)
       .then((res) => {
         console.log(res);
+        if (res.status === 401) return alert("Something Wrong");
+        if (res.status === 200) {
+          closeSignUpModal();
+          alert("Success");
+          return;
+        }
       })
       .catch((err) => {
         console.log(err);
