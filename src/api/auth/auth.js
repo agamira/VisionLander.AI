@@ -1,8 +1,8 @@
-import { auth } from ".";
+import { api } from "..";
 
 async function login(values) {
   try {
-    const res = await auth.post("/login", values, { withCredentials: true });
+    const res = await api.post("/login", values, { withCredentials: true });
     const data = await res.data;
     return data;
   } catch (error) {
@@ -12,7 +12,7 @@ async function login(values) {
 
 async function register(values) {
   try {
-    const res = await auth.post("/register", values, { withCredentials: true });
+    const res = await api.post("/register", values, { withCredentials: true });
     const data = await res.data;
     return data;
   } catch (error) {

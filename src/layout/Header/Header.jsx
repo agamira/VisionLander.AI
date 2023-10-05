@@ -1,6 +1,6 @@
 import "./Header.scss";
 import { Button, LoginForm, Logo, Modal, RegisterForm } from "../../components";
-import { login, register } from "../../api/auth";
+import { login, register } from "../../api";
 
 const Header = ({
   isLoggedIn,

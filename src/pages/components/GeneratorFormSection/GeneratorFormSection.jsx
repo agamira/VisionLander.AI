@@ -5,7 +5,7 @@ import configIcon from "../../../assets/icon/config.svg";
 import corporate from "../../../assets/img/corporate-template.png";
 import hardwell from "../../../assets/img/hardwell-template.png";
 import { useOutletContext } from "react-router-dom";
-import axios from "axios";
+import { generatorFormPost } from "../../../api";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
@@ -20,15 +20,13 @@ const GeneratorFormSection = () => {
 
     console.log(formData);
 
-    if (!isLoggedIn) return openLogInModal();
+    if (isLoggedIn) return openLogInModal();
 
     if (prompt.length > 2 && templateId) {
-      axios
-        .post("http://localhost:3000/submit_form", formData, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          if (response.status === 200) {
+      generatorFormPost(formData)
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
             window.location.href = "http://localhost:3000/redactor";
           }
         })
