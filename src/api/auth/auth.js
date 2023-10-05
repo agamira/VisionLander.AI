@@ -32,7 +32,7 @@ async function logOut() {
 
 async function auth() {
   try {
-    const res = await api.post("/auth", { withCredentials: true });
+    const res = await api.get("/auth", { withCredentials: true });
     const data = await res.data;
     return data;
   } catch (error) {
