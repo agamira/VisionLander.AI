@@ -15,7 +15,7 @@ const Header = ({
   setLoggedUser,
 }) => {
   function handleLogOut() {
-    logOut().then((res) => console.log(res));
+    logOut().then((res) => console.log(res)).catch((error) => console.log(error))
     setIsLoggedIn(false);
   }
 

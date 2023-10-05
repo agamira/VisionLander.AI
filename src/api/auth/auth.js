@@ -22,7 +22,7 @@ async function register(values) {
 
 async function logOut() {
   try {
-    const res = await api.post("/logout", { withCredentials: true });
+    const res = await api.get("/logout", { withCredentials: true });
     const data = await res.data;
     return data;
   } catch (error) {

@@ -41,7 +41,7 @@ const Root = () => {
       .then((res) => {
         if (res.status === 200) {
           setIsLoggedIn(true);
-          setLoggedUser(res.data);
+          setLoggedUser(res.email);
         }
       })
       .catch((err) => {
