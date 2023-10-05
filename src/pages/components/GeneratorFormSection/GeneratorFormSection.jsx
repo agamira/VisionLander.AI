@@ -20,7 +20,7 @@ const GeneratorFormSection = () => {
 
     console.log(formData);
 
-    if (isLoggedIn) return openLogInModal();
+    if (!isLoggedIn) return openLogInModal();
 
     if (prompt.length > 2 && templateId) {
       generatorFormPost(formData)
