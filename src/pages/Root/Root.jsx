@@ -37,7 +37,7 @@ const Root = () => {
   const [loggedUser, setLoggedUser] = useState(null);
 
   useEffect(() => {
-    auth
+    auth()
       .then((res) => {
         if (res.status === 200) {
           setIsLoggedIn(true);
