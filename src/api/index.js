@@ -6,5 +6,5 @@ const api = axios.create({
 
 export { api };
 
-export { login, register } from "./auth/auth";
+export { login, register, logOut } from "./auth/auth";
 export { generatorFormPost } from "./generatorFormPost/generatorFormPost";

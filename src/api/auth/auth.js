@@ -20,4 +20,14 @@ async function register(values) {
   }
 }
 
-export { login, register };
+async function logOut() {
+  try {
+    const res = await api.post("/logout", { withCredentials: true });
+    const data = await res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { login, register, logOut };

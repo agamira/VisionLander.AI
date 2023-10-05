@@ -1,6 +1,6 @@
 import "./Header.scss";
 import { Button, LoginForm, Logo, Modal, RegisterForm } from "../../components";
-import { login, register } from "../../api";
+import { logOut, login, register } from "../../api";
 
 const Header = ({
   isLoggedIn,
@@ -14,6 +14,11 @@ const Header = ({
   loggedUser,
   setLoggedUser,
 }) => {
+  function handleLogOut() {
+    logOut().then((res) => console.log(res));
+    setIsLoggedIn(false);
+  }
+
   return (
     <header id="header">
       <div className="container">
@@ -49,7 +54,7 @@ const Header = ({
               <>
                 <Button className={"btn--outline"}>{loggedUser}</Button>
                 <Button
-                  onClick={() => setIsLoggedIn(false)}
+                  onClick={() => handleLogOut()}
                   className={"btn--outline"}
                 >
                   Log Out
