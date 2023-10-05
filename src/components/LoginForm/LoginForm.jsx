@@ -7,7 +7,7 @@ const LoginForm = ({
   signUpAction,
   setLoggedIn,
   setLoggedUser,
-  closeSignInModal,
+  closeLogInModal,
 }) => {
   const {
     register,
@@ -15,6 +15,7 @@ const LoginForm = ({
     formState: { errors, isSubmitting },
     reset,
   } = useForm();
+
   const onSubmit = async (data) => {
     console.log(data);
     logInAction(data)
@@ -27,7 +28,7 @@ const LoginForm = ({
         if (res.status === 200) {
           setLoggedIn(true);
           setLoggedUser(res.email);
-          closeSignInModal();
+          closeLogInModal();
           alert("Success");
           return;
         }
