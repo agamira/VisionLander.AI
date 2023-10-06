@@ -47,6 +47,9 @@ const Root = () => {
           setLoggedUser(res.email);
           setIsLoading(false);
         }
+        if (res.status === 404) {
+          setIsLoading(false);
+        }
       })
       .catch((err) => {
         console.log(err);
