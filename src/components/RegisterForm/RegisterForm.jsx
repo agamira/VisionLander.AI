@@ -1,9 +1,14 @@
 import { useForm } from "react-hook-form";
 import "./RegisterForm.scss";
 import { Button } from "..";
-import { message } from "antd";
 
-const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
+const RegisterForm = ({
+  signUpAction,
+  logInAction,
+  closeSignUpModal,
+  contextHolder,
+  error,
+}) => {
   const {
     register,
     handleSubmit,
@@ -12,29 +17,12 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
     getValues,
   } = useForm();
 
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const success = (message) => {
-    messageApi.open({
-      type: "success",
-      content: message,
-    });
-  };
-
-  const error = (message) => {
-    messageApi.open({
-      type: "error",
-      content: message,
-    });
-  };
-
   const onSubmit = async (data) => {
     signUpAction(data)
       .then((res) => {
         if (res.status === 404) return error(res.message);
         if (res.status === 200) {
           closeSignUpModal();
-          success("Success");
           return;
         }
       })
@@ -43,7 +31,6 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
       });
     reset();
   };
-  console.log(errors);
 
   return (
     <>

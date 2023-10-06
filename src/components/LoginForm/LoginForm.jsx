@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import "./LoginForm.scss";
 import { Button } from "..";
-import { message } from "antd";
 
 const LoginForm = ({
   logInAction,
@@ -9,6 +8,8 @@ const LoginForm = ({
   setLoggedIn,
   setLoggedUser,
   closeLogInModal,
+  contextHolder,
+  error,
 }) => {
   const {
     register,
@@ -16,22 +17,6 @@ const LoginForm = ({
     formState: { errors, isSubmitting },
     reset,
   } = useForm();
-
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const success = (message) => {
-    messageApi.open({
-      type: "success",
-      content: message,
-    });
-  };
-
-  const error = (message) => {
-    messageApi.open({
-      type: "error",
-      content: message,
-    });
-  };
 
   const onSubmit = async (data) => {
     logInAction(data)
@@ -41,7 +26,6 @@ const LoginForm = ({
           return;
         }
         if (res.status === 200) {
-          success(res.message);
           setLoggedIn(true);
           setLoggedUser(res.email);
           closeLogInModal();

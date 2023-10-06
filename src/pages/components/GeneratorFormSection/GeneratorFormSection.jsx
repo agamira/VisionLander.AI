@@ -37,9 +37,10 @@ const GeneratorFormSection = () => {
 
     if (!isLoggedIn) return openLogInModal();
 
+    if (!prompt) return warning("Please fill the prompt");
+    
     if (!templateId) return warning("Please choose the template!");
 
-    if (!prompt) return warning("Please fill the prompt");
 
     if (prompt.length > 2 && templateId) {
       generatorFormPost(formData)
