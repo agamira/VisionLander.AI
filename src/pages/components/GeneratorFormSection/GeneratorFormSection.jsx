@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./GeneratorFormSection.scss";
-import { Button } from "../../../components";
+import { Button, Loading } from "../../../components";
 import configIcon from "../../../assets/icon/config.svg";
 import corporate from "../../../assets/img/corporate-template.png";
 import hardwell from "../../../assets/img/hardwell-template.png";
 import { useOutletContext } from "react-router-dom";
 import { generatorFormPost } from "../../../api";
 import { message } from "antd";
+import loadingIcon from "../../../assets/icon/loading.svg";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
@@ -14,6 +15,8 @@ const GeneratorFormSection = () => {
   const [isLoggedIn, openLogInModal] = useOutletContext();
 
   const [messageApi, contextHolder] = message.useMessage();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const warning = (message) => {
     messageApi.open({
@@ -38,19 +41,23 @@ const GeneratorFormSection = () => {
     if (!isLoggedIn) return openLogInModal();
 
     if (!prompt) return warning("Please fill the prompt");
-    
+
     if (!templateId) return warning("Please choose the template!");
 
-
     if (prompt.length > 2 && templateId) {
+      setIsLoading(true);
       generatorFormPost(formData)
         .then((res) => {
           if (res.status === 200) {
+            setIsLoading(false);
             success("Your project has been created!");
             window.location.href = "http://localhost:3000/redactor";
           }
         })
-        .catch((error) => console.error(error));
+        .catch((error) => {
+          setIsLoading(false);
+          console.error(error);
+        });
     } else {
       warning("Please fill all fields!");
     }
@@ -59,6 +66,12 @@ const GeneratorFormSection = () => {
   return (
     <>
       {contextHolder}
+      {isLoading && (
+        <Loading
+          loadingIcon={loadingIcon}
+          loadingMessage={"Your page is generating..."}
+        />
+      )}
       <section className="generator-form">
         <div className="container">
           <div className="form-box">
