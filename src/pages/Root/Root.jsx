@@ -52,7 +52,7 @@ const Root = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         setIsLoading(false);
       });
   }, []);

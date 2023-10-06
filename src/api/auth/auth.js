@@ -6,7 +6,7 @@ async function login(values) {
     const data = await res.data;
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 }
 
@@ -16,7 +16,7 @@ async function register(values) {
     const data = await res.data;
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 }
 
@@ -26,7 +26,7 @@ async function logOut() {
     const data = await res.data;
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 }
 
@@ -36,7 +36,7 @@ async function auth() {
     const data = await res.data;
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 }
 
