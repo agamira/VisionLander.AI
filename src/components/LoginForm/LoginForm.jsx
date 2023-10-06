@@ -41,9 +41,9 @@ const LoginForm = ({
           return;
         }
         if (res.status === 200) {
+          success(res.message);
           setLoggedIn(true);
           setLoggedUser(res.email);
-          success(res.message);
           closeLogInModal();
           return;
         }

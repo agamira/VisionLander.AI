@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import "./RegisterForm.scss";
 import { Button } from "..";
+import { message } from "antd";
 
 const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
   const {
