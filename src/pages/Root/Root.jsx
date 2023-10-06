@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import { Footer, Header } from "../../layout";
 import { useEffect, useState } from "react";
 import { auth } from "../../api";
+import { Loading } from "../../components";
+import loadingIcon from "../../assets/icon/loading.svg";
 
 const Root = () => {
   const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
@@ -35,6 +37,7 @@ const Root = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     auth()
@@ -42,15 +45,18 @@ const Root = () => {
         if (res.status === 200) {
           setIsLoggedIn(true);
           setLoggedUser(res.email);
+          setIsLoading(false);
         }
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }, []);
 
   return (
     <>
+      {isLoading && <Loading loadingIcon={loadingIcon} />}
       <Header
         isLogInModalOpen={isLogInModalOpen}
         openLogInModal={openLogInModal}
