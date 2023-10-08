@@ -1,0 +1,51 @@
+@import "../../assets/sass/main.scss";
+
+.ant-collapse-item {
+  margin-bottom: 24px !important;
+  background: transparent !important;
+  border-radius: 8px !important;
+  border: 1px solid #bd00ff !important;
+  .ant-collapse-header {
+    padding: 20px !important;
+    align-items: center !important;
+    .ant-collapse-header-text {
+      color: $text-white;
+      font-family: $font-baiJamjuree;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+  .ant-collapse-content {
+    display: none;
+    background-color: transparent;
+    border: none;
+    .ant-collapse-content-box {
+      padding: 0;
+      .text {
+        color: $text-white;
+        font-family: $font-baiJamjuree;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+    }
+  }
+}
+
+.ant-collapse-item-active {
+  border: none !important;
+  background-color: #105793 !important;
+  padding: 32px !important;
+  .ant-collapse-header {
+    padding: 0 !important;
+    .ant-collapse-header-text {
+      margin-bottom: 20px;
+    }
+  }
+  .ant-collapse-content {
+    display: block;
+  }
+}

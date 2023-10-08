@@ -7,3 +7,4 @@ export { Modal } from "./Modal/Modal";
 export { RegisterForm } from "./RegisterForm/RegisterForm";
 export { LoginForm } from "./LoginForm/LoginForm";
 export { Loading } from "./Loading/Loading";
+export { Accordion } from "./Accordion/Accordion";

@@ -1,4 +1,5 @@
 import {
+  FaqSection,
   GeneratorFormSection,
   HowItWorksSection,
   WelcomeSection,
@@ -11,6 +12,7 @@ const Home = () => {
       <WelcomeSection />
       <GeneratorFormSection />
       <HowItWorksSection />
+      <FaqSection />
     </main>
   );
 };
