@@ -5,8 +5,9 @@
   background: transparent !important;
   border-radius: 8px !important;
   border: 1px solid #bd00ff !important;
+  padding: 20px !important;
   .ant-collapse-header {
-    padding: 20px !important;
+    padding: 0 !important;
     align-items: center !important;
     .ant-collapse-header-text {
       color: $text-white;
