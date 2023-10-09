@@ -3,6 +3,7 @@ import {
   GeneratorFormSection,
   HowItWorksSection,
   WelcomeSection,
+  TestimonialsSection,
 } from "../components";
 import "./Home.scss";
 
@@ -13,6 +14,7 @@ const Home = () => {
       <GeneratorFormSection />
       <HowItWorksSection />
       <FaqSection />
+      <TestimonialsSection />
     </main>
   );
 };

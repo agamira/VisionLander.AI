@@ -1,0 +1,61 @@
+@import "../../assets/sass/main.scss";
+
+.testimonials-card {
+  max-width: 370px;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1.5px solid #00a3ff;
+  background: linear-gradient(
+    106deg,
+    rgba(255, 255, 255, 0.4) 3.04%,
+    rgba(255, 255, 255, 0) 96.05%
+  );
+  backdrop-filter: blur(18.075000762939453px);
+  &__rate {
+    margin-bottom: 30px;
+  }
+  &__comment {
+    p {
+      color: rgba(255, 255, 255, 0.8);
+      font-family: $font-levenim;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 26px;
+    }
+    margin-bottom: 40px;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    &-image {
+      img {
+        border-radius: 50%;
+        height: 43px;
+        width: 43px;
+        object-fit: cover;
+      }
+    }
+    &-info {
+      .username {
+        color: $text-white;
+        font-family: $font-poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px; /* 150% */
+      }
+      .position {
+        color: $text-white;
+        font-family: $font-poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+        opacity: 0.7;
+      }
+    }
+  }
+}

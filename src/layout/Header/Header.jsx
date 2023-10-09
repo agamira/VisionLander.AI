@@ -65,7 +65,7 @@ const Header = ({
                   <a href="#faq">FAQ</a>
                 </li>
                 <li>
-                  <a href="#">Testimonials</a>
+                  <a href="#testimonials">Testimonials</a>
                 </li>
               </ul>
             </nav>

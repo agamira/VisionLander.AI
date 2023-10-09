@@ -1,0 +1,31 @@
+@import "../../../assets/sass/main.scss";
+
+.testimonials-section {
+  padding: 120px 0;
+  background-color: $bgColor;
+  .container {
+    .testimonials-title {
+      margin: 0 auto;
+      text-align: center;
+      max-width: 721px;
+      h2 {
+        color: $text-white;
+        font-family: $font-baiJamjuree;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        margin-bottom: 60px;
+      }
+    }
+    .testimonials-content {
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px 20px;
+      }
+    }
+  }
+}
