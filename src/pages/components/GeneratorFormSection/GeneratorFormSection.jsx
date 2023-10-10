@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./GeneratorFormSection.scss";
 import { Button, Loading } from "../../../components";
 import configIcon from "../../../assets/icon/config.svg";
 import corporate from "../../../assets/img/corporate-template.png";
-import hardwell from "../../../assets/img/hardwell-template.png";
+import krypto from "../../../assets/img/krypto-template.png";
 import { useOutletContext } from "react-router-dom";
 import { generatorFormPost } from "../../../api";
 import { message } from "antd";
@@ -17,6 +17,15 @@ const GeneratorFormSection = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const inputRef = useRef(null);
+
+  const handleButtonClick = (value) => {
+    setInputValue(value);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   const warning = (message) => {
     messageApi.open({
@@ -80,6 +89,7 @@ const GeneratorFormSection = () => {
                 <div className="form-group">
                   <div className="input-box">
                     <input
+                      ref={inputRef}
                       type="text"
                       placeholder="Describe What you want:"
                       name="prompt"
@@ -98,7 +108,7 @@ const GeneratorFormSection = () => {
                   <span>Popular Tags:</span>
                   <div className="tags-list">
                     <Button
-                      onClick={(e) => setInputValue(e.target.value)}
+                      onClick={(e) => handleButtonClick(e.target.value)}
                       value={"Landing"}
                       className="btn--secondary"
                       type={"button"}
@@ -106,7 +116,7 @@ const GeneratorFormSection = () => {
                       Landing
                     </Button>
                     <Button
-                      onClick={(e) => setInputValue(e.target.value)}
+                      onClick={(e) => handleButtonClick(e.target.value)}
                       value={"E Commerce"}
                       className="btn--secondary"
                       type={"button"}
@@ -114,7 +124,7 @@ const GeneratorFormSection = () => {
                       E Commerce
                     </Button>
                     <Button
-                      onClick={(e) => setInputValue(e.target.value)}
+                      onClick={(e) => handleButtonClick(e.target.value)}
                       value={"Portfolio"}
                       className="btn--secondary"
                       type={"button"}
@@ -122,7 +132,7 @@ const GeneratorFormSection = () => {
                       Portfolio
                     </Button>
                     <Button
-                      onClick={(e) => setInputValue(e.target.value)}
+                      onClick={(e) => handleButtonClick(e.target.value)}
                       value={"Art works"}
                       className="btn--secondary"
                       type={"button"}
@@ -130,7 +140,7 @@ const GeneratorFormSection = () => {
                       Art works
                     </Button>
                     <Button
-                      onClick={(e) => setInputValue(e.target.value)}
+                      onClick={(e) => handleButtonClick(e.target.value)}
                       value={"Creative"}
                       className="btn--secondary"
                       type={"button"}
@@ -149,7 +159,7 @@ const GeneratorFormSection = () => {
                   </label>
                   <label className="radio-label">
                     <input type="radio" name="templateId" value="2" />
-                    <img src={hardwell} alt="Image 2" />
+                    <img src={krypto} alt="Image 2" />
                   </label>
                 </div>
               </div>
