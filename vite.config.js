@@ -6,6 +6,7 @@ import { imagetools } from "vite-imagetools";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: { port: 8000 },
+  build: { outDir: "../back/static/dist/" },
   plugins: [
     react(),
     imagetools(),

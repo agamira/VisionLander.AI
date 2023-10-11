@@ -63,7 +63,7 @@ const GeneratorFormSection = () => {
           if (res.status === 200) {
             setIsLoading(false);
             success("Your project has been created!");
-            window.location.href = "http://localhost:3000/redactor";
+            window.location.href = "https://vision-lander.com/redactor";
           }
         })
         .catch((error) => {
