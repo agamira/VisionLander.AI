@@ -2,6 +2,8 @@ import "./Header.scss";
 import { Button, LoginForm, Logo, Modal, RegisterForm } from "../../components";
 import { logOut, login, register } from "../../api";
 import { message } from "antd";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useState } from "react";
 
 const Header = ({
   isLoggedIn,
@@ -16,6 +18,10 @@ const Header = ({
   setLoggedUser,
 }) => {
   const [messageApi, contextHolder] = message.useMessage();
+
+  const matches = useMediaQuery("(max-width: 767px)");
+
+  const [burgerMenu, setBurgerMenu] = useState(!matches);
 
   const success = (message) => {
     messageApi.open({
@@ -52,45 +58,91 @@ const Header = ({
       <header id="header">
         <div className="container">
           <div className="header-elements">
-            <Logo />
-            <nav>
-              <ul>
-                <li>
-                  <a href="#home">Home</a>
-                </li>
-                <li>
-                  <a href="#how-it-works">How it works</a>
-                </li>
-                <li>
-                  <a href="#faq">FAQ</a>
-                </li>
-                <li>
-                  <a href="#testimonials">Testimonials</a>
-                </li>
-              </ul>
-            </nav>
-            <div className="header-buttons">
-              {!isLoggedIn ? (
-                <>
-                  <Button onClick={openLogInModal} className="btn">
-                    Log In
-                  </Button>
-                  <Button onClick={openSignUpModal} className={"btn--outline"}>
-                    Sign Up
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button className={"btn"}>{loggedUser}</Button>
-                  <Button
-                    onClick={() => handleLogOut()}
-                    className={"btn--outline"}
-                  >
-                    Log Out
-                  </Button>
-                </>
-              )}
+            <div className="header-logo">
+              <Logo />
+              <Button
+                className="burger-btn"
+                onClick={() => setBurgerMenu((prev) => !prev)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <line
+                    x1="0.5"
+                    y1="7.5"
+                    x2="31.5"
+                    y2="7.5"
+                    stroke="white"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="0.5"
+                    y1="15.5"
+                    x2="31.5"
+                    y2="15.5"
+                    stroke="white"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="0.5"
+                    y1="23.5"
+                    x2="31.5"
+                    y2="23.5"
+                    stroke="white"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </Button>
             </div>
+            {burgerMenu && (
+              <div className="nav">
+                <nav>
+                  <ul>
+                    <li>
+                      <a href="#home">Home</a>
+                    </li>
+                    <li>
+                      <a href="#how-it-works">How it works</a>
+                    </li>
+                    <li>
+                      <a href="#faq">FAQ</a>
+                    </li>
+                    <li>
+                      <a href="#testimonials">Testimonials</a>
+                    </li>
+                  </ul>
+                </nav>
+                <div className="header-buttons">
+                  {!isLoggedIn ? (
+                    <>
+                      <Button onClick={openLogInModal} className="btn">
+                        Log In
+                      </Button>
+                      <Button
+                        onClick={openSignUpModal}
+                        className={"btn--outline"}
+                      >
+                        Sign Up
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button className={"btn"}>{loggedUser}</Button>
+                      <Button
+                        onClick={() => handleLogOut()}
+                        className={"btn--outline"}
+                      >
+                        Log Out
+                      </Button>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         {

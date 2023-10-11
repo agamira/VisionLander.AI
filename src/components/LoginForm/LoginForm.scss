@@ -13,6 +13,11 @@
     rgba(255, 255, 255, 0) 96.05%
   );
   backdrop-filter: blur(18.075000762939453px);
+  -webkit-backdrop-filter: blur(18.075000762939453px);
+
+  @include tablet {
+    padding: 40px 36px;
+  }
   .form-title {
     text-align: center;
     color: $text-white;

@@ -12,6 +12,9 @@
       display: none;
     }
   }
+  @include tablet {
+    width: 75%;
+  }
   .card-header {
     margin-bottom: 23px;
     .card-number {
@@ -40,6 +43,9 @@
       .card-arrow {
         position: absolute;
         right: -54px;
+        @include tablet {
+          display: none;
+        }
       }
     }
     .card-title {

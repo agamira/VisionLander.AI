@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import "./GeneratorFormSection.scss";
 import { Button, Loading } from "../../../components";
 import configIcon from "../../../assets/icon/config.svg";
@@ -19,6 +20,8 @@ const GeneratorFormSection = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const inputRef = useRef(null);
+
+  const matches = useMediaQuery("(max-width: 767px)");
 
   const handleButtonClick = (value) => {
     setInputValue(value);
@@ -88,11 +91,13 @@ const GeneratorFormSection = () => {
               <div className="form-groups">
                 <div className="form-group">
                   <div className="input-box">
+                    <label htmlFor="prompt">Describe What you want:</label>
                     <input
                       ref={inputRef}
                       type="text"
-                      placeholder="Describe What you want:"
+                      placeholder={!matches && "Describe What you want:"}
                       name="prompt"
+                      id="prompt"
                       onChange={(e) => setInputValue(e.target.value)}
                       value={inputValue}
                     />
@@ -100,9 +105,9 @@ const GeneratorFormSection = () => {
                       Generate
                     </Button>
                   </div>
-                  <Button className="config-btn" type={"button"}>
+                  {/* <Button className="config-btn" type={"button"}>
                     <img src={configIcon} alt="" />
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="tags-group">
                   <span>Popular Tags:</span>

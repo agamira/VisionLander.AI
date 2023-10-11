@@ -1,4 +1,8 @@
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+
 function Modal({ children, isOpen, closeModal }) {
+  const isTablet = useMediaQuery("(max-width: 768px)");
+
   // Function to close the modal when clicking outside
   const handleOutsideClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -23,6 +27,7 @@ function Modal({ children, isOpen, closeModal }) {
   const modalContentStyle = {
     cursor: "default",
     position: "absolute",
+    width: isTablet && "70%",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",

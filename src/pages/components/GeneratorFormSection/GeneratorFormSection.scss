@@ -22,6 +22,22 @@
               align-items: center;
               width: 100%;
               position: relative;
+              label {
+                display: none;
+                color: #ebe3ee;
+                font-family: $font-baiJamjuree;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-align: center;
+                @include tablet {
+                  display: block;
+                }
+              }
+              @include tablet {
+                display: block;
+              }
               input {
                 box-sizing: border-box;
                 padding: 22px 12px;
@@ -30,6 +46,7 @@
                 border: none;
                 border-radius: 8px;
                 background-color: $text-white-200;
+                caret-color: $bgColor;
                 //
                 color: $bgColor;
                 font-family: $font-baiJamjuree;
@@ -45,12 +62,23 @@
                   font-weight: 700;
                   line-height: normal;
                 }
+                @include tablet {
+                  margin: 16px 0;
+                  padding: 12px;
+                }
               }
               .btn {
                 position: absolute;
                 padding: 12px 60px;
                 max-height: 50px;
                 right: 12px;
+                @include tablet {
+                  width: 100%;
+                  position: static;
+                  padding: 12px 60px;
+                  max-height: 50px;
+                  right: 0;
+                }
               }
             }
             .config-btn {
@@ -62,6 +90,9 @@
             display: flex;
             margin-bottom: 81px;
             align-items: center;
+            @include tablet {
+              flex-direction: column;
+            }
             span {
               display: flex;
               align-items: center;
@@ -72,10 +103,16 @@
               font-style: normal;
               font-weight: 700;
               line-height: normal;
+              @include tablet {
+                font-size: 24px;
+                margin: 0 0 16px;
+              }
             }
             .tags-list {
               display: flex;
               gap: 16px;
+              justify-content: center;
+              flex-wrap: wrap;
             }
           }
         }
@@ -90,15 +127,21 @@
             line-height: normal;
           }
           .radio-buttons {
-            margin-top: 37px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             column-gap: 13px;
             .radio-label {
+              margin-top: 37px;
               display: flex;
               align-items: center;
               flex-direction: column;
               cursor: pointer;
+              &:hover {
+                img {
+                  box-shadow: $box-shadow-primary;
+                }
+              }
               img {
                 width: 280px;
                 height: 329px;

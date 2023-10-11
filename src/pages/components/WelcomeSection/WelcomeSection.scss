@@ -8,6 +8,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0 6px;
+      @media (max-width: 1016px) {
+        flex-direction: column;
+      }
+
       &__title {
         max-width: 570px;
         h1 {
@@ -19,6 +24,15 @@
           font-weight: 700;
           line-height: 120%; /* 64.8px */
           margin-bottom: 24px;
+          @media (max-width: 1016px) {
+            text-align: center;
+            margin: 0 auto 24px;
+          }
+
+          @include mobile-large {
+            max-width: 274px;
+            font-size: 32px;
+          }
           span {
             border-radius: 50%;
             border: 3px solid #00a3ff;
@@ -26,6 +40,10 @@
           }
         }
         p {
+          @media (max-width: 1016px) {
+            text-align: center;
+            margin-bottom: 24px;
+          }
           color: $text-white;
           font-family: $font-baiJamjuree;
           font-size: 16px;
@@ -35,11 +53,25 @@
         }
       }
       &__video {
+        @include tablet {
+          width: 100%;
+          max-width: 430px;
+        }
         iframe {
           width: 472px;
           height: 265px;
           border-radius: 12px;
           border: 1px solid #fff;
+          @include tablet-large {
+            width: 422px;
+            height: 236px;
+          }
+          @include tablet {
+            width: 100%;
+          }
+          @include mobile {
+            height: 153px;
+          }
         }
       }
     }
