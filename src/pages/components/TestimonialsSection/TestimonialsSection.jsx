@@ -2,6 +2,11 @@ import "./TestimonialsSection.scss";
 import { TestimonialsCard } from "../../../components";
 import { Rate } from "antd";
 import userImage from "../../../assets/img/user-image.png";
+import userImage1 from "../../../assets/img/user1.png";
+import userImage2 from "../../../assets/img/user2.png";
+import userImage3 from "../../../assets/img/user3.png";
+import userImage5 from "../../../assets/img/user5.png";
+import userImage6 from "../../../assets/img/user6.png";
 
 const TestimonialsSection = () => {
   return (
@@ -16,27 +21,27 @@ const TestimonialsSection = () => {
               comment={
                 "“VisionLander's intuitive drag-and-drop website builder transformed my vision into reality! Creating my website was a breeze, even as a beginner. The dashboard and builder are incredibly user-friendly. Grateful for this tool that enabled me to bring my ideas to life!”"
               }
-              userImage={userImage}
-              username={"Leslie Alexander"}
-              position={"Founder"}
+              userImage={userImage1}
+              username={"Sarah Johnson"}
+              position={"Aspiring Entrepreneur"}
               rate={<Rate disabled defaultValue={5} />}
             />
             <TestimonialsCard
               comment={
                 "“As a small business owner, VisionLander's website builder has been a game-changer. It's incredibly intuitive, allowing me to create a professional website for my business without any prior experience. The simplicity and efficiency of the platform are a boon for busy entrepreneurs like me.”"
               }
-              userImage={userImage}
-              username={"Leslie Alexander"}
-              position={"Founder"}
+              userImage={userImage2}
+              username={"David Martinez"}
+              position={"Small Business Owner"}
               rate={<Rate disabled defaultValue={5} />}
             />
             <TestimonialsCard
               comment={
-                "“VisionLander's website builder provided the perfect canvas for my artistic expression. The drag-and-drop feature and diverse customization options allowed me to showcase my portfolio in a visually stunning and unique way. It's a tool that resonates with creatives looking to make a bold statement online.”"
+                "“I had a Facebook page but wanted to share my work with more potential clients. When I found VisionLander's offer, it seemed too good to be true at first. But VisionLander did a great job! They built the website I needed and helped me learn how to manage it. 10/10.”"
               }
-              userImage={userImage}
-              username={"Leslie Alexander"}
-              position={"Founder"}
+              userImage={userImage3}
+              username={"Mark Thompson"}
+              position={"Business Owner"}
               rate={<Rate disabled defaultValue={5} />}
             />
             <TestimonialsCard
@@ -50,20 +55,20 @@ const TestimonialsSection = () => {
             />
             <TestimonialsCard
               comment={
-                "“Impressed with VisionLander! Easy for newbies like me. Drag-and-drop made it fun. Highly recommend it for a sleek website! Your website builder gave me the perfect start, perfect pictures, and from there, it was everything I needed. I love you guys!”"
+                "“VisionLander's website builder provided the perfect canvas for my artistic expression. The drag-and-drop feature and diverse customization options allowed me to showcase my portfolio in a visually stunning and unique way. It's a tool that resonates with creatives looking to make a bold statement online.”"
               }
-              userImage={userImage}
-              username={"Leslie Alexander"}
-              position={"Founder"}
+              userImage={userImage5}
+              username={"Emma Davis"}
+              position={"Blogger"}
               rate={<Rate disabled defaultValue={5} />}
             />
             <TestimonialsCard
               comment={
-                "“I had a Facebook page but wanted to share my work with more potential clients. When I found VisionLander's offer, it seemed too good to be true at first. But VisionLander did a great job! They built the website I needed and helped me learn how to manage it. 10/10.”"
+                "“Impressed with VisionLander! Easy for newbies like me. Drag-and-drop made it fun. Highly recommend it for a sleek website! Your website builder gave me the perfect start, perfect pictures, and from there, it was everything I needed. I love you guys!”"
               }
-              userImage={userImage}
-              username={"Leslie Alexander"}
-              position={"Founder"}
+              userImage={userImage6}
+              username={"Jennifer Clark"}
+              position={"Content Creator"}
               rate={<Rate disabled defaultValue={5} />}
             />
           </div>
