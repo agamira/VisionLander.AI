@@ -14,22 +14,36 @@ const Accordion = () => {
     {
       key: "2",
       label: "Why generate a website with AI?",
-      children: <p className="text">{text}</p>,
+      children: (
+        <p className="text">
+          {
+            "AI accelerates the website-building process, saving you time and effort better spent on other important tasks. If you’re on a tight budget, using an AI website generator is also much more affordable than hiring a web developer."
+          }
+        </p>
+      ),
     },
     {
       key: "3",
       label: "How does VisionLander.AI work?",
-      children: <p className="text">{text}</p>,
+      children: (
+        <p className="text">{`It’s simple. To use VisionLander.AI, you only need to describe your business and select a website type that matches your needs.
+      Our AI builder will automatically write unique content, select royalty-free stock images, and choose a color palette and fonts that best suit your description.`}</p>
+      ),
     },
     {
       key: "4",
-      label: "What are the Pricing Plans for VisionLander.AI?",
-      children: <p className="text">{text}</p>,
+      label: "Do I need coding skills to use VisionLander.AI?",
+      children: (
+        <p className="text">{`Not at all. Our AI website generator is designed to help beginners build professional websites without worrying about technicalities.
+      Web designers and developers can also use VisionLander.AI, to make simple websites faster for their clients.`}</p>
+      ),
     },
     {
       key: "5",
       label: "Can I edit my website’s HTML?",
-      children: <p className="text">{text}</p>,
+      children: (
+        <p className="text">{`Durable is a “no code” solution to building websites. Because of that, we don’t offer extensive options for HTML customization. But if you have a specific need or request, get in touch with us.`}</p>
+      ),
     },
   ];
 
