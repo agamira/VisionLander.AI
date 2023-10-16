@@ -94,6 +94,23 @@ const LoginForm = ({
           >
             Sign Up
           </Button>
+          <Button
+            onClick={closeLogInModal}
+            style={{
+              width: "100%",
+              padding: "21px 0",
+              marginTop: "16px",
+              fontFamily: "'Bai Jamjuree', sans-serif'",
+              fontSize: "20px",
+              fontWeight: "700",
+              borderRadius: "8px",
+              borderWidth: "2px",
+            }}
+            className="btn--outline"
+            disabled={isSubmitting}
+          >
+            Close
+          </Button>
         </form>
       </div>
     </>
