@@ -2,9 +2,11 @@ import { useRef, useState } from "react";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import "./GeneratorFormSection.scss";
 import { Button, Loading } from "../../../components";
-import configIcon from "../../../assets/icon/config.svg";
+// import configIcon from "../../../assets/icon/config.svg";
 import corporate from "../../../assets/img/corporate-template.png";
 import krypto from "../../../assets/img/krypto-template.png";
+import hardwell from "../../../assets/img/hardwell-template.png";
+import warkinon from "../../../assets/img/warkinon-template.png";
 import { useOutletContext } from "react-router-dom";
 import { generatorFormPost } from "../../../api";
 import { message } from "antd";
@@ -161,6 +163,14 @@ const GeneratorFormSection = () => {
                   <label className="radio-label">
                     <input type="radio" name="templateId" value="1" />
                     <img src={corporate} alt="Image 1" />
+                  </label>
+                  <label className="radio-label">
+                    <input type="radio" name="templateId" value="3" />
+                    <img src={hardwell} alt="Image 3" />
+                  </label>
+                  <label className="radio-label">
+                    <input type="radio" name="templateId" value="4" />
+                    <img src={warkinon} alt="Image 3" />
                   </label>
                   <label className="radio-label">
                     <input type="radio" name="templateId" value="2" />
