@@ -4,8 +4,10 @@ import logo from "../../assets/icon/logo.svg";
 const Logo = () => {
   return (
     <div className="site-logo">
-      <img src={logo} alt="logo" />
-      <span>VisionLander.AI</span>
+      <a href="#home">
+        <img src={logo} alt="logo" />
+        <span>VisionLander.AI</span>
+      </a>
     </div>
   );
 };
