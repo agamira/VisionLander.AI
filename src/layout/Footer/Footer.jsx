@@ -3,6 +3,7 @@ import { Logo } from "../../components";
 import fb from "../../assets/icon/fb.svg";
 import twitter from "../../assets/icon/twitter.svg";
 import instagram from "../../assets/icon/instagram.svg";
+import medium from "../../assets/icon/medium.svg";
 
 const Footer = () => {
   return (
@@ -37,6 +38,15 @@ const Footer = () => {
                     href="https://www.instagram.com/agamiraai/"
                   >
                     <img src={instagram} alt="instagram" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://medium.com/@visionlander.ai"
+                  >
+                    <img src={medium} alt="medium" />
                   </a>
                 </li>
               </ul>
