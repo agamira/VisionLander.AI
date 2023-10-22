@@ -16,7 +16,6 @@
             align-items: center;
             width: 100%;
             column-gap: 16px;
-
             .input-box {
               display: flex;
               align-items: center;
@@ -81,14 +80,10 @@
                 }
               }
             }
-            .config-btn {
-              display: flex;
-              padding: 0;
-            }
           }
           .tags-group {
             display: flex;
-            margin-bottom: 81px;
+            margin-bottom: 16px;
             align-items: center;
             @include tablet {
               flex-direction: column;
@@ -108,16 +103,28 @@
                 margin: 0 0 16px;
               }
             }
-            .tags-list {
-              display: flex;
-              gap: 16px;
-              justify-content: center;
-              flex-wrap: wrap;
+          }
+          .tags-list {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          .btn-wrapper {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            .more-btn {
+              font-size: 20px;
+              font-weight: 500;
+              line-height: normal;
+              text-decoration-line: underline;
             }
           }
         }
         .builder-templates {
           text-align: center;
+          margin-top: 81px;
           span {
             color: $text-white;
             font-family: $font-baiJamjuree;

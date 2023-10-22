@@ -21,6 +21,8 @@ const GeneratorFormSection = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [showMore, setShowMore] = useState(false);
+
   const inputRef = useRef(null);
 
   const matches = useMediaQuery("(max-width: 767px)");
@@ -77,6 +79,44 @@ const GeneratorFormSection = () => {
     }
   };
 
+  const tagsArray = [
+    { value: "Book", tag: "Book" },
+    { value: "Squeeze Page", tag: "Squeeze Page" },
+    { value: "Splash Page", tag: "Splash Page" },
+    { value: "Lead Capture Page", tag: "Lead Capture Page" },
+    { value: "Click-Through Landing Page", tag: "Click-Through Landing Page" },
+    { value: "Get Started Landing Page", tag: "Get Started Landing Page" },
+    { value: "About & Bio", tag: "About & Bio" },
+    { value: "Checkout", tag: "Checkout" },
+    { value: "Consultation", tag: "Consultation" },
+    { value: "Contest & Giveaway", tag: "Contest & Giveaway" },
+    { value: "Event", tag: "Event" },
+    { value: "Free Resource & Download", tag: "Free Resource & Download" },
+    { value: "Lead Capture", tag: "Lead Capture" },
+    { value: "Newsletter & Sign Up", tag: "Newsletter & Sign Up" },
+    { value: "Offer, Discount, & Coupon", tag: "Offer, Discount, & Coupon" },
+    { value: "Sales", tag: "Sales" },
+    { value: "Thank You & Confirmation", tag: "Thank You & Confirmation" },
+    { value: "Wait List & Coming Soon", tag: "Wait List & Coming Soon" },
+    { value: "Webinar & Virtual Event", tag: "Webinar & Virtual Event" },
+    { value: "Author", tag: "Author" },
+    { value: "Automotive", tag: "Automotive" },
+    { value: "Business & Marketing", tag: "Business & Marketing" },
+    { value: "Creative Services", tag: "Creative Services" },
+    { value: "Education", tag: "Education" },
+    { value: "Entertainment & Travel", tag: "Entertainment & Travel" },
+    { value: "Financial & Legal", tag: "Financial & Legal" },
+    { value: "Health & Wellness", tag: "Health & Wellness" },
+    { value: "Home", tag: "Home" },
+    { value: "Services", tag: "Services" },
+    { value: "Insurance", tag: "Insurance" },
+    { value: "Other", tag: "Other" },
+    { value: "Personal Development", tag: "Personal Development" },
+    { value: "Real Estate", tag: "Real Estate" },
+    { value: "Restaurant & Food", tag: "Restaurant & Food" },
+    { value: "Software & Technology", tag: "Software & Technology" },
+  ];
+
   return (
     <>
       {contextHolder}
@@ -107,21 +147,10 @@ const GeneratorFormSection = () => {
                       Generate
                     </Button>
                   </div>
-                  {/* <Button className="config-btn" type={"button"}>
-                    <img src={configIcon} alt="" />
-                  </Button> */}
                 </div>
                 <div className="tags-group">
                   <span>Popular Tags:</span>
                   <div className="tags-list">
-                    <Button
-                      onClick={(e) => handleButtonClick(e.target.value)}
-                      value={"Landing"}
-                      className="btn--secondary"
-                      type={"button"}
-                    >
-                      Landing
-                    </Button>
                     <Button
                       onClick={(e) => handleButtonClick(e.target.value)}
                       value={"E Commerce"}
@@ -129,6 +158,14 @@ const GeneratorFormSection = () => {
                       type={"button"}
                     >
                       E Commerce
+                    </Button>
+                    <Button
+                      onClick={(e) => handleButtonClick(e.target.value)}
+                      value={"SaaS"}
+                      className="btn--secondary"
+                      type={"button"}
+                    >
+                      SaaS
                     </Button>
                     <Button
                       onClick={(e) => handleButtonClick(e.target.value)}
@@ -155,6 +192,32 @@ const GeneratorFormSection = () => {
                       Creative
                     </Button>
                   </div>
+                </div>
+                {showMore && (
+                  <div className="tags-list">
+                    {tagsArray.map((item, index) => {
+                      return (
+                        <Button
+                          key={index}
+                          onClick={(e) => handleButtonClick(e.target.value)}
+                          value={item.value}
+                          className="btn--secondary"
+                          type={"button"}
+                        >
+                          {item.tag}
+                        </Button>
+                      );
+                    })}
+                  </div>
+                )}
+                <div className="btn-wrapper">
+                  <Button
+                    type={"button"}
+                    className="more-btn"
+                    onClick={() => setShowMore((prev) => !prev)}
+                  >
+                    {showMore ? "Less" : "More"}
+                  </Button>
                 </div>
               </div>
               <div className="builder-templates">
