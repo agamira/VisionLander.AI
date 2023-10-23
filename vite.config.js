@@ -6,7 +6,16 @@ import { imagetools } from "vite-imagetools";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: { port: 8000 },
-  build: { outDir: "../back/static/dist/" },
+  build: {
+    outDir: "../back/static/dist/",
+    rollupOptions: {
+      output: {
+        entryFileNames: "assets/[name].js",
+        chunkFileNames: "assets/[name].js",
+        assetFileNames: "assets/[name].[ext]",
+      },
+    },
+  },
   plugins: [
     react(),
     imagetools(),
