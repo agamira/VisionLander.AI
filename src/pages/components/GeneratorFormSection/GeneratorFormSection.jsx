@@ -125,6 +125,27 @@ const GeneratorFormSection = () => {
         <div className="container">
           <div className="form-box">
             <form name="generator-form" onSubmit={(e) => handleSubmit(e)}>
+              <div className="builder-templates">
+                <span>Choose the template:</span>
+                <div className="radio-buttons">
+                  <label className="radio-label">
+                    <input type="radio" name="templateId" value="1" />
+                    <img src={corporate} alt="Image 1" />
+                  </label>
+                  <label className="radio-label">
+                    <input type="radio" name="templateId" value="2" />
+                    <img src={hardwell} alt="Image 3" />
+                  </label>
+                  <label className="radio-label">
+                    <input type="radio" name="templateId" value="3" />
+                    <img src={warkinon} alt="Image 3" />
+                  </label>
+                  <label className="radio-label">
+                    <input type="radio" name="templateId" value="4" />
+                    <img src={krypto} alt="Image 2" />
+                  </label>
+                </div>
+              </div>
               <div className="form-groups">
                 <div className="form-group">
                   <div className="input-box">
@@ -213,27 +234,6 @@ const GeneratorFormSection = () => {
                   >
                     {showMore ? "Less" : "More"}
                   </Button>
-                </div>
-              </div>
-              <div className="builder-templates">
-                <span>Choose the template:</span>
-                <div className="radio-buttons">
-                  <label className="radio-label">
-                    <input type="radio" name="templateId" value="1" />
-                    <img src={corporate} alt="Image 1" />
-                  </label>
-                  <label className="radio-label">
-                    <input type="radio" name="templateId" value="2" />
-                    <img src={hardwell} alt="Image 3" />
-                  </label>
-                  <label className="radio-label">
-                    <input type="radio" name="templateId" value="3" />
-                    <img src={warkinon} alt="Image 3" />
-                  </label>
-                  <label className="radio-label">
-                    <input type="radio" name="templateId" value="4" />
-                    <img src={krypto} alt="Image 2" />
-                  </label>
                 </div>
               </div>
             </form>

@@ -20,7 +20,6 @@
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  max-width: 341px;
   @include tablet {
     max-width: unset;
     p {

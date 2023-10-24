@@ -13,9 +13,8 @@ const Footer = () => {
           <div className="footer-copyright">
             <div className="footer-logo">
               <Logo />
-              <p className="p">
-                2023 Award winning Vaccination and Lorem ipsum dolor sit amet
-              </p>
+              <p className="p">VISION LANDER LTD</p>
+              <p className="p">20 Wenlock Road, London, England N17GU</p>
               <ul className="social-network-icons">
                 <li>
                   <a target="_blank" rel="noreferrer" href="">
