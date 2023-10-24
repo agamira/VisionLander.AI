@@ -1,9 +1,10 @@
 import {
+  WelcomeSection,
   FaqSection,
   GeneratorFormSection,
   HowItWorksSection,
-  WelcomeSection,
   TestimonialsSection,
+  PricingSection,
 } from "../components";
 import "./Home.scss";
 
@@ -14,6 +15,7 @@ const Home = () => {
       <GeneratorFormSection />
       <HowItWorksSection />
       <FaqSection />
+      <PricingSection />
       <TestimonialsSection />
     </main>
   );

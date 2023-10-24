@@ -1,0 +1,31 @@
+@import "../../../assets/sass/main.scss";
+
+.pricing-section {
+  padding: 70px 0;
+  background-color: $bgColor;
+  .container {
+    .pricing-title {
+      text-align: center;
+      h2 {
+        color: $text-white;
+        font-family: $font-baiJamjuree;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%; /* 48px */
+        margin-bottom: 27px;
+      }
+    }
+    .pricing-content {
+      .pricing-card-list {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        @include tablet-large {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

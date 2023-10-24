@@ -81,11 +81,7 @@ const GeneratorFormSection = () => {
 
   const tagsArray = [
     { value: "Book", tag: "Book" },
-    { value: "Squeeze Page", tag: "Squeeze Page" },
-    { value: "Splash Page", tag: "Splash Page" },
-    { value: "Lead Capture Page", tag: "Lead Capture Page" },
-    { value: "Click-Through Landing Page", tag: "Click-Through Landing Page" },
-    { value: "Get Started Landing Page", tag: "Get Started Landing Page" },
+    { value: "Lead Capture", tag: "Lead Capture" },
     { value: "About & Bio", tag: "About & Bio" },
     { value: "Checkout", tag: "Checkout" },
     { value: "Consultation", tag: "Consultation" },
@@ -110,7 +106,6 @@ const GeneratorFormSection = () => {
     { value: "Home", tag: "Home" },
     { value: "Services", tag: "Services" },
     { value: "Insurance", tag: "Insurance" },
-    { value: "Other", tag: "Other" },
     { value: "Personal Development", tag: "Personal Development" },
     { value: "Real Estate", tag: "Real Estate" },
     { value: "Restaurant & Food", tag: "Restaurant & Food" },

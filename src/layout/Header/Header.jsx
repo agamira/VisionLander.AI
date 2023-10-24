@@ -1,4 +1,5 @@
 import "./Header.scss";
+import burgerMenuIcon from "../../assets/icon/burger-menu.svg";
 import { Button, LoginForm, Logo, Modal, RegisterForm } from "../../components";
 import { logOut, login, register } from "../../api";
 import { message } from "antd";
@@ -64,38 +65,7 @@ const Header = ({
                 className="burger-btn"
                 onClick={() => setBurgerMenu((prev) => !prev)}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                >
-                  <line
-                    x1="0.5"
-                    y1="7.5"
-                    x2="31.5"
-                    y2="7.5"
-                    stroke="white"
-                    strokeLinecap="round"
-                  />
-                  <line
-                    x1="0.5"
-                    y1="15.5"
-                    x2="31.5"
-                    y2="15.5"
-                    stroke="white"
-                    strokeLinecap="round"
-                  />
-                  <line
-                    x1="0.5"
-                    y1="23.5"
-                    x2="31.5"
-                    y2="23.5"
-                    stroke="white"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <img src={burgerMenuIcon} alt="burger-menu" />
               </Button>
             </div>
             {burgerMenu && (
