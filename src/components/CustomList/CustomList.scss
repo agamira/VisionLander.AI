@@ -9,8 +9,8 @@
   &.pro {
     .custom-list__item {
       &::before {
-        background: url("../../assets/icon/checked-dark.svg") center center
-          no-repeat; /* Set the custom bullet image */
+        background: url("https://ucarecdn.com/9d566a63-a545-4bd7-ba02-8a96f712fcbb/checkeddark.svg")
+          center center no-repeat; /* Set the custom bullet image */
       }
     }
   }
@@ -28,8 +28,8 @@
 
     &::before {
       content: "";
-      background: url("../../assets/icon/checked.svg") center center
-        no-repeat; /* Set the custom bullet image */
+      background: url("https://ucarecdn.com/3bdc76f2-a99c-4dec-93a3-7b554df4b2b8/checked.svg")
+        center center no-repeat; /* Set the custom bullet image */
       width: 22px; /* Adjust the width of the bullet image */
       height: 22px; /* Adjust the height of the bullet image */
       display: block;
