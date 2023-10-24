@@ -9,7 +9,7 @@
   &.pro {
     .custom-list__item {
       &::before {
-        background: url("../../assets/icon/checked_bold-dark.svg") center center
+        background: url("../../assets/icon/checked-dark.svg") center center
           no-repeat; /* Set the custom bullet image */
       }
     }
@@ -28,7 +28,7 @@
 
     &::before {
       content: "";
-      background: url("../../assets/icon/checked_bold.svg") center center
+      background: url("../../assets/icon/checked.svg") center center
         no-repeat; /* Set the custom bullet image */
       width: 22px; /* Adjust the width of the bullet image */
       height: 22px; /* Adjust the height of the bullet image */
