@@ -2,20 +2,19 @@ import { useRef, useState } from "react";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import "./GeneratorFormSection.scss";
 import { Button, Loading } from "../../../components";
-// import configIcon from "../../../assets/icon/config.svg";
 import corporate from "../../../assets/img/corporate-template.png";
 import krypto from "../../../assets/img/krypto-template.png";
 import hardwell from "../../../assets/img/hardwell-template.png";
 import warkinon from "../../../assets/img/warkinon-template.png";
-import { useOutletContext } from "react-router-dom";
+import loadingIcon from "../../../assets/icon/loading.svg";
+// import { useOutletContext } from "react-router-dom";
 import { generatorFormPost } from "../../../api";
 import { message } from "antd";
-import loadingIcon from "../../../assets/icon/loading.svg";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
 
-  const [isLoggedIn, openLogInModal] = useOutletContext();
+  // const [isLoggedIn, openLogInModal] = useOutletContext();
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -54,11 +53,10 @@ const GeneratorFormSection = () => {
     const templateId = +e.target.elements.templateId.value;
     const formData = { prompt, templateId };
 
-    if (!isLoggedIn) return openLogInModal();
-
-    if (!prompt) return warning("Please fill the prompt");
+    // if (!isLoggedIn) return openLogInModal();
 
     if (!templateId) return warning("Please choose the template!");
+    if (!prompt) return warning("Please fill the prompt");
 
     if (prompt.length > 2 && templateId) {
       setIsLoading(true);

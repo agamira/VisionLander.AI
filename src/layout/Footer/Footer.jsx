@@ -13,8 +13,10 @@ const Footer = () => {
           <div className="footer-copyright">
             <div className="footer-logo">
               <Logo />
-              <p className="p">VISION LANDER LTD</p>
-              <p className="p">20 Wenlock Road, London, England N17GU</p>
+              <p className="company-data">VISION LANDER LTD</p>
+              <p className="company-data">
+                20 Wenlock Road, London, England N17GU
+              </p>
               <ul className="social-network-icons">
                 <li>
                   <a target="_blank" rel="noreferrer" href="">
@@ -46,6 +48,21 @@ const Footer = () => {
                     href="https://medium.com/@visionlander.ai"
                   >
                     <img src={medium} alt="medium" />
+                  </a>
+                </li>
+              </ul>
+              <ul
+                className="footer-unordered-list"
+                style={{ flexDirection: "row" }}
+              >
+                <li>
+                  <a href="terms-of-use" target="_blank">
+                    Terms of Use
+                  </a>
+                </li>
+                <li>
+                  <a href="privacy-policy" target="_blank">
+                    Privacy Policy
                   </a>
                 </li>
               </ul>
