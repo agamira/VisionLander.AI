@@ -48,7 +48,7 @@ const Header = ({
         }
       })
       .catch((err) => {
-        console.error(err);
+        error(err.message);
         error("Something went wrong!");
       });
   }
@@ -128,8 +128,6 @@ const Header = ({
                 signUpAction={openSignUpModal}
                 setLoggedIn={setIsLoggedIn}
                 setLoggedUser={setLoggedUser}
-                contextHolder={contextHolder}
-                error={error}
               />
             </Modal>
           ) : null
@@ -142,8 +140,6 @@ const Header = ({
                 signUpAction={register}
                 closeSignUpModal={closeSignUpModal}
                 logInAction={openLogInModal}
-                contextHolder={contextHolder}
-                error={error}
               />
             </Modal>
           ) : null

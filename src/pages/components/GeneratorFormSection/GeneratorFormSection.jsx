@@ -39,6 +39,12 @@ const GeneratorFormSection = () => {
       content: message,
     });
   };
+  const error = (message) => {
+    messageApi.open({
+      type: "error",
+      content: message,
+    });
+  };
 
   const success = (message) => {
     messageApi.open({
@@ -68,9 +74,9 @@ const GeneratorFormSection = () => {
             window.location.href = "https://vision-lander.com/redactor";
           }
         })
-        .catch((error) => {
+        .catch((err) => {
           setIsLoading(false);
-          console.error(error);
+          error(err.message);
         });
     } else {
       warning("Please fill all fields!");
