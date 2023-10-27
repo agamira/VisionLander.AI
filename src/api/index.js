@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://vision-lander.com/",
+  baseURL: "https://visionlander.ai/",
 });
 
 export { api };
