@@ -1,0 +1,55 @@
+@import "../../assets/sass/main.scss";
+
+.banner {
+  display: flex;
+  justify-content: center;
+  background-color: #18012b;
+  .banner__content {
+    display: flex;
+    gap: 19px;
+    align-items: center;
+    padding: 18px 0;
+    .banner__text {
+      p {
+        color: #ffffff;
+        text-align: center;
+        font-family: $font-baiJamjuree;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+      }
+    }
+    .banner__btn {
+      button {
+        cursor: pointer;
+        padding: 8px 20px 10px;
+        border-radius: 6.633px;
+        border: none;
+        background: linear-gradient(90deg, #ffa200 0.68%, #f47300 99.99%);
+        box-shadow: 1.65833px 1.65833px 19.9px 0px rgba(255, 0, 0, 0.25),
+          -1.65833px -1.65833px 19.9px 0px rgba(255, 138, 0, 0.25),
+          1.65833px 3.31667px 7.4625px 0px rgba(246, 127, 0, 0.43),
+          3.31667px 3.31667px 3.31667px 0px rgba(0, 10, 255, 0.25),
+          -1.65833px -1.65833px 3.31667px 0px rgba(255, 255, 255, 0.75);
+        .btn-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          .btn-text {
+            color: $text-white;
+            font-family: $font-baiJamjuree;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: capitalize;
+          }
+          .btn-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}

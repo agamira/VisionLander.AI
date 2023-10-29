@@ -1,7 +1,7 @@
 import "./Header.scss";
 import burgerMenuIcon from "../../assets/icon/burger-menu.svg";
-import { Button, LoginForm, Logo, Modal, RegisterForm } from "../../components";
-import { logOut, login, register } from "../../api";
+import { Button, Logo } from "../../components";
+import { logOut } from "../../api";
 import { message } from "antd";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useState } from "react";
@@ -9,12 +9,8 @@ import { useState } from "react";
 const Header = ({
   isLoggedIn,
   setIsLoggedIn,
-  isLogInModalOpen,
   openLogInModal,
-  closeLogInModal,
-  isSignUpModalOpen,
   openSignUpModal,
-  closeSignUpModal,
   loggedUser,
   setLoggedUser,
 }) => {
@@ -118,32 +114,6 @@ const Header = ({
             )}
           </div>
         </div>
-        {
-          // Modal for Log In
-          isLogInModalOpen ? (
-            <Modal isOpen={isLogInModalOpen} closeModal={closeLogInModal}>
-              <LoginForm
-                logInAction={login}
-                closeLogInModal={closeLogInModal}
-                signUpAction={openSignUpModal}
-                setLoggedIn={setIsLoggedIn}
-                setLoggedUser={setLoggedUser}
-              />
-            </Modal>
-          ) : null
-        }
-        {
-          // Modal for Sign Up
-          isSignUpModalOpen ? (
-            <Modal isOpen={isSignUpModalOpen} closeModal={closeSignUpModal}>
-              <RegisterForm
-                signUpAction={register}
-                closeSignUpModal={closeSignUpModal}
-                logInAction={openLogInModal}
-              />
-            </Modal>
-          ) : null
-        }
       </header>
     </>
   );

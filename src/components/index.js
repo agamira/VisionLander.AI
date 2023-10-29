@@ -10,3 +10,4 @@ export { Accordion } from "./Accordion/Accordion";
 export { CustomList } from "./CustomList/CustomList";
 export { PricingCard } from "./PricingCard/PricingCard";
 export { TestimonialsCard } from "./TestimonialsCard/TestimonialsCard";
+export { Banner } from "./Banner/Banner";

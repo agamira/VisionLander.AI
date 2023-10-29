@@ -10,6 +10,7 @@ import loadingIcon from "../../../assets/icon/loading.svg";
 // import { useOutletContext } from "react-router-dom";
 import { generatorFormPost } from "../../../api";
 import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
@@ -25,6 +26,8 @@ const GeneratorFormSection = () => {
   const inputRef = useRef(null);
 
   const matches = useMediaQuery("(max-width: 767px)");
+
+  const navigate = useNavigate();
 
   const handleButtonClick = (value) => {
     setInputValue(value);
@@ -71,7 +74,7 @@ const GeneratorFormSection = () => {
           if (res.status === 200) {
             setIsLoading(false);
             success("Your project has been created!");
-            window.location.href = "https://vision-lander.com/redactor";
+            navigate("/redactor", { replace: true });
           }
         })
         .catch((err) => {
