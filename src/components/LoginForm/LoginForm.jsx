@@ -92,10 +92,21 @@ const LoginForm = ({
                 {errors.password && errors.password.message}
               </p>
             </div>
+            <div className="checkbox-field">
+              <div className="checkbox-input">
+                <input
+                  id="rememberCheckbox"
+                  name="rememberCheckbox"
+                  type="checkbox"
+                  {...register("rememberCheckbox")}
+                />
+                <label htmlFor="rememberCheckbox">Remember Me</label>
+              </div>
+            </div>
           </div>
           <Button
             style={{ width: "100%", padding: "21px 0" }}
-            className="btn--primary"
+            className="btn--primary btn-login"
             type="submit"
             disabled={isSubmitting}
           >

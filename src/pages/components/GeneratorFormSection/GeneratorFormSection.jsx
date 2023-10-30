@@ -156,7 +156,9 @@ const GeneratorFormSection = () => {
               <div className="form-groups">
                 <div className="form-group">
                   <div className="input-box">
-                    <label htmlFor="prompt">Describe What you want:</label>
+                    <label htmlFor="prompt">
+                      Describe what you business about:
+                    </label>
                     <input
                       ref={inputRef}
                       type="text"

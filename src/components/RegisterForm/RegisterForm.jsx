@@ -99,10 +99,28 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
                 {errors.confirmPassword && errors.confirmPassword.message}
               </p>
             </div>
+            <div className="checkbox-field">
+              <div className="checkbox-input">
+                <input
+                  id="termsCheckbox"
+                  name="termsCheckbox"
+                  type="checkbox"
+                  {...register("termsCheckbox", {
+                    required: "Read terms of use and privacy policy",
+                  })}
+                />
+                <label htmlFor="termsCheckbox">
+                  I agree to the terms and conditions
+                </label>
+              </div>
+              <p className="error-message">
+                {errors.termsCheckbox && errors.termsCheckbox.message}
+              </p>
+            </div>
           </div>
           <Button
             style={{ width: "100%", padding: "21px 0" }}
-            className="btn--primary"
+            className="btn--primary btn-sign-up"
             type="submit"
             disabled={isSubmitting}
           >
@@ -135,6 +153,14 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
             Close
           </Button>
         </form>
+        <div className="links">
+          <a href="#privacy-policy" target="_blank" className="link">
+            Privacy Policy
+          </a>
+          <a href="/terms-of-use" target="_blank" className="link">
+            Terms of Use
+          </a>
+        </div>
       </div>
     </>
   );

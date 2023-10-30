@@ -14,9 +14,12 @@ const Footer = () => {
             <div className="footer-logo">
               <Logo />
               <p className="company-data">VISION LANDER LTD</p>
-              <p className="company-data">
+              <a
+                className="company-data"
+                href="https://maps.app.goo.gl/3GkbHvUYHTWKcc4F6"
+              >
                 20 Wenlock Road, London, England N17GU
-              </p>
+              </a>
               <ul className="social-network-icons">
                 <li>
                   <a target="_blank" rel="noreferrer" href="">

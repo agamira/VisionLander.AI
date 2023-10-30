@@ -1,7 +1,7 @@
 @import "../../assets/sass/main.scss";
 
 .register-form {
-  padding: 78px 73px;
+  padding: 38px 73px 30px;
   box-sizing: border-box;
   max-width: 585px;
   margin: 0 auto;
@@ -58,11 +58,35 @@
             line-height: normal;
           }
         }
-        .error-message {
-          color: #ff4d00;
-          font-size: 16px;
+      }
+      .checkbox-field {
+        height: 24px;
+        .checkbox-input {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          #termsCheckbox {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+          }
+          label {
+            font-family: $font-roboto;
+            color: $text-white;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
         }
       }
+      .error-message {
+        color: #ff4d00;
+        font-size: 16px;
+      }
+    }
+    .btn-sign-up {
+      margin-top: 5px;
     }
     .btn-login {
       margin: 16px auto 0;
@@ -109,6 +133,23 @@
         top: -2px;
         z-index: -1;
       }
+    }
+  }
+  .links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    .link {
+      color: $text-white;
+      font-family: $font-roboto;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0.14px;
+      text-align: center;
     }
   }
 }
