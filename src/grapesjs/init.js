@@ -28,7 +28,7 @@ function redactorInitializer(bannerBtnAction) {
     label: "Save and publish",
     context: "deploy-now",
     command(editor) {
-      bannerBtnAction(publishWebsite(editor));
+      bannerBtnAction(() => publishWebsite(editor));
     },
   });
 
