@@ -162,7 +162,9 @@ const GeneratorFormSection = () => {
                     <input
                       ref={inputRef}
                       type="text"
-                      placeholder={!matches && "Describe What you want:"}
+                      placeholder={
+                        !matches && "Describe what you business about:"
+                      }
                       name="prompt"
                       id="prompt"
                       onChange={(e) => setInputValue(e.target.value)}
