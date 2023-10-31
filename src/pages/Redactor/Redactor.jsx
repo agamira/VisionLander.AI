@@ -24,7 +24,13 @@ const Redactor = () => {
       openPricingModal();
       return;
     }
-    callback();
+    if (loggedUser.count > 0) {
+      callback();
+      return;
+    } else {
+      openPricingModal();
+      return;
+    }
   }
 
   useEffect(() => {
