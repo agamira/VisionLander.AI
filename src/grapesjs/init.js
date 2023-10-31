@@ -12,7 +12,7 @@ function redactorInitializer(loggedUser, bannerBtnAction) {
     // fromElement: true,
     allowScripts: 1,
     jsInHtml: true,
-    height: "calc(100vh - 79px)",
+    height: loggedUser ? "calc(100vh - 79px)" : "100vh",
     width: "auto",
     storageManager: false,
     panels: { defaults: ["basic-actions", "panel-top"] },
