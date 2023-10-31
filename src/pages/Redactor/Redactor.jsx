@@ -15,7 +15,7 @@ const Redactor = () => {
     openPricingModal,
   } = useContext(GlobalContext);
 
-  function bannerBtnAction(callback) {
+  function bannerBtnAction(loggedUser, callback) {
     if (!loggedUser?.email) {
       openLogInModal();
       return;
@@ -42,7 +42,7 @@ const Redactor = () => {
         console.error(err);
         setIsLoading(false);
       });
-    redactorInitializer(bannerBtnAction);
+    redactorInitializer(loggedUser, bannerBtnAction);
   }, []);
 
   return (
@@ -54,7 +54,11 @@ const Redactor = () => {
         />
       ) : null}
       {!loggedUser?.premium ? (
-        <Banner bannerBtnAction={bannerBtnAction} />
+        <Banner
+          bannerBtnAction={() =>
+            bannerBtnAction(loggedUser, () => console.log("Privet, Jenya!"))
+          }
+        />
       ) : null}
       <div id="gjs"></div>
       <div id="blocks"></div>
