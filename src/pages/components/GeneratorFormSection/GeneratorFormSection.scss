@@ -17,27 +17,24 @@
             width: 100%;
             column-gap: 16px;
             .input-box {
-              display: flex;
-              align-items: center;
               width: 100%;
               position: relative;
+              text-align: center;
               label {
-                display: none;
                 color: #ebe3ee;
+                margin-bottom: 20px;
                 font-family: $font-baiJamjuree;
-                font-size: 24px;
+                font-size: 36px;
                 font-style: normal;
                 font-weight: 700;
                 line-height: normal;
                 text-align: center;
                 @include tablet {
-                  display: block;
+                  font-size: 24px;
                 }
               }
-              @include tablet {
-                display: block;
-              }
               input {
+                margin-top: 20px;
                 box-sizing: border-box;
                 padding: 22px 12px;
                 width: 100%;
@@ -53,6 +50,9 @@
                 font-style: normal;
                 font-weight: 700;
                 line-height: normal;
+                @include tablet {
+                  font-size: 20px;
+                }
                 &::placeholder {
                   color: $bgColor;
                   font-family: $font-baiJamjuree;
@@ -60,6 +60,9 @@
                   font-style: normal;
                   font-weight: 700;
                   line-height: normal;
+                  @include tablet {
+                    font-size: 20px;
+                  }
                 }
                 @include tablet {
                   margin: 16px 0;
@@ -71,6 +74,7 @@
                 padding: 12px 60px;
                 max-height: 50px;
                 right: 12px;
+                bottom: 12px;
                 @include tablet {
                   width: 100%;
                   position: static;

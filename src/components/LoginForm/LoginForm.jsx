@@ -6,7 +6,6 @@ import { Button } from "..";
 const LoginForm = ({
   logInAction,
   signUpAction,
-  setLoggedIn,
   setLoggedUser,
   closeLogInModal,
 }) => {
@@ -42,8 +41,7 @@ const LoginForm = ({
         }
         if (res.status === 200) {
           success(res.message);
-          setLoggedIn(true);
-          setLoggedUser(res.email);
+          setLoggedUser(res);
           closeLogInModal();
           return;
         }
@@ -96,11 +94,11 @@ const LoginForm = ({
               <div className="checkbox-input">
                 <input
                   id="rememberCheckbox"
-                  name="rememberCheckbox"
+                  name="remember"
                   type="checkbox"
-                  {...register("rememberCheckbox")}
+                  {...register("remember")}
                 />
-                <label htmlFor="rememberCheckbox">Remember Me</label>
+                <label htmlFor="remember">Remember Me</label>
               </div>
             </div>
           </div>

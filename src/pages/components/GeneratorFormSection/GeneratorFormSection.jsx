@@ -1,21 +1,17 @@
-import { useRef, useState } from "react";
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import "./GeneratorFormSection.scss";
+import { useRef, useState } from "react";
 import { Button, Loading } from "../../../components";
 import corporate from "../../../assets/img/corporate-template.png";
 import krypto from "../../../assets/img/krypto-template.png";
 import hardwell from "../../../assets/img/hardwell-template.png";
 import warkinon from "../../../assets/img/warkinon-template.png";
 import loadingIcon from "../../../assets/icon/loading.svg";
-// import { useOutletContext } from "react-router-dom";
 import { generatorFormPost } from "../../../api";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
-
-  // const [isLoggedIn, openLogInModal] = useOutletContext();
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -24,8 +20,6 @@ const GeneratorFormSection = () => {
   const [showMore, setShowMore] = useState(false);
 
   const inputRef = useRef(null);
-
-  const matches = useMediaQuery("(max-width: 767px)");
 
   const navigate = useNavigate();
 
@@ -61,9 +55,6 @@ const GeneratorFormSection = () => {
     const prompt = e.target.elements.prompt.value;
     const templateId = +e.target.elements.templateId.value;
     const formData = { prompt, templateId };
-
-    // if (!isLoggedIn) return openLogInModal();
-
     if (!templateId) return warning("Please choose the template!");
     if (!prompt) return warning("Please fill the prompt");
 
@@ -162,9 +153,7 @@ const GeneratorFormSection = () => {
                     <input
                       ref={inputRef}
                       type="text"
-                      placeholder={
-                        !matches && "Describe what you business about:"
-                      }
+                      placeholder={"Delivery of wedding bouquets ..."}
                       name="prompt"
                       id="prompt"
                       onChange={(e) => setInputValue(e.target.value)}

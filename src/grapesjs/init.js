@@ -5,7 +5,7 @@ import cssParser from "grapesjs-parser-postcss";
 import basicBlocks from "grapesjs-blocks-basic";
 import { fetchTemplate, publishWebsite } from ".";
 
-function redactorInitializer() {
+function redactorInitializer(bannerBtnAction) {
   localStorage.clear();
   const editor = grapesjs.init({
     container: "#gjs",
@@ -28,7 +28,7 @@ function redactorInitializer() {
     label: "Save and publish",
     context: "deploy-now",
     command(editor) {
-      publishWebsite(editor);
+      bannerBtnAction(publishWebsite(editor));
     },
   });
 

@@ -52,7 +52,6 @@ const GlobalProvider = ({ children }) => {
     document.body.style.overflow = "auto";
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -60,8 +59,7 @@ const GlobalProvider = ({ children }) => {
     auth()
       .then((res) => {
         if (res.status === 200) {
-          setIsLoggedIn(true);
-          setLoggedUser(res.email);
+          setLoggedUser(res);
           setIsLoading(false);
         }
         if (res.status === 404) {
@@ -72,7 +70,7 @@ const GlobalProvider = ({ children }) => {
         console.error(err);
         setIsLoading(false);
       });
-  }, []);
+  }, [setLoggedUser]);
 
   const proFeatures = [
     "Unlimited projects",
@@ -92,8 +90,6 @@ const GlobalProvider = ({ children }) => {
         closeLogInModal,
         openSignUpModal,
         closeSignUpModal,
-        isLoggedIn,
-        setIsLoggedIn,
         loggedUser,
         setLoggedUser,
         isLoading,
@@ -111,7 +107,6 @@ const GlobalProvider = ({ children }) => {
               logInAction={login}
               closeLogInModal={closeLogInModal}
               signUpAction={openSignUpModal}
-              setLoggedIn={setIsLoggedIn}
               setLoggedUser={setLoggedUser}
             />
           </Modal>

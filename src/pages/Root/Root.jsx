@@ -6,7 +6,6 @@ import { Loading } from "../../components";
 import loadingIcon from "../../assets/icon/loading.svg";
 
 const Root = () => {
-
   const {
     isLogInModalOpen,
     openLogInModal,
@@ -14,12 +13,10 @@ const Root = () => {
     isSignUpModalOpen,
     openSignUpModal,
     closeSignUpModal,
-    isLoggedIn,
-    setIsLoggedIn,
     loggedUser,
     setLoggedUser,
     isLoading,
-  }  = useContext(GlobalContext);
+  } = useContext(GlobalContext);
 
   return (
     <>
@@ -31,12 +28,10 @@ const Root = () => {
         isSignUpModalOpen={isSignUpModalOpen}
         openSignUpModal={openSignUpModal}
         closeSignUpModal={closeSignUpModal}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
         loggedUser={loggedUser}
         setLoggedUser={setLoggedUser}
       />
-      <Outlet context={[isLoggedIn, openLogInModal]} />
+      <Outlet context={[loggedUser, openLogInModal]} />
       <Footer />
     </>
   );

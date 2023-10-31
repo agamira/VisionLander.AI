@@ -7,8 +7,6 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useState } from "react";
 
 const Header = ({
-  isLoggedIn,
-  setIsLoggedIn,
   openLogInModal,
   openSignUpModal,
   loggedUser,
@@ -39,7 +37,6 @@ const Header = ({
       .then((res) => {
         if (res.status === 200) {
           success(res.message);
-          setIsLoggedIn(false);
           setLoggedUser(null);
         }
       })
@@ -86,7 +83,7 @@ const Header = ({
                   </ul>
                 </nav>
                 <div className="header-buttons">
-                  {!isLoggedIn ? (
+                  {!loggedUser ? (
                     <>
                       <Button onClick={openLogInModal} className="btn">
                         Log In
@@ -100,7 +97,7 @@ const Header = ({
                     </>
                   ) : (
                     <>
-                      <Button className={"btn"}>{loggedUser}</Button>
+                      <Button className={"btn"}>{loggedUser.email}</Button>
                       <Button
                         onClick={() => handleLogOut()}
                         className={"btn--outline"}
