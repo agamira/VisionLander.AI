@@ -21,16 +21,13 @@ const Redactor = () => {
       return;
     }
     if (!loggedUser?.premium) {
+      if (!loggedUser.count > 0) {
+        return;
+      }
       openPricingModal();
       return;
     }
-    if (loggedUser.count > 0) {
-      callback();
-      return;
-    } else {
-      openPricingModal();
-      return;
-    }
+    callback();
   }
 
   useEffect(() => {
