@@ -43,7 +43,7 @@ const Redactor = () => {
         setIsLoading(false);
       });
     redactorInitializer(bannerBtnAction);
-  }, [loggedUser, setLoggedUser, setIsLoading]);
+  }, []);
 
   return (
     <main>
