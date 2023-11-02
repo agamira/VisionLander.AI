@@ -13,6 +13,7 @@ function redactorInitializer() {
     // fromElement: true,
     allowScripts: 1,
     jsInHtml: true,
+    height: "calc(100vh - 79px)",
     width: "auto",
     storageManager: false,
     panels: { defaults: ["basic-actions", "panel-top"] },
@@ -28,25 +29,28 @@ function redactorInitializer() {
     label: "Save and publish",
     context: "deploy-now",
     command(editor) {
-      // auth()
-      //   .then((res) => {
-      //     console.log(res);
-      //     if (res.status === 200) {
-      //       if (!res.email) {
-      //         return;
-      //       }
-      //       if (!res.premium) {
-      //         if (!res.count > 0) {
-      //           return;
-      //         }
-      //         return;
-      //       }
-      publishWebsite(editor);
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.error(err);
-      //   });
+      auth()
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            if (!res.email) {
+              alert("log in first");
+              return;
+            }
+            if (!res.premium) {
+              if (!res.count > 0) {
+                alert("Updated plan");
+                return;
+              }
+              return;
+            }
+            publishWebsite(editor);
+          }
+        })
+        .catch((err) => {
+          alert(err.message);
+          console.error(err);
+        });
     },
   });
 

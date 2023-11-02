@@ -9,20 +9,17 @@ import { authAsync } from "../../redux/authSlice";
 
 const Redactor = () => {
   const { openLogInModal, openPricingModal } = useContext(GlobalContext);
-
   const dispatch = useDispatch();
-
   const isLoading = useSelector((state) => state.auth.isLoading);
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loggedUser = useSelector((state) => state.auth.user);
 
-  function bannerBtnAction() {
-    if (!isAuthenticated) {
+  function bannerBtnAction(loggedUser) {
+    if (!loggedUser?.email) {
       openLogInModal();
       return;
     }
     if (!loggedUser?.premium) {
-      if (!loggedUser?.count > 0) {
+      if (!loggedUser.count > 0) {
         return;
       }
       openPricingModal();
@@ -30,10 +27,21 @@ const Redactor = () => {
     }
   }
 
+  function resizeRedactor(isPremium) {
+    const redactor = document.querySelector("#gjs");
+    !isPremium
+      ? (redactor.style = "calc(100vh - 79px)")
+      : (redactor.style.height = "100vh");
+  }
+
   useEffect(() => {
     dispatch(authAsync());
+    resizeRedactor(loggedUser?.premium);
+  }, [dispatch, loggedUser?.premium]);
+
+  useEffect(() => {
     redactorInitializer();
-  }, [dispatch]);
+  }, []);
 
   return (
     <main id="redactor-page">
@@ -44,7 +52,7 @@ const Redactor = () => {
         />
       ) : null}
       {!loggedUser?.premium ? (
-        <Banner bannerBtnAction={() => bannerBtnAction()} />
+        <Banner bannerBtnAction={() => bannerBtnAction(loggedUser)} />
       ) : null}
       <div id="gjs"></div>
       <div id="blocks"></div>
