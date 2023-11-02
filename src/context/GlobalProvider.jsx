@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { GlobalContext } from ".";
-import { auth, login, register } from "../api";
 import {
   Button,
   CustomList,
@@ -10,11 +9,15 @@ import {
   RegisterForm,
 } from "../components";
 import coin from "../assets/img/coin.png";
+import { useDispatch } from "react-redux";
+import { loginAsync, signupAsync } from "../redux/authSlice";
 
 const GlobalProvider = ({ children }) => {
   const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   // Function to open the first modal and close the second
   const openLogInModal = () => {
@@ -52,26 +55,6 @@ const GlobalProvider = ({ children }) => {
     document.body.style.overflow = "auto";
   };
 
-  const [loggedUser, setLoggedUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    auth()
-      .then((res) => {
-        if (res.status === 200) {
-          setLoggedUser(res);
-          setIsLoading(false);
-        }
-        if (res.status === 404) {
-          setIsLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsLoading(false);
-      });
-  }, [setLoggedUser]);
-
   const proFeatures = [
     "Unlimited projects",
     "Unlimited generations",
@@ -90,10 +73,6 @@ const GlobalProvider = ({ children }) => {
         closeLogInModal,
         openSignUpModal,
         closeSignUpModal,
-        loggedUser,
-        setLoggedUser,
-        isLoading,
-        setIsLoading,
         isPricingModalOpen,
         openPricingModal,
         closePricingModal,
@@ -104,10 +83,9 @@ const GlobalProvider = ({ children }) => {
         isLogInModalOpen ? (
           <Modal isOpen={isLogInModalOpen} closeModal={closeLogInModal}>
             <LoginForm
-              logInAction={login}
+              logInAction={(data) => dispatch(loginAsync(data))}
               closeLogInModal={closeLogInModal}
               signUpAction={openSignUpModal}
-              setLoggedUser={setLoggedUser}
             />
           </Modal>
         ) : null
@@ -117,7 +95,7 @@ const GlobalProvider = ({ children }) => {
         isSignUpModalOpen ? (
           <Modal isOpen={isSignUpModalOpen} closeModal={closeSignUpModal}>
             <RegisterForm
-              signUpAction={register}
+              signUpAction={(data) => dispatch(signupAsync(data))}
               closeSignUpModal={closeSignUpModal}
               logInAction={openLogInModal}
             />

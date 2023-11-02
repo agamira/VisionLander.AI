@@ -1,22 +1,21 @@
 import "./Header.scss";
 import burgerMenuIcon from "../../assets/icon/burger-menu.svg";
 import { Button, Logo } from "../../components";
-import { logOut } from "../../api";
 import { message } from "antd";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutAsync } from "../../redux/authSlice";
 import { useState } from "react";
 
-const Header = ({
-  openLogInModal,
-  openSignUpModal,
-  loggedUser,
-  setLoggedUser,
-}) => {
+const Header = ({ openLogInModal, openSignUpModal }) => {
+  const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
 
   const matches = useMediaQuery("(max-width: 767px)");
 
   const [burgerMenu, setBurgerMenu] = useState(!matches);
+
+  const loggedUser = useSelector((state) => state.auth.user);
 
   const success = (message) => {
     messageApi.open({
@@ -33,11 +32,11 @@ const Header = ({
   };
 
   function handleLogOut() {
-    logOut()
-      .then((res) => {
+    dispatch(logoutAsync())
+      .then((response) => {
+        let res = response.payload;
         if (res.status === 200) {
           success(res.message);
-          setLoggedUser(null);
         }
       })
       .catch((err) => {

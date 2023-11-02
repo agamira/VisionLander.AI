@@ -2,54 +2,41 @@ import "./Redactor.scss";
 import loadingIcon from "../../assets/icon/loading.svg";
 import { redactorInitializer } from "../../grapesjs";
 import { useContext, useEffect } from "react";
-import { GlobalContext } from "../../context";
 import { Banner, Loading } from "../../components";
-import { auth } from "../../api";
-const Redactor = () => {
-  const {
-    isLoading,
-    setIsLoading,
-    loggedUser,
-    setLoggedUser,
-    openLogInModal,
-    openPricingModal,
-  } = useContext(GlobalContext);
+import { GlobalContext } from "../../context";
+import { useDispatch, useSelector } from "react-redux";
+import { authAsync } from "../../redux/authSlice";
 
-  function bannerBtnAction(loggedUser, callback) {
-    if (!loggedUser?.email) {
+const Redactor = () => {
+  const { openLogInModal, openPricingModal } = useContext(GlobalContext);
+
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loggedUser = useSelector((state) => state.auth.user);
+
+  function bannerBtnAction() {
+    if (!isAuthenticated) {
       openLogInModal();
       return;
     }
     if (!loggedUser?.premium) {
-      if (!loggedUser.count > 0) {
+      if (!loggedUser?.count > 0) {
         return;
       }
       openPricingModal();
       return;
     }
-    callback();
   }
 
   useEffect(() => {
-    auth()
-      .then((res) => {
-        if (res.status === 200) {
-          setLoggedUser(res);
-          setIsLoading(false);
-        }
-        if (res.status === 404) {
-          setIsLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsLoading(false);
-      });
-    redactorInitializer(loggedUser, bannerBtnAction);
-  }, []);
+    dispatch(authAsync());
+    redactorInitializer();
+  }, [dispatch]);
 
   return (
-    <main>
+    <main id="redactor-page">
       {isLoading ? (
         <Loading
           loadingIcon={loadingIcon}
@@ -57,11 +44,7 @@ const Redactor = () => {
         />
       ) : null}
       {!loggedUser?.premium ? (
-        <Banner
-          bannerBtnAction={() =>
-            bannerBtnAction(loggedUser, () => console.log("Privet, Jenya!"))
-          }
-        />
+        <Banner bannerBtnAction={() => bannerBtnAction()} />
       ) : null}
       <div id="gjs"></div>
       <div id="blocks"></div>

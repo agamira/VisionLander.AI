@@ -2,9 +2,10 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://visionlander.ai/",
+  withCredentials: true,
 });
 
 export { api };
 
-export { login, register, logOut, auth } from "./auth/auth";
+export { login, register, logout, auth } from "./auth/auth";
 export { generatorFormPost } from "./generatorFormPost/generatorFormPost";

@@ -3,12 +3,7 @@ import { useForm } from "react-hook-form";
 import { message } from "antd";
 import { Button } from "..";
 
-const LoginForm = ({
-  logInAction,
-  signUpAction,
-  setLoggedUser,
-  closeLogInModal,
-}) => {
+const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
   const {
     register,
     handleSubmit,
@@ -34,14 +29,14 @@ const LoginForm = ({
 
   const onSubmit = async (data) => {
     logInAction(data)
-      .then((res) => {
+      .then((response) => {
+        let res = response.payload;
         if (res.status === 401) {
           error(res.message);
           return;
         }
         if (res.status === 200) {
           success(res.message);
-          setLoggedUser(res);
           closeLogInModal();
           return;
         }

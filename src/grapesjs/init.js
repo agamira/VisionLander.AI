@@ -4,15 +4,15 @@ import preset from "grapesjs-preset-webpage";
 import cssParser from "grapesjs-parser-postcss";
 import basicBlocks from "grapesjs-blocks-basic";
 import { fetchTemplate, publishWebsite } from ".";
+import { auth } from "../api";
 
-function redactorInitializer(loggedUser, bannerBtnAction) {
+function redactorInitializer() {
   localStorage.clear();
   const editor = grapesjs.init({
     container: "#gjs",
     // fromElement: true,
     allowScripts: 1,
     jsInHtml: true,
-    height: loggedUser ? "calc(100vh - 79px)" : "100vh",
     width: "auto",
     storageManager: false,
     panels: { defaults: ["basic-actions", "panel-top"] },
@@ -28,7 +28,25 @@ function redactorInitializer(loggedUser, bannerBtnAction) {
     label: "Save and publish",
     context: "deploy-now",
     command(editor) {
-      bannerBtnAction(loggedUser, () => publishWebsite(editor));
+      // auth()
+      //   .then((res) => {
+      //     console.log(res);
+      //     if (res.status === 200) {
+      //       if (!res.email) {
+      //         return;
+      //       }
+      //       if (!res.premium) {
+      //         if (!res.count > 0) {
+      //           return;
+      //         }
+      //         return;
+      //       }
+      publishWebsite(editor);
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.error(err);
+      //   });
     },
   });
 

@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context";
 import { Outlet } from "react-router-dom";
 import { Footer, Header } from "../../layout";
 import { Loading } from "../../components";
 import loadingIcon from "../../assets/icon/loading.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { authAsync } from "../../redux/authSlice";
 
 const Root = () => {
   const {
@@ -13,10 +15,16 @@ const Root = () => {
     isSignUpModalOpen,
     openSignUpModal,
     closeSignUpModal,
-    loggedUser,
-    setLoggedUser,
-    isLoading,
   } = useContext(GlobalContext);
+
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const loggedUser = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    dispatch(authAsync());
+  }, [dispatch]);
 
   return (
     <>
@@ -28,8 +36,6 @@ const Root = () => {
         isSignUpModalOpen={isSignUpModalOpen}
         openSignUpModal={openSignUpModal}
         closeSignUpModal={closeSignUpModal}
-        loggedUser={loggedUser}
-        setLoggedUser={setLoggedUser}
       />
       <Outlet context={[loggedUser, openLogInModal]} />
       <Footer />

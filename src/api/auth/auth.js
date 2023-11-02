@@ -2,7 +2,7 @@ import { api } from "..";
 
 async function login(values) {
   try {
-    const res = await api.post("/login", values, { withCredentials: true });
+    const res = await api.post("/login", values);
     const data = await res.data;
     return data;
   } catch (error) {
@@ -12,7 +12,7 @@ async function login(values) {
 
 async function register(values) {
   try {
-    const res = await api.post("/register", values, { withCredentials: true });
+    const res = await api.post("/register", values);
     const data = await res.data;
     return data;
   } catch (error) {
@@ -20,9 +20,9 @@ async function register(values) {
   }
 }
 
-async function logOut() {
+async function logout() {
   try {
-    const res = await api.get("/logout", { withCredentials: true });
+    const res = await api.get("/logout");
     const data = await res.data;
     return data;
   } catch (error) {
@@ -32,7 +32,7 @@ async function logOut() {
 
 async function auth() {
   try {
-    const res = await api.get("/auth", { withCredentials: true });
+    const res = await api.get("/auth");
     const data = await res.data;
     return data;
   } catch (error) {
@@ -40,4 +40,4 @@ async function auth() {
   }
 }
 
-export { login, register, logOut, auth };
+export { login, register, logout, auth };
