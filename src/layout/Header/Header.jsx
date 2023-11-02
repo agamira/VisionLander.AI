@@ -82,7 +82,7 @@ const Header = ({ openLogInModal, openSignUpModal }) => {
                   </ul>
                 </nav>
                 <div className="header-buttons">
-                  {!loggedUser ? (
+                  {!loggedUser?.email ? (
                     <>
                       <Button onClick={openLogInModal} className="btn">
                         Log In
