@@ -6,8 +6,9 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutAsync } from "../../redux/authSlice";
 import { useState } from "react";
+import { openModalByName } from "../../utils/modalUtils";
 
-const Header = ({ openLogInModal, openSignUpModal }) => {
+const Header = () => {
   const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -84,11 +85,16 @@ const Header = ({ openLogInModal, openSignUpModal }) => {
                 <div className="header-buttons">
                   {!loggedUser?.email ? (
                     <>
-                      <Button onClick={openLogInModal} className="btn">
+                      <Button
+                        onClick={() => openModalByName(dispatch, "loginModal")}
+                        className="btn"
+                      >
                         Log In
                       </Button>
                       <Button
-                        onClick={openSignUpModal}
+                        onClick={() =>
+                          openModalByName(dispatch, "registerModal")
+                        }
                         className={"btn--outline"}
                       >
                         Sign Up

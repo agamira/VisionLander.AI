@@ -1,36 +1,39 @@
 import "./Redactor.scss";
 import loadingIcon from "../../assets/icon/loading.svg";
 import { redactorInitializer } from "../../grapesjs";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Banner, Loading } from "../../components";
-import { GlobalContext } from "../../context";
 import { useDispatch, useSelector } from "react-redux";
 import { authAsync } from "../../redux/authSlice";
+import { openModalByName } from "../../utils/modalUtils";
 
 const Redactor = () => {
-  const { openLogInModal, openPricingModal } = useContext(GlobalContext);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.isLoading);
   const loggedUser = useSelector((state) => state.auth.user);
 
   function bannerBtnAction(loggedUser) {
+    if (!loggedUser) {
+      openModalByName(dispatch, "loginModal");
+    }
     if (!loggedUser?.email) {
-      openLogInModal();
+      openModalByName(dispatch, "loginModal");
       return;
     }
     if (!loggedUser?.premium) {
       if (!loggedUser.count > 0) {
         return;
       }
-      openPricingModal();
+      openModalByName(dispatch, "pricingModal");
       return;
     }
   }
 
   function resizeRedactor(isPremium) {
     const redactor = document.querySelector("#gjs");
+    console.log(isPremium);
     !isPremium
-      ? (redactor.style = "calc(100vh - 79px)")
+      ? (redactor.style.height = "calc(100vh - 79px)")
       : (redactor.style.height = "100vh");
   }
 

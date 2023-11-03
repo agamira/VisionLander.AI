@@ -6,6 +6,7 @@ export { Modal } from "./Modal/Modal";
 export { RegisterForm } from "./RegisterForm/RegisterForm";
 export { LoginForm } from "./LoginForm/LoginForm";
 export { Loading } from "./Loading/Loading";
+export { ModalManager } from "./ModalManager/ModalManager";
 export { Accordion } from "./Accordion/Accordion";
 export { CustomList } from "./CustomList/CustomList";
 export { PricingCard } from "./PricingCard/PricingCard";
