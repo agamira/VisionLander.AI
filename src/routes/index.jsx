@@ -18,9 +18,9 @@ const Routing = () => {
       <Route
         path="/redactor"
         element={
-          <PrivateRoute redirectTo="/">
-            <Redactor />
-          </PrivateRoute>
+          // <PrivateRoute redirectTo="/">
+          <Redactor />
+          /* </PrivateRoute> */
         }
       />
       <Route path="/terms-of-use" element={<TermsOfUse />} />
