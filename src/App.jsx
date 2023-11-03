@@ -1,7 +1,13 @@
+import { ModalManager } from "./components";
 import { Routing } from "./routes";
 
 function App() {
-  return <Routing />;
+  return (
+    <>
+      <ModalManager />
+      <Routing />
+    </>
+  );
 }
 
 export default App;
