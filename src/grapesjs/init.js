@@ -6,7 +6,7 @@ import basicBlocks from "grapesjs-blocks-basic";
 import { fetchTemplate, publishWebsite } from ".";
 import { auth } from "../api";
 
-function redactorInitializer() {
+function redactorInitializer(action) {
   localStorage.clear();
   const editor = grapesjs.init({
     container: "#gjs",
@@ -32,18 +32,21 @@ function redactorInitializer() {
       auth()
         .then((res) => {
           console.log(res);
-          if (res.status === 200) {
-            if (!res.email) {
-              alert("log in first");
-              return;
-            }
-            if (!res.premium) {
-              if (!res.count > 0) {
-                alert("Updated plan");
-                return;
-              }
-              return;
-            }
+          // if (res.status === 200) {
+          //   if (!res.email) {
+          //     alert("log in first");
+          //     return;
+          //   }
+          //   if (!res.premium) {
+          //     if (!res.count > 0) {
+          //       alert("Updated plan");
+          //       return;
+          //     }
+          //     return;
+          //   }
+          //   publishWebsite(editor);
+          // }
+          if (action(res)) {
             publishWebsite(editor);
           }
         })

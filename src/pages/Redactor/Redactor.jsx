@@ -15,20 +15,18 @@ const Redactor = () => {
   const loggedUser = useSelector((state) => state.auth.user);
 
   function bannerBtnAction(loggedUser) {
-    if (!loggedUser) {
-      openModalByName(dispatch, "loginModal");
-    }
     if (!loggedUser?.email) {
       openModalByName(dispatch, "loginModal");
-      return;
+      return false;
     }
     if (!loggedUser?.premium) {
       if (!loggedUser.count > 0) {
         return;
       }
       openModalByName(dispatch, "pricingModal");
-      return;
+      return false;
     }
+    return true;
   }
 
   function resizeRedactor(isPremium) {
@@ -45,7 +43,7 @@ const Redactor = () => {
   }, [dispatch, loggedUser?.premium]);
 
   useEffect(() => {
-    redactorInitializer();
+    redactorInitializer((data) => bannerBtnAction(data));
   }, []);
 
   return (
