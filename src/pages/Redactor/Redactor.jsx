@@ -21,7 +21,8 @@ const Redactor = () => {
     }
     if (!loggedUser?.premium) {
       if (!loggedUser.count > 0) {
-        return;
+        openModalByName(dispatch, "pricingModal");
+        return false;
       }
       openModalByName(dispatch, "pricingModal");
       return false;
