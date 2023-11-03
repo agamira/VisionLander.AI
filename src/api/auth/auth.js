@@ -9,6 +9,15 @@ async function login(values) {
     throw new Error(error.message);
   }
 }
+async function loginGoogle() {
+  try {
+    const res = await api.get("/login-google");
+    const data = await res.data;
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
 
 async function register(values) {
   try {
@@ -40,4 +49,4 @@ async function auth() {
   }
 }
 
-export { login, register, logout, auth };
+export { login, loginGoogle, register, logout, auth };

@@ -1,5 +1,6 @@
 import "./Redactor.scss";
 import loadingIcon from "../../assets/icon/loading.svg";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { redactorInitializer } from "../../grapesjs";
 import { useEffect } from "react";
 import { Banner, Loading } from "../../components";
@@ -8,6 +9,7 @@ import { authAsync } from "../../redux/authSlice";
 import { openModalByName } from "../../utils/modalUtils";
 
 const Redactor = () => {
+  const matches = useMediaQuery("(min-width: 1000px)");
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.isLoading);
   const loggedUser = useSelector((state) => state.auth.user);
@@ -48,17 +50,23 @@ const Redactor = () => {
 
   return (
     <main id="redactor-page">
-      {isLoading ? (
-        <Loading
-          loadingIcon={loadingIcon}
-          loadingMessage={"Loading redactor..."}
-        />
-      ) : null}
-      {!loggedUser?.premium ? (
-        <Banner bannerBtnAction={() => bannerBtnAction(loggedUser)} />
-      ) : null}
-      <div id="gjs"></div>
-      <div id="blocks"></div>
+      {matches ? (
+        <>
+          {isLoading ? (
+            <Loading
+              loadingIcon={loadingIcon}
+              loadingMessage={"Loading redactor..."}
+            />
+          ) : null}
+          {!loggedUser?.premium ? (
+            <Banner bannerBtnAction={() => bannerBtnAction(loggedUser)} />
+          ) : null}
+          <div id="gjs"></div>
+          <div id="blocks"></div>
+        </>
+      ) : (
+        <h1>Please use Computer</h1>
+      )}
     </main>
   );
 };

@@ -1,7 +1,10 @@
 import "./LoginForm.scss";
+import googleLogo from "../../assets/icon/google.svg";
 import { useForm } from "react-hook-form";
 import { message } from "antd";
 import { Button } from "..";
+import { useDispatch } from "react-redux";
+import { loginGoogleAsync } from "../../redux/authSlice";
 
 const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
   const {
@@ -10,6 +13,8 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
     formState: { errors, isSubmitting },
     reset,
   } = useForm();
+
+  const dispatch = useDispatch();
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -106,6 +111,35 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
             Log In
           </Button>
           <Button
+            style={{
+              width: "100%",
+              color: "rgba(0, 0, 0, 0.54)",
+              backgroundColor: "#fff",
+              padding: "21px 0",
+              marginTop: "16px",
+              fontSize: "20px",
+              fontWeight: "700",
+              borderRadius: "8px",
+              borderWidth: "2px",
+            }}
+            className="btn--outline"
+            type="button"
+            disabled={isSubmitting}
+            onClick={() => dispatch(loginGoogleAsync())}
+          >
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
+              <img src={googleLogo} width={"24px"} alt="google-logo" />
+              Sign In with Google
+            </span>
+          </Button>
+          <Button
             onClick={signUpAction}
             style={{ width: "100%", padding: "21px 0" }}
             className="btn--outline btn-sign-up"
@@ -120,7 +154,6 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
               width: "100%",
               padding: "21px 0",
               marginTop: "16px",
-              fontFamily: "'Bai Jamjuree', sans-serif'",
               fontSize: "20px",
               fontWeight: "700",
               borderRadius: "8px",
