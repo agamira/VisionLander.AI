@@ -40,12 +40,12 @@
     .inputs {
       padding: 36px 0 24px;
       .input-field {
-        height: 94.5px;
+        height: 74.5px;
         input {
           border-radius: 10px;
           border: 1px solid #e6e6e6;
           background: #fff;
-          padding: 25px 24px;
+          padding: 16px 15px;
           box-sizing: border-box;
           width: 100%;
           color: #18012a;
@@ -69,12 +69,14 @@
           display: flex;
           align-items: center;
           gap: 10px;
-          #rememberCheckbox {
-            width: 20px;
-            height: 20px;
+          #remember {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
             border-radius: 10px;
           }
           label {
+            cursor: pointer;
             font-family: $font-roboto;
             color: $text-white;
             font-size: 16px;
@@ -90,6 +92,7 @@
       }
     }
     .btn-sign-up {
+      padding: 16px 0;
       margin: 16px auto 0;
       color: $text-white;
       font-family: $font-baiJamjuree;
@@ -134,6 +137,10 @@
         top: -2px;
         z-index: -1;
       }
+    }
+    .btn-login {
+      width: 100%;
+      padding: 16px 0;
     }
   }
 }

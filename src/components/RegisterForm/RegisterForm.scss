@@ -36,12 +36,12 @@
     .inputs {
       padding: 36px 0 24px;
       .input-field {
-        height: 94.5px;
+        height: 74.5px;
         input {
           border-radius: 10px;
           border: 1px solid #e6e6e6;
           background: #fff;
-          padding: 25px 24px;
+          padding: 16px 15px;
           box-sizing: border-box;
           width: 100%;
           color: #18012a;
@@ -66,8 +66,9 @@
           align-items: center;
           gap: 10px;
           #termsCheckbox {
-            width: 20px;
-            height: 20px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
             border-radius: 10px;
           }
           label {
@@ -77,6 +78,7 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            cursor: pointer;
           }
         }
       }
@@ -86,6 +88,8 @@
       }
     }
     .btn-sign-up {
+      width: 100%;
+      padding: 16px 0;
       margin-top: 5px;
     }
     .btn-login {

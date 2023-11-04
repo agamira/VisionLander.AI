@@ -57,9 +57,6 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
       {contextHolder}
       <div className="login-form">
         <p className="form-title">Log In to continue</p>
-        <p className="form-text">
-          if you do not have an account - choose sign up
-        </p>
         <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="inputs">
             <div className="input-field">
@@ -93,7 +90,7 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
             <div className="checkbox-field">
               <div className="checkbox-input">
                 <input
-                  id="rememberCheckbox"
+                  id="remember"
                   name="remember"
                   type="checkbox"
                   {...register("remember")}
@@ -103,7 +100,6 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
             </div>
           </div>
           <Button
-            style={{ width: "100%", padding: "21px 0" }}
             className="btn--primary btn-login"
             type="submit"
             disabled={isSubmitting}
@@ -115,7 +111,7 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
               width: "100%",
               color: "rgba(0, 0, 0, 0.54)",
               backgroundColor: "#fff",
-              padding: "21px 0",
+              padding: "16px 0",
               marginTop: "16px",
               fontSize: "20px",
               fontWeight: "700",
@@ -148,28 +144,11 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
           </Button>
           <Button
             onClick={signUpAction}
-            style={{ width: "100%", padding: "21px 0" }}
             className="btn--outline btn-sign-up"
             type="button"
             disabled={isSubmitting}
           >
             Sign Up
-          </Button>
-          <Button
-            onClick={closeLogInModal}
-            style={{
-              width: "100%",
-              padding: "21px 0",
-              marginTop: "16px",
-              fontSize: "20px",
-              fontWeight: "700",
-              borderRadius: "8px",
-              borderWidth: "2px",
-            }}
-            className="btn--outline"
-            disabled={isSubmitting}
-          >
-            Close
           </Button>
         </form>
       </div>

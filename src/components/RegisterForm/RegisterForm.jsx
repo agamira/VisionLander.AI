@@ -1,7 +1,10 @@
-import { useForm } from "react-hook-form";
 import "./RegisterForm.scss";
+import googleLogo from "../../assets/icon/google.svg";
+import { useForm } from "react-hook-form";
 import { message } from "antd";
 import { Button } from "..";
+import { loginGoogleAsync } from "../../redux/authSlice";
+import { useDispatch } from "react-redux";
 
 const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
   const {
@@ -11,6 +14,8 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
     reset,
     getValues,
   } = useForm();
+
+  const dispatch = useDispatch();
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -50,9 +55,6 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
       {contextHolder}
       <div className="register-form">
         <p className="form-title">Registrate to continue</p>
-        <p className="form-text">
-          if you do not have an account - choose sign up
-        </p>
         <form id="register-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="inputs">
             <div className="input-field">
@@ -119,7 +121,6 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
             </div>
           </div>
           <Button
-            style={{ width: "100%", padding: "21px 0" }}
             className="btn--primary btn-sign-up"
             type="submit"
             disabled={isSubmitting}
@@ -127,30 +128,48 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
             Sign Up
           </Button>
           <Button
-            onClick={logInAction}
-            style={{ width: "100%", padding: "21px 0" }}
-            className="btn--outline btn-login"
-            type="button"
-            disabled={isSubmitting}
-          >
-            Already have an account?
-          </Button>
-          <Button
-            onClick={closeSignUpModal}
             style={{
               width: "100%",
-              padding: "21px 0",
+              color: "rgba(0, 0, 0, 0.54)",
+              backgroundColor: "#fff",
+              padding: "16px 0",
               marginTop: "16px",
-              fontFamily: "'Bai Jamjuree', sans-serif'",
               fontSize: "20px",
               fontWeight: "700",
               borderRadius: "8px",
               borderWidth: "2px",
             }}
             className="btn--outline"
+            type="button"
+            disabled={isSubmitting}
+            onClick={() =>
+              dispatch(loginGoogleAsync()).then((res) => {
+                if (res.payload) {
+                  closeSignUpModal();
+                  window.location.href = `${res.payload}`;
+                }
+              })
+            }
+          >
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
+              <img src={googleLogo} width={"24px"} alt="google-logo" />
+              Sign Up with Google
+            </span>
+          </Button>
+          <Button
+            onClick={logInAction}
+            className="btn--outline btn-login"
+            type="button"
             disabled={isSubmitting}
           >
-            Close
+            Already have an account?
           </Button>
         </form>
         <div className="links">
