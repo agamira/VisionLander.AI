@@ -125,7 +125,14 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
             className="btn--outline"
             type="button"
             disabled={isSubmitting}
-            onClick={() => dispatch(loginGoogleAsync())}
+            onClick={() =>
+              dispatch(loginGoogleAsync()).then((res) => {
+                if (res.payload) {
+                  closeLogInModal();
+                  window.location.href = `${res.payload}`;
+                }
+              })
+            }
           >
             <span
               style={{
