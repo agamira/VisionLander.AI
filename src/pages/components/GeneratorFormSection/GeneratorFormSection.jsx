@@ -63,6 +63,7 @@ const GeneratorFormSection = () => {
       generatorFormPost(formData)
         .then((res) => {
           if (res.status === 200) {
+            localStorage.clear();
             setIsLoading(false);
             success("Your project has been created!");
             navigate("/redactor", { replace: true });
