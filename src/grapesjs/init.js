@@ -14,12 +14,12 @@ function redactorInitializer(action) {
     jsInHtml: true,
     height: "calc(100vh - 79px)",
     width: "auto",
-    storageManager: {
-      type: "local", // Storage type. Available: local | remote
-      autosave: true, // Store data automatically
-      autoload: true, // Autoload stored data on init
-      stepsBeforeSave: 1, // If autosave is enabled, indicates how many changes are necessary before the store method is triggered
-    },
+    // storageManager: {
+    //   type: "local", // Storage type. Available: local | remote
+    //   autosave: true, // Store data automatically
+    //   autoload: true, // Autoload stored data on init
+    //   stepsBeforeSave: 1, // If autosave is enabled, indicates how many changes are necessary before the store method is triggered
+    // },
     panels: { defaults: ["basic-actions", "panel-top"] },
     plugins: [basicBlocks, preset, cssParser],
   });
@@ -35,21 +35,6 @@ function redactorInitializer(action) {
     command(editor) {
       auth()
         .then((res) => {
-          console.log(res);
-          // if (res.status === 200) {
-          //   if (!res.email) {
-          //     alert("log in first");
-          //     return;
-          //   }
-          //   if (!res.premium) {
-          //     if (!res.count > 0) {
-          //       alert("Updated plan");
-          //       return;
-          //     }
-          //     return;
-          //   }
-          //   publishWebsite(editor);
-          // }
           if (action(res)) {
             publishWebsite(editor);
           }
