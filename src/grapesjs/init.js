@@ -14,7 +14,12 @@ function redactorInitializer(action) {
     jsInHtml: true,
     height: "calc(100vh - 79px)",
     width: "auto",
-    storageManager: false,
+    storageManager: {
+      type: "local", // Storage type. Available: local | remote
+      autosave: true, // Store data automatically
+      autoload: true, // Autoload stored data on init
+      stepsBeforeSave: 1, // If autosave is enabled, indicates how many changes are necessary before the store method is triggered
+    },
     panels: { defaults: ["basic-actions", "panel-top"] },
     plugins: [basicBlocks, preset, cssParser],
   });
