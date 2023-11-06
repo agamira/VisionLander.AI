@@ -161,7 +161,7 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
               }}
             >
               <img src={googleLogo} width={"24px"} alt="google-logo" />
-              Sign Up with Google
+              Google
             </span>
           </Button>
           <Button
@@ -170,7 +170,7 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
             type="button"
             disabled={isSubmitting}
           >
-            Already have an account?
+            Log In
           </Button>
         </form>
         <div className="links">

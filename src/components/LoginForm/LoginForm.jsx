@@ -139,7 +139,7 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
               }}
             >
               <img src={googleLogo} width={"24px"} alt="google-logo" />
-              Sign In with Google
+              Google
             </span>
           </Button>
           <Button
