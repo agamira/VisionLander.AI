@@ -133,7 +133,7 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
               width: "100%",
               color: "rgba(0, 0, 0, 0.54)",
               backgroundColor: "#fff",
-              padding: "16px 0",
+              padding: "16px 20px",
               marginTop: "16px",
               fontSize: "20px",
               fontWeight: "700",
