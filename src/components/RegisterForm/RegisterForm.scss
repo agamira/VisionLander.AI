@@ -1,7 +1,7 @@
 @import "../../assets/sass/main.scss";
 
 .register-form {
-  padding: 38px 73px 30px;
+  padding: 38px 73px;
   box-sizing: border-box;
   max-width: 585px;
   margin: 0 auto;
@@ -15,10 +15,10 @@
   backdrop-filter: blur(18.075000762939453px);
   -webkit-backdrop-filter: blur(18.075000762939453px);
   @include tablet {
-    padding: 40px 36px;
+    padding: 30px 36px;
   }
   @include mobile {
-    padding: 30px 28px;
+    padding: 24px 28px;
   }
   .form-title {
     text-align: center;
@@ -47,11 +47,14 @@
     width: 100%;
     .inputs {
       padding: 36px 0 24px;
-      @include mobile {
-        padding: 16px 0 24px;
+      @include tablet {
+        padding: 16px 0 14px;
       }
       .input-field {
         height: 74.5px;
+        @include mobile {
+          height: 64px;
+        }
         input {
           border-radius: 10px;
           border: 1px solid #e6e6e6;
@@ -71,6 +74,12 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+          }
+          @include mobile {
+            font-size: 14px;
+            &::placeholder {
+              font-size: 14px;
+            }
           }
         }
       }
@@ -94,6 +103,9 @@
             font-weight: 400;
             line-height: normal;
             cursor: pointer;
+            @include mobile {
+              font-size: 14px;
+            }
           }
         }
       }
@@ -106,8 +118,19 @@
       width: 100%;
       padding: 16px 0;
       margin-top: 5px;
+      @include mobile {
+        font-size: 16px;
+      }
     }
+
+    .btn--google {
+      @include mobile {
+        font-size: 16px;
+      }
+    }
+
     .btn-login {
+      padding: 14px 0;
       margin: 16px auto 0;
       color: $text-white;
       font-family: $font-baiJamjuree;
@@ -163,6 +186,10 @@
     justify-content: center;
     gap: 20px;
     align-items: center;
+    @include mobile {
+      margin-top: 20px;
+      gap: 15px;
+    }
     .link {
       color: $text-white;
       font-family: $font-roboto;
@@ -172,6 +199,9 @@
       line-height: 20px;
       letter-spacing: 0.14px;
       text-align: center;
+      @include mobile {
+        font-size: 12px;
+      }
     }
   }
 }

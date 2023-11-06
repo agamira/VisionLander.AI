@@ -55,7 +55,7 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
     <>
       {contextHolder}
       <div className="register-form">
-        <p className="form-title">Registrate to continue</p>
+        <p className="form-title">Sign Up</p>
         <form id="register-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="inputs">
             <div className="input-field">
@@ -129,18 +129,7 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
             Sign Up
           </Button>
           <Button
-            style={{
-              width: "100%",
-              color: "rgba(0, 0, 0, 0.54)",
-              backgroundColor: "#fff",
-              padding: "16px 20px",
-              marginTop: "16px",
-              fontSize: "20px",
-              fontWeight: "700",
-              borderRadius: "8px",
-              borderWidth: "2px",
-            }}
-            className="btn--outline"
+            className="btn--outline btn--google"
             type="button"
             disabled={isSubmitting}
             onClick={() =>
@@ -152,15 +141,8 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
               })
             }
           >
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-              }}
-            >
-              <img src={googleLogo} width={"24px"} alt="google-logo" />
+            <span>
+              <img src={googleLogo} alt="google-logo" />
               Google
             </span>
           </Button>

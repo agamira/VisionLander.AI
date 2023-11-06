@@ -57,4 +57,25 @@
       3.31667px 3.31667px 3.31667px 0px rgba(0, 10, 255, 0.25),
       -1.65833px -1.65833px 3.31667px 0px rgba(255, 255, 255, 0.75);
   }
+
+  &--google {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.54);
+    background-color: #fff;
+    padding: 12px 20px;
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 8px;
+    border-width: 2px;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      img {
+        width: 24px;
+      }
+    }
+  }
 }

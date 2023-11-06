@@ -16,10 +16,10 @@
   -webkit-backdrop-filter: blur(18.075000762939453px);
 
   @include tablet {
-    padding: 40px 36px;
+    padding: 30px 36px;
   }
   @include mobile {
-    padding: 30px 28px;
+    padding: 24px 28px;
   }
   .form-title {
     text-align: center;
@@ -49,8 +49,14 @@
     width: 100%;
     .inputs {
       padding: 36px 0 24px;
+      @include tablet {
+        padding: 16px 0 18px;
+      }
       .input-field {
         height: 74.5px;
+        @include mobile {
+          height: 64px;
+        }
         input {
           border-radius: 10px;
           border: 1px solid #e6e6e6;
@@ -70,6 +76,12 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+          }
+          @include mobile {
+            font-size: 14px;
+            &::placeholder {
+              font-size: 14px;
+            }
           }
         }
       }
@@ -102,7 +114,7 @@
       }
     }
     .btn-sign-up {
-      padding: 16px 0;
+      padding: 14px 0;
       margin: 16px auto 0;
       color: $text-white;
       font-family: $font-baiJamjuree;
@@ -151,9 +163,19 @@
         font-size: 16px;
       }
     }
+
+    .btn--google {
+      @include mobile {
+        font-size: 16px;
+      }
+    }
+
     .btn-login {
       width: 100%;
       padding: 16px 0;
+      @include mobile {
+        font-size: 16px;
+      }
     }
   }
 }
