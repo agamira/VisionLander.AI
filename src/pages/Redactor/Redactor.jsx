@@ -14,25 +14,22 @@ const Redactor = () => {
   const isLoading = useSelector((state) => state.auth.isLoading);
   const loggedUser = useSelector((state) => state.auth.user);
 
-  function bannerBtnAction(loggedUser) {
+  function bannerBtnAction(loggedUser, banner) {
     if (!loggedUser?.email) {
       openModalByName(dispatch, "loginModal");
       return false;
     }
-    if (!loggedUser?.premium) {
-      if (!loggedUser.count > 0) {
+    if (banner === "banner") {
+      if (!loggedUser?.premium) {
         openModalByName(dispatch, "pricingModal");
         return false;
       }
-      openModalByName(dispatch, "pricingModal");
-      return false;
     }
     return true;
   }
 
   function resizeRedactor(isPremium) {
     const redactor = document.querySelector("#gjs");
-    console.log(isPremium);
     !isPremium
       ? (redactor.style.height = "calc(100vh - 79px)")
       : (redactor.style.height = "100vh");
@@ -58,7 +55,9 @@ const Redactor = () => {
             />
           ) : null}
           {!loggedUser?.premium ? (
-            <Banner bannerBtnAction={() => bannerBtnAction(loggedUser)} />
+            <Banner
+              bannerBtnAction={() => bannerBtnAction(loggedUser, "banner")}
+            />
           ) : null}
           <div id="gjs"></div>
           <div id="blocks"></div>
