@@ -8,8 +8,9 @@ import {
 } from "../";
 import coin from "../../assets/img/coin.png";
 import { useDispatch, useSelector } from "react-redux";
-import { loginAsync, signupAsync } from "../../redux/authSlice";
+import { loginAsync } from "../../redux/authSlice";
 import { closeModalByName, openModalByName } from "../../utils/modalUtils";
+import { register } from "../../api";
 
 const ModalManager = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const ModalManager = () => {
             closeModal={() => closeModalByName(dispatch, "registerModal")}
           >
             <RegisterForm
-              signUpAction={(data) => dispatch(signupAsync(data))}
+              signUpAction={(data) => register(data)}
               closeSignUpModal={() =>
                 closeModalByName(dispatch, "registerModal")
               }
