@@ -9,7 +9,7 @@ import { authAsync } from "../../redux/authSlice";
 import { openModalByName } from "../../utils/modalUtils";
 
 const Redactor = () => {
-  const matches = useMediaQuery("(min-width: 1000px)");
+  const matches = useMediaQuery("(min-width: 768px)");
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.isLoading);
   const loggedUser = useSelector((state) => state.auth.user);

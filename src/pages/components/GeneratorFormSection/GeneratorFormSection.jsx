@@ -61,17 +61,16 @@ const GeneratorFormSection = () => {
     if (prompt.length > 2 && templateId) {
       setIsLoading(true);
       generatorFormPost(formData)
-        .then((res) => {
-          if (res.status === 200) {
-            localStorage.clear();
-            setIsLoading(false);
-            success("Your project has been created!");
-            navigate("/redactor", { replace: true });
-          }
+        .then(() => {
+          localStorage.clear();
+          setIsLoading(false);
+          success("Your project has been created!");
+          navigate("/redactor", { replace: true });
         })
         .catch((err) => {
+          console.log(err);
           setIsLoading(false);
-          error(err.message);
+          // error(err.message);
         });
     } else {
       warning("Please fill all fields!");
