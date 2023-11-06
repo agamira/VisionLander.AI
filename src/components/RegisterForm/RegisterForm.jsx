@@ -36,17 +36,11 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
   const onSubmit = async (data) => {
     signUpAction(data)
       .then((res) => {
-        if (res.status === 404) return error(res.message);
-        if (res.detail) return error(res.detail);
-        if (res.status === 200) {
-          closeSignUpModal();
-          success(res.message);
-          return;
-        }
+        success(res.message);
+        closeSignUpModal();
       })
       .catch((err) => {
-        error("Something went wrong!");
-        error(err);
+        error(err.data.detail);
       });
     reset();
   };

@@ -50,7 +50,7 @@ const ModalManager = () => {
             closeModal={() => closeModalByName(dispatch, "registerModal")}
           >
             <RegisterForm
-              signUpAction={(data) => register(data)}
+              signUpAction={register}
               closeSignUpModal={() =>
                 closeModalByName(dispatch, "registerModal")
               }

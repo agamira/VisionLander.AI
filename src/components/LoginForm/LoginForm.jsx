@@ -36,14 +36,11 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
     logInAction(data)
       .then((response) => {
         let res = response.payload;
-        if (res.status === 401) {
-          error(res.message);
-          return;
-        }
-        if (res.status === 200) {
+        if (res) {
           success(res.message);
           closeLogInModal();
-          return;
+        } else {
+          throw new Error("Email or password is incorrect");
         }
       })
       .catch((err) => {

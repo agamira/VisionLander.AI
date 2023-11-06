@@ -6,7 +6,7 @@ async function login(values) {
     const data = await res.data;
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw error.response;
   }
 }
 async function loginGoogle() {
@@ -15,7 +15,7 @@ async function loginGoogle() {
     const data = await res.data;
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw error.response;
   }
 }
 
@@ -25,7 +25,7 @@ async function register(values) {
     const data = await res.data;
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw error.response;
   }
 }
 
@@ -35,7 +35,7 @@ async function logout() {
     const data = await res.data;
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw error.response;
   }
 }
 
@@ -45,7 +45,7 @@ async function auth() {
     const data = await res.data;
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw error.response;
   }
 }
 
