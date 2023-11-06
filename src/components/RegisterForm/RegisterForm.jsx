@@ -37,6 +37,7 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
     signUpAction(data)
       .then((res) => {
         if (res.status === 404) return error(res.message);
+        if (res.detail) return error(res.detail);
         if (res.status === 200) {
           closeSignUpModal();
           success(res.message);
