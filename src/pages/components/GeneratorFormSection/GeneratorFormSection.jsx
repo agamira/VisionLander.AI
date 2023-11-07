@@ -9,6 +9,8 @@ import loadingIcon from "../../../assets/icon/loading.svg";
 import { generatorFormPost } from "../../../api";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { openModalByName } from "../../../utils/modalUtils";
+import { useDispatch } from "react-redux";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
@@ -22,6 +24,8 @@ const GeneratorFormSection = () => {
   const inputRef = useRef(null);
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const handleButtonClick = (value) => {
     setInputValue(value);
@@ -68,8 +72,12 @@ const GeneratorFormSection = () => {
           navigate("/redactor", { replace: true });
         })
         .catch((err) => {
+          console.log(err);
           setIsLoading(false);
-          error(err.details);
+          if (err.status === 404) {
+            error(err.data.detail);
+            openModalByName(dispatch, "pricingModal");
+          }
         });
     } else {
       warning("Please fill all fields!");

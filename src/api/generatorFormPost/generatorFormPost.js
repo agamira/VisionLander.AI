@@ -8,7 +8,7 @@ async function generatorFormPost(formData) {
     const data = await res.data;
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw error.response;
   }
 }
 
