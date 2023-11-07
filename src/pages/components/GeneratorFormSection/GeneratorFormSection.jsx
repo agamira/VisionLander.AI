@@ -68,9 +68,8 @@ const GeneratorFormSection = () => {
           navigate("/redactor", { replace: true });
         })
         .catch((err) => {
-          console.log(err);
           setIsLoading(false);
-          // error(err.message);
+          error(err.details);
         });
     } else {
       warning("Please fill all fields!");
