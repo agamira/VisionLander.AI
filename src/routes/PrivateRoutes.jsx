@@ -10,9 +10,9 @@ const PrivateRoutes = () => {
     dispatch(authAsync());
   }, [dispatch]);
   const isLoading = useSelector((state) => state.auth.isLoading);
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loggedUser = useSelector((state) => state.auth.user);
 
-  return !isLoading ? isAuthenticated ? <Outlet /> : navigate("/") : null;
+  return !isLoading ? loggedUser?.email ? <Outlet /> : navigate("/") : null;
 };
 
 export { PrivateRoutes };

@@ -9,7 +9,6 @@ const logoutAsync = createAsyncThunk("auth/logout", logout);
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    isAuthenticated: false,
     user: null,
     isLoading: false,
     isError: null,
@@ -30,22 +29,18 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
-        state.isAuthenticated = true;
         state.user = action.payload;
         state.isLoading = false;
       })
       .addCase(loginGoogleAsync.fulfilled, (state, action) => {
-        state.isAuthenticated = true;
         state.user = action.payload;
         state.isLoading = false;
       })
       .addCase(authAsync.fulfilled, (state, action) => {
-        state.isAuthenticated = true;
         state.user = action.payload;
         state.isLoading = false;
       })
       .addCase(logoutAsync.fulfilled, (state) => {
-        state.isAuthenticated = false;
         state.user = null;
         state.isLoading = false;
       })
