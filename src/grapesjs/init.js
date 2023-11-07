@@ -12,7 +12,7 @@ function redactorInitializer(action) {
     // fromElement: true,
     allowScripts: 1,
     jsInHtml: true,
-    height: "100vh",
+    height: "calc(100vh - 79px)",
     width: "auto",
     // storageManager: {
     //   type: "local", // Storage type. Available: local | remote

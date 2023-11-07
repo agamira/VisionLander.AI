@@ -36,13 +36,12 @@ const Redactor = () => {
   }
 
   useEffect(() => {
-    resizeRedactor(loggedUser?.premium);
-  }, [dispatch, loggedUser?.premium]);
-
-  useEffect(() => {
     redactorInitializer((data) => bannerBtnAction(data));
   }, [bannerBtnAction]);
 
+  useEffect(() => {
+    resizeRedactor(loggedUser.premium);
+  }, [dispatch, loggedUser.premium]);
   return (
     <main id="redactor-page">
       {matches ? (
