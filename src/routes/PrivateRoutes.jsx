@@ -12,7 +12,7 @@ const PrivateRoutes = () => {
   const isLoading = useSelector((state) => state.auth.isLoading);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  return isLoading ? null : isAuthenticated ? <Outlet /> : navigate("/");
+  return !isLoading ? isAuthenticated ? <Outlet /> : navigate("/") : null;
 };
 
 export { PrivateRoutes };
