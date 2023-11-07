@@ -5,7 +5,7 @@ import path from "path";
 const oldPath = "/assets/";
 const newPath = "/static/dist/assets/";
 
-// Specify the directory where your built JavaScript files are located
+// Specify the directory where your built files are located
 const buildDirectory = "../back/static/dist/";
 
 // Function to recursively update file contents
@@ -27,7 +27,11 @@ function updateFilesInDirectory(directory) {
     if (fs.statSync(filePath).isDirectory()) {
       updateFilesInDirectory(filePath);
     } else {
-      if (filePath.endsWith(".js")) {
+      if (
+        filePath.endsWith(".js") ||
+        filePath.endsWith(".css") ||
+        filePath.endsWith(".html")
+      ) {
         updateFileContents(filePath);
       }
     }
