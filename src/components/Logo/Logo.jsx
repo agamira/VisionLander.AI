@@ -4,7 +4,7 @@ import logo from "../../assets/icon/logo.svg";
 const Logo = () => {
   return (
     <div className="site-logo">
-      <a href="#home">
+      <a href="/">
         <img src={logo} alt="logo" />
         <span>VisionLander.AI</span>
       </a>

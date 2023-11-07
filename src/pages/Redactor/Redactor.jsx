@@ -1,17 +1,14 @@
 import "./Redactor.scss";
-import loadingIcon from "../../assets/icon/loading.svg";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { redactorInitializer } from "../../grapesjs";
 import { useEffect } from "react";
-import { Banner, Loading } from "../../components";
+import { Banner } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { authAsync } from "../../redux/authSlice";
 import { openModalByName } from "../../utils/modalUtils";
 
 const Redactor = () => {
   const matches = useMediaQuery("(min-width: 768px)");
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.auth.isLoading);
   const loggedUser = useSelector((state) => state.auth.user);
 
   function bannerBtnAction(loggedUser, banner) {
@@ -36,7 +33,6 @@ const Redactor = () => {
   }
 
   useEffect(() => {
-    dispatch(authAsync());
     resizeRedactor(loggedUser?.premium);
   }, [dispatch, loggedUser?.premium]);
 
@@ -48,12 +44,6 @@ const Redactor = () => {
     <main id="redactor-page">
       {matches ? (
         <>
-          {isLoading ? (
-            <Loading
-              loadingIcon={loadingIcon}
-              loadingMessage={"Loading redactor..."}
-            />
-          ) : null}
           {!loggedUser?.premium ? (
             <Banner
               bannerBtnAction={() => bannerBtnAction(loggedUser, "banner")}

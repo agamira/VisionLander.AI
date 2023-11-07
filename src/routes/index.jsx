@@ -6,8 +6,9 @@ import {
   Redactor,
   Root,
   TermsOfUse,
+  UserDashboard,
 } from "../pages";
-import { PrivateRoute } from "./PrivateRoute";
+import { PrivateRoutes } from "./PrivateRoutes";
 
 const Routing = () => {
   return (
@@ -15,14 +16,10 @@ const Routing = () => {
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
       </Route>
-      <Route
-        path="/redactor"
-        element={
-          // <PrivateRoute redirectTo="/">
-          <Redactor />
-          /* </PrivateRoute> */
-        }
-      />
+      <Route element={<PrivateRoutes />}>
+        <Route path="/redactor" element={<Redactor />} />
+        <Route path="/dashboard" element={<UserDashboard />} />
+      </Route>
       <Route path="/terms-of-use" element={<TermsOfUse />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="*" element={<NotFound />} />

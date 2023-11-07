@@ -1,15 +1,18 @@
 import "./Header.scss";
 import burgerMenuIcon from "../../assets/icon/burger-menu.svg";
 import { Button, Logo } from "../../components";
-import { message } from "antd";
+import { Dropdown, Space, message } from "antd";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutAsync } from "../../redux/authSlice";
 import { useState } from "react";
 import { openModalByName } from "../../utils/modalUtils";
+import { DownOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
 
   const matches = useMediaQuery("(max-width: 767px)");
@@ -45,6 +48,21 @@ const Header = () => {
         error("Something went wrong!");
       });
   }
+
+  const items = [
+    {
+      label: <a onClick={() => navigate("/dashboard")}>Dashboard</a>,
+      key: "0",
+    },
+    {
+      label: <a onClick={() => navigate("/redactor")}>Redactor</a>,
+      key: "1",
+    },
+    {
+      label: <a onClick={() => handleLogOut()}>Log Out</a>,
+      key: "2",
+    },
+  ];
 
   return (
     <>
@@ -102,13 +120,24 @@ const Header = () => {
                     </>
                   ) : (
                     <>
-                      <Button className={"btn"}>{loggedUser.email}</Button>
-                      <Button
-                        onClick={() => handleLogOut()}
-                        className={"btn--outline"}
+                      <Dropdown
+                        menu={{
+                          items,
+                        }}
+                        placement="bottom"
+                        arrow
                       >
-                        Log Out
-                      </Button>
+                        <a
+                          className="btn btn--outline"
+                          style={{ cursor: "pointer" }}
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          <Space>
+                            {loggedUser.email}
+                            <DownOutlined />
+                          </Space>
+                        </a>
+                      </Dropdown>
                     </>
                   )}
                 </div>
