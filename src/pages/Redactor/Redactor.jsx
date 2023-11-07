@@ -1,7 +1,7 @@
 import "./Redactor.scss";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { redactorInitializer } from "../../grapesjs";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { Banner } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { openModalByName } from "../../utils/modalUtils";
@@ -11,19 +11,22 @@ const Redactor = () => {
   const dispatch = useDispatch();
   const loggedUser = useSelector((state) => state.auth.user);
 
-  function bannerBtnAction(loggedUser, banner) {
-    if (!loggedUser?.email) {
-      openModalByName(dispatch, "loginModal");
-      return false;
-    }
-    if (banner === "banner") {
-      if (!loggedUser?.premium) {
-        openModalByName(dispatch, "pricingModal");
+  const bannerBtnAction = useCallback(
+    (loggedUser, banner) => {
+      if (!loggedUser?.email) {
+        openModalByName(dispatch, "loginModal");
         return false;
       }
-    }
-    return true;
-  }
+      if (banner === "banner") {
+        if (!loggedUser?.premium) {
+          openModalByName(dispatch, "pricingModal");
+          return false;
+        }
+      }
+      return true;
+    },
+    [dispatch]
+  );
 
   function resizeRedactor(isPremium) {
     const redactor = document.querySelector("#gjs");
@@ -38,7 +41,7 @@ const Redactor = () => {
 
   useEffect(() => {
     redactorInitializer((data) => bannerBtnAction(data));
-  }, []);
+  }, [bannerBtnAction]);
 
   return (
     <main id="redactor-page">
