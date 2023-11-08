@@ -100,14 +100,13 @@ const UserDashboard = () => {
           ]}
         />
       </Sider>
-      <Layout
-        className="content-layout"
-      >
+      <Layout className="content-layout">
         <Header
           style={{
             display: "flex",
             alignItems: "center",
-            padding: 0,
+            justifyContent: "space-between",
+            paddingLeft: 0,
             background: "#070f23",
           }}
         >
@@ -149,7 +148,7 @@ const UserDashboard = () => {
             minHeight: 280,
           }}
         >
-          Content
+          
         </Content>
       </Layout>
     </Layout>
