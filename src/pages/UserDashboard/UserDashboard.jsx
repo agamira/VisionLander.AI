@@ -11,7 +11,6 @@ import {
 import { Layout, Menu, Space, Button, Dropdown, message } from "antd";
 import { Logo } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import bg from "../../assets/img/bg-dashboard.png";
 import { useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
 
@@ -101,7 +100,9 @@ const UserDashboard = () => {
           ]}
         />
       </Sider>
-      <Layout style={{ background: `url(${bg}) center center` }}>
+      <Layout
+        className="content-layout"
+      >
         <Header
           style={{
             display: "flex",
