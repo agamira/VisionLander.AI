@@ -11,6 +11,7 @@ const authSlice = createSlice({
   initialState: {
     user: null,
     isLoading: false,
+    isAuthenticated: false,
     isError: null,
   },
   reducers: {},
@@ -31,18 +32,22 @@ const authSlice = createSlice({
       .addCase(loginAsync.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
+        state.isAuthenticated = true;
       })
       .addCase(loginGoogleAsync.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
+        state.isAuthenticated = true;
       })
       .addCase(authAsync.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
+        state.isAuthenticated = true;
       })
       .addCase(logoutAsync.fulfilled, (state) => {
         state.user = null;
         state.isLoading = false;
+        state.isAuthenticated = false;
       })
       .addMatcher(
         // Handle rejected actions for all async thunks
