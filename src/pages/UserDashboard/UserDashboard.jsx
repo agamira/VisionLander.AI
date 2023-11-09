@@ -50,12 +50,8 @@ const UserDashboard = () => {
       key: "0",
     },
     {
-      label: <a onClick={() => navigate("/redactor")}>Redactor</a>,
-      key: "1",
-    },
-    {
       label: <a onClick={() => handleLogOut()}>Log Out</a>,
-      key: "2",
+      key: "1",
     },
   ];
 
