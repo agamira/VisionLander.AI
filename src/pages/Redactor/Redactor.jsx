@@ -5,8 +5,10 @@ import { useCallback, useEffect } from "react";
 import { Banner } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { openModalByName } from "../../utils/modalUtils";
+import { useParams } from "react-router-dom";
 
 const Redactor = () => {
+  const { siteId } = useParams();
   const matches = useMediaQuery("(min-width: 768px)");
   const dispatch = useDispatch();
   const loggedUser = useSelector((state) => state.auth.user);
@@ -36,8 +38,8 @@ const Redactor = () => {
   }
 
   useEffect(() => {
-    redactorInitializer((data) => bannerBtnAction(data));
-  }, [bannerBtnAction]);
+    redactorInitializer((data) => bannerBtnAction(data), siteId);
+  }, [bannerBtnAction, siteId]);
 
   useEffect(() => {
     resizeRedactor(loggedUser.premium);

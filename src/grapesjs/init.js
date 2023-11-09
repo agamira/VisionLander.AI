@@ -6,7 +6,7 @@ import basicBlocks from "grapesjs-blocks-basic";
 import { fetchTemplate, publishWebsite } from ".";
 import { auth } from "../api";
 
-function redactorInitializer(action) {
+function redactorInitializer(action, siteId) {
   const editor = grapesjs.init({
     container: "#gjs",
     // fromElement: true,
@@ -25,7 +25,7 @@ function redactorInitializer(action) {
   });
   window.editor = editor;
 
-  fetchTemplate(editor);
+  fetchTemplate(editor, siteId);
 
   editor.Panels.addButton("options", {
     id: "btn-deploy",

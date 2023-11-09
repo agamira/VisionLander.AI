@@ -18,6 +18,7 @@ const Routing = () => {
       </Route>
       <Route element={<PrivateRoutes />}>
         <Route path="/redactor" element={<Redactor />} />
+        <Route path="/redactor/:siteId" element={<Redactor />} />
         <Route path="/dashboard" element={<UserDashboard />} />
       </Route>
       <Route path="/terms-of-use" element={<TermsOfUse />} />

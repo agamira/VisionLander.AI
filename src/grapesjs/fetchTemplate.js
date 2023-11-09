@@ -1,7 +1,7 @@
 import { api } from "../api";
 
-function fetchTemplate(editor) {
-  api("publish/get-json")
+function fetchTemplate(editor, siteId = "") {
+  api(`publish/get-json/${siteId}`)
     .then((response) => response.data)
     .then((htmlContent) => {
       const defaultTemplate = `
