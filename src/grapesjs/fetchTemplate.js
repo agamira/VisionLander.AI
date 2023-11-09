@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-function fetchTemplate(editor, siteId = "") {
+function fetchTemplate(editor, siteId) {
   api(`publish/get-json/${siteId}`)
     .then((response) => response.data)
     .then((htmlContent) => {

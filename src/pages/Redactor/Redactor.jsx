@@ -38,7 +38,7 @@ const Redactor = () => {
   }
 
   useEffect(() => {
-    redactorInitializer((data) => bannerBtnAction(data), siteId);
+    redactorInitializer((data) => bannerBtnAction(data), siteId ? siteId : "");
   }, [bannerBtnAction, siteId]);
 
   useEffect(() => {
