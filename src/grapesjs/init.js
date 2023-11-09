@@ -36,7 +36,7 @@ function redactorInitializer(action, siteId) {
       auth()
         .then((res) => {
           if (action(res)) {
-            publishWebsite(editor);
+            publishWebsite(editor, siteId);
           }
         })
         .catch((err) => {

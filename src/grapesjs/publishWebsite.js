@@ -1,9 +1,9 @@
 import { api } from "../api";
 
-function publishWebsite(editor) {
+function publishWebsite(editor, siteId) {
   try {
     api
-      .post("/publish/upload-json", {
+      .post(`/publish/upload-json/${siteId}`, {
         html: editor.getHtml(),
         css: editor.getCss(),
       })

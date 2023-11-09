@@ -1,5 +1,5 @@
 import "./UserDashboard.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -13,11 +13,13 @@ import { Logo, SiteCard } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
+import { api } from "../../api";
 
 const { Header, Sider, Content } = Layout;
 
 const UserDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [websites, setWebsites] = useState([]);
 
   const [messageApi, contextHolder] = message.useMessage();
   const loggedUser = useSelector((state) => state.auth.user);
@@ -54,6 +56,12 @@ const UserDashboard = () => {
       key: "1",
     },
   ];
+
+  useEffect(() => {
+    api.post("/dashboard", { email: loggedUser.email }).then((res) => {
+      setWebsites(res.data);
+    });
+  }, [loggedUser.email]);
 
   return (
     <Layout style={{ height: "100vh" }}>
