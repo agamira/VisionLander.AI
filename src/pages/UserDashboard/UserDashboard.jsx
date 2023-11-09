@@ -9,7 +9,7 @@ import {
   DownOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Space, Button, Dropdown, message } from "antd";
-import { Logo } from "../../components";
+import { Logo, SiteCard } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
@@ -148,7 +148,23 @@ const UserDashboard = () => {
             minHeight: 280,
           }}
         >
-          
+          <p
+            style={{
+              color: "#fff",
+              fontFamily: "Bai Jamjuree",
+              fontSize: "24px",
+              fontStyle: "normal",
+              fontWeight: "600",
+              lineHeight: "150%",
+              marginBottom: "24px",
+            }}
+          >
+            Your sites:
+          </p>
+
+          <div className="site-card-list">
+            <SiteCard />
+          </div>
         </Content>
       </Layout>
     </Layout>

@@ -1,0 +1,14 @@
+.site-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  border-radius: 8px;
+  border: 1px solid #00a3ff;
+  background: linear-gradient(
+    106deg,
+    rgba(255, 255, 255, 0.4) 3.04%,
+    rgba(255, 255, 255, 0) 96.05%
+  );
+  backdrop-filter: blur(18.075000762939453px);
+}
