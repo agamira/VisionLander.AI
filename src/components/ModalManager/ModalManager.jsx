@@ -10,7 +10,7 @@ import coin from "../../assets/img/coin.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAsync } from "../../redux/authSlice";
 import { closeModalByName, openModalByName } from "../../utils/modalUtils";
-import { register } from "../../api";
+import { api, register } from "../../api";
 
 const ModalManager = () => {
   const dispatch = useDispatch();
@@ -24,6 +24,18 @@ const ModalManager = () => {
     "Choose next features",
     "Access them early",
   ];
+
+  function handlePurchase(plan) {
+    api
+      .get(`/payment/${plan}`)
+      .then((res) => {
+        window.location.href = res.data;
+        closeModalByName(dispatch, "pricingModal");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <>
@@ -74,7 +86,7 @@ const ModalManager = () => {
               planFeatures={<CustomList className="pro" items={proFeatures} />}
               cardFooter={
                 <Button
-                  onClick={() => closeModalByName(dispatch, "pricingModal")}
+                  onClick={() => handlePurchase("premium")}
                   className="btn--pricing"
                 >
                   Upgrade
