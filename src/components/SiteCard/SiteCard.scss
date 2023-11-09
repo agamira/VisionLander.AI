@@ -11,4 +11,20 @@
     rgba(255, 255, 255, 0) 96.05%
   );
   backdrop-filter: blur(18.075000762939453px);
+  .site-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .site-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .edit-buttons {
+
+    }
+    .activation-buttons {
+
+    }
+  }
 }
