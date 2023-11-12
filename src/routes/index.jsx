@@ -17,7 +17,6 @@ const Routing = () => {
         <Route index element={<Home />} />
       </Route>
       <Route element={<PrivateRoutes />}>
-        <Route path="/redactor" element={<Redactor />} />
         <Route path="/redactor/:siteId" element={<Redactor />} />
         <Route path="/dashboard" element={<UserDashboard />} />
       </Route>

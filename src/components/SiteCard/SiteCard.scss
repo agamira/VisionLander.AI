@@ -1,7 +1,8 @@
+@import "../../assets/sass/main.scss";
+
 .site-card {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 40px;
   border-radius: 8px;
   border: 1px solid #00a3ff;
@@ -13,18 +14,77 @@
   backdrop-filter: blur(18.075000762939453px);
   .site-info {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     gap: 12px;
     .site-name {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      p {
+        color: $text-white;
+        text-align: center;
+        font-family: $font-baiJamjuree;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%;
+      }
+      button {
+        margin-top: 5px;
+      }
+    }
+    .site-url {
+      color: $text-white;
+      text-decoration: underline;
+      font-family: $font-baiJamjuree;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
     }
     .edit-buttons {
-
+      display: flex;
+      gap: 12px;
+      a:hover {
+        color: #fff;
+      }
+      & > * {
+        text-align: center;
+        font-family: $font-baiJamjuree;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+      }
+      .edit-btn {
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: #ff006e;
+      }
     }
     .activation-buttons {
+      display: flex;
+      gap: 12px;
+      & > * {
+        text-align: center;
+        font-family: $font-baiJamjuree;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+      }
+      .activate-btn {
+        border-radius: 6.633px;
+        background: linear-gradient(90deg, #ffa200 0.68%, #f47300 99.99%);
+        box-shadow: 1.65833px 1.65833px 19.9px 0px rgba(255, 0, 0, 0.25),
+          -1.65833px -1.65833px 19.9px 0px rgba(255, 138, 0, 0.25),
+          1.65833px 3.31667px 7.4625px 0px rgba(246, 127, 0, 0.43),
+          3.31667px 3.31667px 3.31667px 0px rgba(0, 10, 255, 0.25),
+          -1.65833px -1.65833px 3.31667px 0px rgba(255, 255, 255, 0.75);
 
+        padding: 12px 60px;
+      }
     }
   }
 }

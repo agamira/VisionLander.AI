@@ -8,3 +8,13 @@
 .content-layout {
   background: url("../../assets/img/bg-dashboard.png") center center;
 }
+
+.site-card-list {
+  // position: relative;
+  .empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

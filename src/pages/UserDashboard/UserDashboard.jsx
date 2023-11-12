@@ -8,7 +8,7 @@ import {
   VideoCameraOutlined,
   DownOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Space, Button, Dropdown, message } from "antd";
+import { Layout, Menu, Space, Button, Dropdown, message, Empty } from "antd";
 import { Logo, SiteCard } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const { Header, Sider, Content } = Layout;
 
 const UserDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [websites, setWebsites] = useState([]);
+  const [websites, setWebsites] = useState(null);
 
   const [messageApi, contextHolder] = message.useMessage();
   const loggedUser = useSelector((state) => state.auth.user);
@@ -62,6 +62,8 @@ const UserDashboard = () => {
       setWebsites(res.data);
     });
   }, [loggedUser.email]);
+
+  console.log(websites);
 
   return (
     <Layout style={{ height: "100vh" }}>
@@ -167,7 +169,21 @@ const UserDashboard = () => {
           </p>
 
           <div className="site-card-list">
-            <SiteCard />
+            {websites ? (
+              websites.map(({ id, title, template, domain }) => {
+                return (
+                  <SiteCard
+                    key={id}
+                    id={id}
+                    title={title}
+                    template={template}
+                    domain={domain}
+                  />
+                );
+              })
+            ) : (
+              <Empty className="empty" description={false} />
+            )}
           </div>
         </Content>
       </Layout>

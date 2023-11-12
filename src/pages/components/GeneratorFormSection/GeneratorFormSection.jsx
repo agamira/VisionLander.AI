@@ -62,6 +62,8 @@ const GeneratorFormSection = () => {
     if (!templateId) return warning("Please choose the template!");
     if (!prompt) return warning("Please fill the prompt");
 
+    console.log(formData);
+
     if (prompt.length > 2 && templateId) {
       setIsLoading(true);
       generatorFormPost(formData)
