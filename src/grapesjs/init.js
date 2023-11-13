@@ -57,17 +57,7 @@ function redactorInitializer(action, siteId) {
   }
 
   function postChanges() {
-    auth()
-      .then((res) => {
-        if (action(res)) {
-          publishWebsite(editor, siteId);
-          responseSent = false;
-        }
-      })
-      .catch((err) => {
-        alert(err.message);
-        console.error(err);
-      });
+    publishWebsite(editor, siteId);
   }
 
   editor.on("component:add", handleChanges);
