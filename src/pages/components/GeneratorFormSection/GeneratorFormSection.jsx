@@ -68,7 +68,6 @@ const GeneratorFormSection = () => {
       generatorFormPost(formData)
         .then((res) => {
           dispatch(authAsync());
-          localStorage.clear();
           setIsLoading(false);
           success("Your project has been created!");
           navigate(`/redactor/${res.id}`);
@@ -76,7 +75,7 @@ const GeneratorFormSection = () => {
         .catch((err) => {
           setIsLoading(false);
           if (err.status === 404) {
-            error(err.detail);
+            error(err.data.detail);
             openModalByName(dispatch, "pricingModal");
           }
         });

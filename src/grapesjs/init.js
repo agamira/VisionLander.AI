@@ -7,6 +7,7 @@ import { fetchTemplate, publishWebsite } from ".";
 import { auth } from "../api";
 
 function redactorInitializer(action, siteId) {
+  localStorage.clear();
   const editor = grapesjs.init({
     container: "#gjs",
     // fromElement: true,

@@ -66,7 +66,7 @@ const UserDashboard = () => {
   console.log(websites);
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ minHeight: "100vh" }}>
       {contextHolder}
       <Sider
         style={{ background: "#070f23" }}
