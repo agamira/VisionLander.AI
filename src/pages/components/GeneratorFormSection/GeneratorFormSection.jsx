@@ -67,11 +67,11 @@ const GeneratorFormSection = () => {
     if (prompt.length > 2 && templateId) {
       setIsLoading(true);
       generatorFormPost(formData)
-        .then(() => {
+        .then((res) => {
           localStorage.clear();
           setIsLoading(false);
           success("Your project has been created!");
-          navigate("/redactor", { replace: true });
+          navigate(`/redactor/${res.data.id}`, { replace: true });
         })
         .catch((err) => {
           console.log(err);
