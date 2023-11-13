@@ -51,6 +51,34 @@ function redactorInitializer(action, siteId) {
   editor.on("asset:upload:response", (response) => {
     console.log(response);
   });
+
+  let responseSent = false;
+
+  function handleChanges() {
+    if (!responseSent) {
+      postChanges();
+      responseSent = true;
+    }
+  }
+
+  function postChanges() {
+    auth()
+      .then((res) => {
+        if (action(res)) {
+          publishWebsite(editor, siteId);
+          responseSent = false;
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+        console.error(err);
+      });
+  }
+
+  editor.on("component:add", handleChanges);
+  editor.on("component:update", handleChanges);
+  editor.on("component:remove", handleChanges);
+  editor.on("component:change", handleChanges);
 }
 
 export { redactorInitializer };
