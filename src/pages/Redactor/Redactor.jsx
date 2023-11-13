@@ -42,8 +42,8 @@ const Redactor = () => {
   }, [bannerBtnAction, siteId]);
 
   useEffect(() => {
-    resizeRedactor(loggedUser.premium);
-  }, [dispatch, loggedUser.premium]);
+    resizeRedactor(loggedUser?.premium);
+  }, [dispatch, loggedUser?.premium]);
   return (
     <main id="redactor-page">
       {matches ? (
