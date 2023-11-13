@@ -11,6 +11,7 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { openModalByName } from "../../../utils/modalUtils";
 import { useDispatch } from "react-redux";
+import { authAsync } from "../../../redux/authSlice";
 
 const GeneratorFormSection = () => {
   const [inputValue, setInputValue] = useState("");
@@ -62,22 +63,20 @@ const GeneratorFormSection = () => {
     if (!templateId) return warning("Please choose the template!");
     if (!prompt) return warning("Please fill the prompt");
 
-    console.log(formData);
-
     if (prompt.length > 2 && templateId) {
       setIsLoading(true);
       generatorFormPost(formData)
         .then((res) => {
+          dispatch(authAsync());
           localStorage.clear();
           setIsLoading(false);
           success("Your project has been created!");
           navigate(`/redactor/${res.id}`);
         })
         .catch((err) => {
-          console.log(err);
           setIsLoading(false);
           if (err.status === 404) {
-            error(err.data.detail);
+            error(err.detail);
             openModalByName(dispatch, "pricingModal");
           }
         });
