@@ -1,10 +1,19 @@
 import { Button } from "..";
+import { Button as BtnAnt, message, Popconfirm } from "antd";
 import "./SiteCard.scss";
 import editIcon from "../../assets/icon/pen.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SiteCard = ({ id, title, template, domain }) => {
-  const navigate = useNavigate();
+  const confirm = (e) => {
+    console.log(e);
+    message.success("Click on Yes");
+  };
+  const cancel = (e) => {
+    console.log(e);
+    message.error("Click on No");
+  };
+
   return (
     <div id={id} className="site-card">
       <div className="site-info">
@@ -39,12 +48,29 @@ const SiteCard = ({ id, title, template, domain }) => {
           </Link>
         </div>
         <div className="activation-buttons">
-          <Button
+          {/* <Button
             className="btn activate-btn"
             onClick={() => console.log("clicked")}
           >
             Activate on Subdomain
-          </Button>
+          </Button> */}
+          <Popconfirm
+            title="Delete the task"
+            description="Are you sure to delete this task?"
+            onConfirm={confirm}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+            placement="right"
+          >
+            <BtnAnt
+              type="primary"
+              danger
+              style={{ padding: "8px 12px", height: "100%" }}
+            >
+              Delete
+            </BtnAnt>
+          </Popconfirm>
         </div>
       </div>
       <div className="site-img">
