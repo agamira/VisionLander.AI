@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-function publishWebsite(editor, siteId) {
+async function publishWebsite(editor, siteId) {
   try {
     api
       .post(`/publish/upload-json/${siteId}`, {
