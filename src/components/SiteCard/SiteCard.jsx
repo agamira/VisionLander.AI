@@ -23,9 +23,16 @@ const SiteCard = ({ id, title, template, domain }) => {
             <img src={editIcon} alt="" />
           </Button>
         </div>
-        <a href={domain} target="_blank" rel="noreferrer" className="site-url">
-          {domain}
-        </a>
+        {!!domain && (
+          <a
+            href={domain}
+            target="_blank"
+            rel="noreferrer"
+            className="site-url"
+          >
+            {domain}
+          </a>
+        )}
         <div className="edit-buttons">
           <Button
             style={{ borderRadius: "8px" }}
