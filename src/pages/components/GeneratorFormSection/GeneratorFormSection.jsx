@@ -68,11 +68,10 @@ const GeneratorFormSection = () => {
       setIsLoading(true);
       generatorFormPost(formData)
         .then((res) => {
-          console.log(res);
           localStorage.clear();
           setIsLoading(false);
           success("Your project has been created!");
-          navigate(`/redactor/${res.data.id}`);
+          navigate(`/redactor/${res.id}`);
         })
         .catch((err) => {
           console.log(err);
