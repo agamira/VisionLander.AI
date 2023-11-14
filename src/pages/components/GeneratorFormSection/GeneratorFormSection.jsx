@@ -14,7 +14,9 @@ import { useDispatch } from "react-redux";
 import { authAsync } from "../../../redux/authSlice";
 
 const GeneratorFormSection = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [websiteName, setWebsiteName] = useState("");
+  const [subdomain, setSubdomain] = useState("");
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -29,7 +31,7 @@ const GeneratorFormSection = () => {
   const dispatch = useDispatch();
 
   const handleButtonClick = (value) => {
-    setInputValue(value);
+    setPrompt(value);
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -59,8 +61,12 @@ const GeneratorFormSection = () => {
     e.preventDefault();
     const prompt = e.target.elements.prompt.value;
     const templateId = +e.target.elements.templateId.value;
-    const formData = { prompt, templateId };
+    const websiteName = e.target.elements.websiteName.value;
+    const subdomain = e.target.elements.subdomain.value;
+    const formData = { prompt, templateId, websiteName, subdomain };
     if (!templateId) return warning("Please choose the template!");
+    if (!websiteName) return warning("Please fill the website name!");
+    if (!subdomain) return warning("Please fill the subdomain!");
     if (!prompt) return warning("Please fill the prompt");
 
     if (prompt.length > 2 && templateId) {
@@ -154,6 +160,32 @@ const GeneratorFormSection = () => {
               <div className="form-groups">
                 <div className="form-group">
                   <div className="input-box">
+                    <label htmlFor="websiteName">Your Website name:</label>
+                    <input
+                      type="text"
+                      placeholder={"My Website"}
+                      name="websiteName"
+                      id="websiteName"
+                      value={websiteName}
+                      onChange={(e) => setWebsiteName(e.target.value.trim())}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label htmlFor="subdomain">Your subdomain name:</label>
+                    <input
+                      type="text"
+                      name="subdomain"
+                      id="subdomain"
+                      value={subdomain}
+                      placeholder="mywebsite"
+                      onChange={(e) => setSubdomain(e.target.value.trim())}
+                    />
+                    <span className="before">https://</span>
+                    <span className="after">.visionlander.ai</span>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="input-box">
                     <label htmlFor="prompt">
                       Describe what you business about:
                     </label>
@@ -163,8 +195,8 @@ const GeneratorFormSection = () => {
                       placeholder={"Delivery of wedding bouquets ..."}
                       name="prompt"
                       id="prompt"
-                      onChange={(e) => setInputValue(e.target.value)}
-                      value={inputValue}
+                      onChange={(e) => setPrompt(e.target.value.trim())}
+                      value={prompt}
                     />
                     <Button className="btn--primary" type="submit">
                       Generate

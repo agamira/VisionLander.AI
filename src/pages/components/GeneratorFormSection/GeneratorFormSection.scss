@@ -16,6 +16,9 @@
             align-items: center;
             width: 100%;
             column-gap: 16px;
+            @include tablet {
+              flex-direction: column;
+            }
             .input-box {
               width: 100%;
               position: relative;
@@ -67,6 +70,40 @@
                 @include tablet {
                   margin: 16px 0;
                   padding: 12px;
+                }
+              }
+              .before {
+                position: absolute;
+                top: 73%;
+                left: 12px;
+                transform: translateY(-50%);
+                color: $bgColor;
+                font-family: $font-baiJamjuree;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                @include tablet {
+                  font-size: 20px;
+                }
+              }
+              #subdomain {
+                padding-left: 22%;
+                padding-right: 39%;
+              }
+              .after {
+                position: absolute;
+                top: 73%;
+                right: 12px;
+                transform: translateY(-50%);
+                color: $bgColor;
+                font-family: $font-baiJamjuree;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                @include tablet {
+                  font-size: 20px;
                 }
               }
               .btn {
