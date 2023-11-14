@@ -69,7 +69,15 @@ const UserDashboard = () => {
     <Layout style={{ minHeight: "100vh" }}>
       {contextHolder}
       <Sider
-        style={{ background: "#070f23" }}
+        style={{
+          overflow: "auto",
+          height: "100vh",
+          position: "sticky",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          background: "#070f23",
+        }}
         trigger={null}
         collapsible
         collapsed={!collapsed}
@@ -109,6 +117,10 @@ const UserDashboard = () => {
       <Layout className="content-layout">
         <Header
           style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
+            width: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
