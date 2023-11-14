@@ -14,7 +14,13 @@
   );
   backdrop-filter: blur(18.075000762939453px);
   -webkit-backdrop-filter: blur(18.075000762939453px);
+
+  @include desktop {
+    width: 585px;
+  }
+
   @include tablet {
+    width: unset;
     padding: 30px 36px;
   }
   @include mobile {
