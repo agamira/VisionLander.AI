@@ -1,5 +1,5 @@
 import "./UserDashboard.scss";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -8,7 +8,16 @@ import {
   VideoCameraOutlined,
   DownOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Space, Button, Dropdown, message, Empty } from "antd";
+import {
+  Layout,
+  Menu,
+  Space,
+  Button,
+  Dropdown,
+  message,
+  Empty,
+  Popconfirm,
+} from "antd";
 import { Logo, SiteCard } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -45,6 +54,29 @@ const UserDashboard = () => {
         error("Something went wrong!");
       });
   }
+
+  const confirm = (id) => {
+    api
+      .delete(`/delete/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .then(() => {
+        api.post("/dashboard", { email: loggedUser.email }).then((res) => {
+          setWebsites(res.data);
+          message.success("Website deleted!");
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        message.error("Something went wrong!");
+      });
+  };
+
+  const cancel = (e) => {
+    console.log(e);
+    message.error("Click on No");
+  };
 
   const items = [
     {
@@ -189,6 +221,25 @@ const UserDashboard = () => {
                     title={title}
                     template={template}
                     domain={domain}
+                    deleteAction={
+                      <Popconfirm
+                        title="Delete the task"
+                        description="Are you sure to delete this task?"
+                        onConfirm={() => confirm(id)}
+                        onCancel={cancel}
+                        okText="Yes"
+                        cancelText="No"
+                        placement="right"
+                      >
+                        <Button
+                          type="primary"
+                          danger
+                          style={{ padding: "8px 12px", height: "100%" }}
+                        >
+                          Delete
+                        </Button>
+                      </Popconfirm>
+                    }
                   />
                 );
               })
