@@ -12,7 +12,7 @@ import { loginAsync } from "../../redux/authSlice";
 import { closeModalByName, openModalByName } from "../../utils/modalUtils";
 import { api, register } from "../../api";
 
-const ModalManager = () => {
+const ModalManager = ({ children }) => {
   const dispatch = useDispatch();
   const modals = useSelector((state) => state.modals.modals);
 
@@ -96,6 +96,7 @@ const ModalManager = () => {
           </Modal>
         ) : null
       }
+      {children}
     </>
   );
 };

@@ -3,10 +3,9 @@ import { Routing } from "./routes";
 
 function App() {
   return (
-    <>
-      <ModalManager />
+    <ModalManager>
       <Routing />
-    </>
+    </ModalManager>
   );
 }
 
