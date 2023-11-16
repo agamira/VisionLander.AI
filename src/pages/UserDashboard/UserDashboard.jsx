@@ -221,7 +221,7 @@ const UserDashboard = () => {
             Your sites:
           </p>
           <div className="site-card-list">
-            {websites ? (
+            {websites?.lenght ? (
               websites.map(({ id, title, template, domain }) => {
                 return (
                   <SiteCard
