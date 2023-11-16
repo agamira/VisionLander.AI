@@ -23,7 +23,7 @@ import {
 } from "antd";
 import { Logo, SiteCard, Button as MyButton } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
 import { api } from "../../api";
 import { closeModalByName, openModalByName } from "../../utils/modalUtils";
@@ -43,6 +43,7 @@ const UserDashboard = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const error = (message) => {
     messageApi.open({
@@ -108,7 +109,7 @@ const UserDashboard = () => {
     for (const param of searchParams.entries()) {
       setSiteId(param[0]);
     }
-  }, []);
+  }, [location.search]);
 
   function handleDomainChange(id) {
     // if (!loggedUser.premium) {
@@ -126,6 +127,7 @@ const UserDashboard = () => {
   }
 
   const handleOkay = () => {
+    console.log(siteId);
     if (inputValue === "") return message.warning("Fill the field!");
     api
       .post(`/title/`, { title: inputValue, id: siteId })
