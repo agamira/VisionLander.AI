@@ -27,18 +27,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
 import { api } from "../../api";
 import { closeModalByName, openModalByName } from "../../utils/modalUtils";
+import { fetchSites } from "../../redux/sitesSlice";
 
 const { Header, Sider, Content } = Layout;
 
 const UserDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [websites, setWebsites] = useState(null);
   const [siteId, setSiteId] = useState("");
   const [inputValue, setInputValue] = useState("");
 
   const [messageApi, contextHolder] = message.useMessage();
   const loggedUser = useSelector((state) => state.auth.user);
   const modals = useSelector((state) => state.modals.modals);
+  const websites = useSelector((state) => state.websites.websites);
 
   const dispatch = useDispatch();
 
@@ -68,12 +69,9 @@ const UserDashboard = () => {
       .delete(`/delete/${id}`)
       .then((res) => {
         console.log(res);
-      })
-      .then(() => {
-        api.post("/dashboard", { email: loggedUser.email }).then((res) => {
-          setWebsites(res.data);
-          message.success("Website deleted!");
-        });
+        //////!
+        dispatch(fetchSites(loggedUser.email));
+        message.success("Website deleted!");
       })
       .catch((err) => {
         console.log(err);
@@ -98,10 +96,8 @@ const UserDashboard = () => {
   ];
 
   useEffect(() => {
-    api.post("/dashboard", { email: loggedUser.email }).then((res) => {
-      setWebsites(res.data);
-    });
-  }, [loggedUser.email]);
+    dispatch(fetchSites(loggedUser.email));
+  }, [dispatch, loggedUser]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -134,10 +130,9 @@ const UserDashboard = () => {
       .then((res) => {
         console.log(res);
         closeModalByName(dispatch, "changeSiteNameModal");
-        api.post("/dashboard", { email: loggedUser.email }).then((res) => {
-          setWebsites(res.data);
-          message.success("Website name changed!");
-        });
+        //!
+        dispatch(fetchSites(loggedUser.email));
+        message.success("Website name changed!");
       })
       .catch((err) => {
         alert(err);
