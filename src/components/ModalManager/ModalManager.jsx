@@ -50,23 +50,28 @@ const ModalManager = ({ children }) => {
     console.log(activeTab);
     if (activeTab === "freeDomain") {
       api
-        .post(`/domain/free/${siteId}`, { domain: inputValue })
+        .post(`/domain/free/`, { domain: inputValue, id: siteId })
         .then((res) => {
           console.log(res);
           closeModalByName(dispatch, "buyDomainModal");
         })
         .catch((err) => {
+          alert(err);
           console.log(err);
         });
     }
     if (activeTab === "customDomain") {
       api
-        .post(`/domain/premium/available/${siteId}`, { domain: input2Value })
+        .post(`/domain/premium/`, { domain: input2Value, id: siteId })
         .then((res) => {
-          console.log(res);
-          closeModalByName(dispatch, "buyDomainModal");
+          const url = res.data.url;
+          if (url) {
+            closeModalByName(dispatch, "buyDomainModal");
+            window.location.href = url;
+          }
         })
         .catch((err) => {
+          alert(err);
           console.log(err);
         });
     }
