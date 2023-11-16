@@ -1,24 +1,21 @@
-import { Button } from "..";
 import "./SiteCard.scss";
-import editIcon from "../../assets/icon/pen.svg";
-import { Link } from "react-router-dom";
 
 const SiteCard = ({
   id,
   title,
-  template,
   domain,
+  template,
+  editAction,
   deleteAction,
   changeDomainAction,
+  changeSiteNameAction,
 }) => {
   return (
     <div id={id} className="site-card">
       <div className="site-info">
         <div className="site-name">
           <p>{title}</p>
-          <Button onClick={() => console.log("clicked")}>
-            <img src={editIcon} alt="" />
-          </Button>
+          {changeSiteNameAction}
         </div>
         {!!domain && (
           <a
@@ -32,18 +29,7 @@ const SiteCard = ({
         )}
         <div className="edit-buttons">
           {changeDomainAction}
-          <Link
-            color="#fff"
-            to={`/redactor/${id}`}
-            target="_blank"
-            className="btn edit-btn"
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <span>
-              <img src={editIcon} alt="" />
-            </span>
-            <span> Edit Site</span>
-          </Link>
+          {editAction}
         </div>
         <div className="action-buttons">{deleteAction}</div>
       </div>

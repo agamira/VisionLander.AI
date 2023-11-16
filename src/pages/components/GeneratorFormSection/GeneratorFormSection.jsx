@@ -82,7 +82,7 @@ const GeneratorFormSection = () => {
           setIsLoading(false);
           if (err.status === 404) {
             error(err.data.detail);
-            openModalByName(dispatch, "pricingModal");
+            // openModalByName(dispatch, "pricingModal");
           }
         });
     } else {

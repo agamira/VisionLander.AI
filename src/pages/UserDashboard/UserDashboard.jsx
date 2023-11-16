@@ -1,4 +1,5 @@
 import "./UserDashboard.scss";
+import editIcon from "../../assets/icon/pen.svg";
 import { useEffect, useState } from "react";
 import {
   MenuFoldOutlined,
@@ -17,22 +18,27 @@ import {
   message,
   Empty,
   Popconfirm,
+  Modal,
+  Input,
 } from "antd";
 import { Logo, SiteCard, Button as MyButton } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
 import { api } from "../../api";
-import { openModalByName } from "../../utils/modalUtils";
+import { closeModalByName, openModalByName } from "../../utils/modalUtils";
 
 const { Header, Sider, Content } = Layout;
 
 const UserDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [websites, setWebsites] = useState(null);
+  const [siteId, setSiteId] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const [messageApi, contextHolder] = message.useMessage();
   const loggedUser = useSelector((state) => state.auth.user);
+  const modals = useSelector((state) => state.modals.modals);
 
   const dispatch = useDispatch();
 
@@ -96,6 +102,14 @@ const UserDashboard = () => {
     });
   }, [loggedUser.email]);
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    // Loop through all query parameters
+    for (const param of searchParams.entries()) {
+      setSiteId(param[0]);
+    }
+  }, []);
+
   function handleDomainChange(id) {
     // if (!loggedUser.premium) {
     //   message.warning("You need to upgrade to premium to change domain!");
@@ -105,6 +119,29 @@ const UserDashboard = () => {
     navigate(`/dashboard/?${id}`);
     openModalByName(dispatch, "buyDomainModal");
   }
+
+  function handleSiteNameAction(id) {
+    navigate(`/dashboard/?${id}`);
+    openModalByName(dispatch, "changeSiteNameModal");
+  }
+
+  const handleOkay = () => {
+    if (inputValue === "") return message.warning("Fill the field!");
+    api
+      .post(`/title/`, { title: inputValue, id: siteId })
+      .then((res) => {
+        console.log(res);
+        closeModalByName(dispatch, "changeSiteNameModal");
+        api.post("/dashboard", { email: loggedUser.email }).then((res) => {
+          setWebsites(res.data);
+          message.success("Website name changed!");
+        });
+      })
+      .catch((err) => {
+        alert(err);
+        console.log(err);
+      });
+  };
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -207,6 +244,20 @@ const UserDashboard = () => {
             minHeight: 280,
           }}
         >
+          <Modal
+            title="Change site name"
+            open={modals.changeSiteNameModal}
+            onOk={handleOkay}
+            keyboard={true}
+            onCancel={() => closeModalByName(dispatch, "changeSiteNameModal")}
+          >
+            <Input
+              onChange={(e) => setInputValue(e.target.value.trim())}
+              value={inputValue}
+              placeholder="my site"
+            />
+          </Modal>
+
           <p
             style={{
               color: "#fff",
@@ -259,6 +310,25 @@ const UserDashboard = () => {
                     >
                       {domain ? "Change domain" : "Add domain"}
                     </MyButton>
+                  }
+                  changeSiteNameAction={
+                    <MyButton onClick={() => handleSiteNameAction(id)}>
+                      <img src={editIcon} alt="" />
+                    </MyButton>
+                  }
+                  editAction={
+                    <Link
+                      color="#fff"
+                      to={`/redactor/${id}`}
+                      target="_blank"
+                      className="btn edit-btn"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <span>
+                        <img src={editIcon} alt="" />
+                      </span>
+                      <span> Edit Site</span>
+                    </Link>
                   }
                 />
               );
