@@ -3,7 +3,14 @@ import "./SiteCard.scss";
 import editIcon from "../../assets/icon/pen.svg";
 import { Link } from "react-router-dom";
 
-const SiteCard = ({ id, title, template, domain, deleteAction }) => {
+const SiteCard = ({
+  id,
+  title,
+  template,
+  domain,
+  deleteAction,
+  changeDomainAction,
+}) => {
   return (
     <div id={id} className="site-card">
       <div className="site-info">
@@ -24,13 +31,7 @@ const SiteCard = ({ id, title, template, domain, deleteAction }) => {
           </a>
         )}
         <div className="edit-buttons">
-          <Button
-            style={{ borderRadius: "8px" }}
-            className="btn btn--outline"
-            onClick={() => console.log("clicked")}
-          >
-            Change domain
-          </Button>
+          {changeDomainAction}
           <Link
             color="#fff"
             to={`/redactor/${id}`}

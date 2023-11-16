@@ -13,7 +13,7 @@
           .form-group {
             margin-bottom: 32px;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             width: 100%;
             column-gap: 16px;
             @include tablet {
@@ -23,6 +23,9 @@
               width: 100%;
               position: relative;
               text-align: center;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
               label {
                 color: #ebe3ee;
                 margin-bottom: 20px;
@@ -36,7 +39,7 @@
                   font-size: 24px;
                 }
               }
-              input {
+              .input-field {
                 margin-top: 20px;
                 box-sizing: border-box;
                 padding: 22px 12px;
@@ -57,7 +60,6 @@
                   font-size: 20px;
                 }
                 &::placeholder {
-                  color: $bgColor;
                   font-family: $font-baiJamjuree;
                   font-size: 24px;
                   font-style: normal;
@@ -72,11 +74,9 @@
                   padding: 12px;
                 }
               }
-              .before {
-                position: absolute;
-                top: 73%;
-                left: 12px;
-                transform: translateY(-50%);
+              .ant-input-group .ant-input-group-addon {
+                background-color: unset;
+                padding: 0;
                 color: $bgColor;
                 font-family: $font-baiJamjuree;
                 font-size: 24px;
@@ -88,22 +88,21 @@
                 }
               }
               #subdomain {
-                padding-left: 22%;
-                padding-right: 39%;
-              }
-              .after {
-                position: absolute;
-                top: 73%;
-                right: 12px;
-                transform: translateY(-50%);
+                background: unset;
+                padding: 0;
                 color: $bgColor;
                 font-family: $font-baiJamjuree;
                 font-size: 24px;
                 font-style: normal;
                 font-weight: 700;
                 line-height: normal;
+                border: none;
                 @include tablet {
                   font-size: 20px;
+                }
+                &:focus {
+                  border: none;
+                  box-shadow: none;
                 }
               }
               .btn {

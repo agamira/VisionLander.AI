@@ -7,7 +7,7 @@ import hardwell from "../../../assets/img/hardwell-template.png";
 import warkinon from "../../../assets/img/warkinon-template.png";
 import loadingIcon from "../../../assets/icon/loading.svg";
 import { generatorFormPost } from "../../../api";
-import { message } from "antd";
+import { Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { openModalByName } from "../../../utils/modalUtils";
 import { useDispatch } from "react-redux";
@@ -162,6 +162,7 @@ const GeneratorFormSection = () => {
                   <div className="input-box">
                     <label htmlFor="websiteName">Your Website name:</label>
                     <input
+                      className="input-field"
                       type="text"
                       placeholder={"My Website"}
                       name="websiteName"
@@ -172,16 +173,18 @@ const GeneratorFormSection = () => {
                   </div>
                   <div className="input-box">
                     <label htmlFor="subdomain">Your subdomain name:</label>
-                    <input
+
+                    <Input
                       type="text"
                       name="subdomain"
                       id="subdomain"
                       value={subdomain}
-                      placeholder="mywebsite"
+                      placeholder="mysite"
+                      addonBefore="https://"
+                      addonAfter=".visionlander.ai"
+                      className="input-field"
                       onChange={(e) => setSubdomain(e.target.value.trim())}
                     />
-                    <span className="before">https://</span>
-                    <span className="after">.visionlander.ai</span>
                   </div>
                 </div>
                 <div className="form-group">
@@ -194,6 +197,7 @@ const GeneratorFormSection = () => {
                       type="text"
                       placeholder={"Delivery of wedding bouquets ..."}
                       name="prompt"
+                      className="input-field"
                       id="prompt"
                       onChange={(e) => setPrompt(e.target.value.trim())}
                       value={prompt}

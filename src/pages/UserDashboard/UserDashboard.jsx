@@ -1,5 +1,5 @@
 import "./UserDashboard.scss";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -18,11 +18,12 @@ import {
   Empty,
   Popconfirm,
 } from "antd";
-import { Logo, SiteCard } from "../../components";
+import { Logo, SiteCard, Button as MyButton } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
 import { api } from "../../api";
+import { openModalByName } from "../../utils/modalUtils";
 
 const { Header, Sider, Content } = Layout;
 
@@ -95,7 +96,15 @@ const UserDashboard = () => {
     });
   }, [loggedUser.email]);
 
-  console.log(websites);
+  function handleDomainChange(id) {
+    // if (!loggedUser.premium) {
+    //   message.warning("You need to upgrade to premium to change domain!");
+    //   openModalByName(dispatch, "pricingModal");
+    //   return;
+    // }
+    navigate(`/dashboard/?${id}`);
+    openModalByName(dispatch, "buyDomainModal");
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -239,6 +248,15 @@ const UserDashboard = () => {
                           Delete
                         </Button>
                       </Popconfirm>
+                    }
+                    changeDomainAction={
+                      <MyButton
+                        style={{ borderRadius: "8px" }}
+                        className="btn btn--outline"
+                        onClick={() => handleDomainChange(id)}
+                      >
+                        {domain ? "Change domain" : "Add domain"}
+                      </MyButton>
                     }
                   />
                 );
