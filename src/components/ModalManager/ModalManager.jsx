@@ -14,10 +14,12 @@ import { closeModalByName, openModalByName } from "../../utils/modalUtils";
 import { api, register } from "../../api";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { fetchSites } from "../../redux/sitesSlice";
 
 const ModalManager = ({ children }) => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const loggedUser = useSelector((state) => state.auth.user);
   const modals = useSelector((state) => state.modals.modals);
   const [inputValue, setInputValue] = useState("");
   const [input2Value, setInput2Value] = useState("");
@@ -37,7 +39,7 @@ const ModalManager = ({ children }) => {
     api
       .get(`/payment/${plan}`)
       .then((res) => {
-        window.location.href = res.data;
+        window.location.href = res.data.url;
         closeModalByName(dispatch, "pricingModal");
       })
       .catch((err) => {
@@ -47,12 +49,12 @@ const ModalManager = ({ children }) => {
 
   function handleOk() {
     if (!(inputValue || input2Value)) return alert("Please fill the field!");
-    console.log(activeTab);
     if (activeTab === "freeDomain") {
       api
         .post(`/domain/free/`, { domain: inputValue, id: siteId })
         .then((res) => {
           console.log(res);
+          dispatch(fetchSites(loggedUser.email));
           closeModalByName(dispatch, "buyDomainModal");
         })
         .catch((err) => {
@@ -158,7 +160,6 @@ const ModalManager = ({ children }) => {
             onTabClick={(key) => setActiveTab(key)}
             items={[
               {
-                onClick: () => console.log("clicked"),
                 label: `Free Domain`,
                 key: "freeDomain",
                 children: (
