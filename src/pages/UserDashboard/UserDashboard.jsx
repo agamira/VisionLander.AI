@@ -221,49 +221,48 @@ const UserDashboard = () => {
             Your sites:
           </p>
           <div className="site-card-list">
-            {websites?.lenght ? (
-              websites.map(({ id, title, template, domain }) => {
-                return (
-                  <SiteCard
-                    key={id}
-                    id={id}
-                    title={title}
-                    template={template}
-                    domain={domain}
-                    deleteAction={
-                      <Popconfirm
-                        title="Delete the task"
-                        description="Are you sure to delete this task?"
-                        onConfirm={() => confirm(id)}
-                        onCancel={cancel}
-                        okText="Yes"
-                        cancelText="No"
-                        placement="right"
-                      >
-                        <Button
-                          type="primary"
-                          danger
-                          style={{ padding: "8px 12px", height: "100%" }}
-                        >
-                          Delete
-                        </Button>
-                      </Popconfirm>
-                    }
-                    changeDomainAction={
-                      <MyButton
-                        style={{ borderRadius: "8px" }}
-                        className="btn btn--outline"
-                        onClick={() => handleDomainChange(id)}
-                      >
-                        {domain ? "Change domain" : "Add domain"}
-                      </MyButton>
-                    }
-                  />
-                );
-              })
-            ) : (
+            {websites?.length === 0 ? (
               <Empty className="empty" description={false} />
-            )}
+            ) : null}
+            {websites?.map(({ id, title, template, domain }) => {
+              return (
+                <SiteCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  template={template}
+                  domain={domain}
+                  deleteAction={
+                    <Popconfirm
+                      title="Delete the task"
+                      description="Are you sure to delete this task?"
+                      onConfirm={() => confirm(id)}
+                      onCancel={cancel}
+                      okText="Yes"
+                      cancelText="No"
+                      placement="right"
+                    >
+                      <Button
+                        type="primary"
+                        danger
+                        style={{ padding: "8px 12px", height: "100%" }}
+                      >
+                        Delete
+                      </Button>
+                    </Popconfirm>
+                  }
+                  changeDomainAction={
+                    <MyButton
+                      style={{ borderRadius: "8px" }}
+                      className="btn btn--outline"
+                      onClick={() => handleDomainChange(id)}
+                    >
+                      {domain ? "Change domain" : "Add domain"}
+                    </MyButton>
+                  }
+                />
+              );
+            })}
           </div>
         </Content>
       </Layout>
