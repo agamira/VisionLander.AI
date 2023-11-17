@@ -9,14 +9,6 @@ async function publishWebsite(editor, siteId) {
           css: editor.getCss(),
         },
       })
-      .then((res) => {
-        const url = res.data.url;
-        if (url) {
-          window.open(url, "_blank");
-        } else {
-          console.error("No site found in the response");
-        }
-      })
       .catch((error) => {
         console.error(error);
       });

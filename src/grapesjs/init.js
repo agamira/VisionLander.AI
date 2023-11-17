@@ -35,6 +35,14 @@ function redactorInitializer(action, siteId) {
             publishWebsite(editor, siteId);
           }
         })
+        .then((res) => {
+          const url = res.data.url;
+          if (url) {
+            window.open(url, "_blank");
+          } else {
+            console.error("No site found in the response");
+          }
+        })
         .catch((err) => {
           alert(err.message);
           console.error(err);
