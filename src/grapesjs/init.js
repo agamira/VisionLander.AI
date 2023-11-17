@@ -32,15 +32,14 @@ function redactorInitializer(action, siteId) {
       auth()
         .then((res) => {
           if (action(res)) {
-            publishWebsite(editor, siteId);
-          }
-        })
-        .then((res) => {
-          const url = res.data.url;
-          if (url) {
-            window.open(url, "_blank");
-          } else {
-            console.error("No site found in the response");
+            publishWebsite(editor, siteId).then((res) => {
+              const url = res.data.url;
+              if (url) {
+                window.open(url, "_blank");
+              } else {
+                console.error("No site found in the response");
+              }
+            });
           }
         })
         .catch((err) => {
