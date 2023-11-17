@@ -10,7 +10,7 @@ async function publishWebsite(editor, siteId) {
         },
       })
       .then((res) => {
-        const url = res.data.user;
+        const url = res.data.url;
         if (url) {
           window.open(url, "_blank");
         } else {
