@@ -33,7 +33,7 @@ function redactorInitializer(action, siteId) {
         .then((res) => {
           if (action(res)) {
             publishWebsite(editor, siteId).then((res) => {
-              const url = res.data.url;
+              const url = res.url;
               if (url) {
                 window.open(url, "_blank");
               } else {
