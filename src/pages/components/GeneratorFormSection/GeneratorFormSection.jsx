@@ -168,7 +168,7 @@ const GeneratorFormSection = () => {
                       name="websiteName"
                       id="websiteName"
                       value={websiteName}
-                      onChange={(e) => setWebsiteName(e.target.value.trim())}
+                      onChange={(e) => setWebsiteName(e.target.value)}
                     />
                   </div>
                   <div className="input-box">
@@ -199,7 +199,7 @@ const GeneratorFormSection = () => {
                       name="prompt"
                       className="input-field"
                       id="prompt"
-                      onChange={(e) => setPrompt(e.target.value.trim())}
+                      onChange={(e) => setPrompt(e.target.value)}
                       value={prompt}
                     />
                     <Button className="btn--primary" type="submit">

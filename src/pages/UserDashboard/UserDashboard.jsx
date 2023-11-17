@@ -249,7 +249,7 @@ const UserDashboard = () => {
             onCancel={() => closeModalByName(dispatch, "changeSiteNameModal")}
           >
             <Input
-              onChange={(e) => setInputValue(e.target.value.trim())}
+              onChange={(e) => setInputValue(e.target.value)}
               value={inputValue}
               placeholder="my site"
             />
