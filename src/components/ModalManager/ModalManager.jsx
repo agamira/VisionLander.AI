@@ -6,7 +6,7 @@ import {
   PricingCard,
   RegisterForm,
 } from "../";
-import { Modal as AntdModal, Input, Tabs } from "antd";
+import { Modal as AntdModal, Input, Tabs, message } from "antd";
 import coin from "../../assets/img/coin.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAsync } from "../../redux/authSlice";
@@ -19,6 +19,7 @@ import { fetchSites } from "../../redux/sitesSlice";
 const ModalManager = ({ children }) => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const [messageApi, contextHolder] = message.useMessage();
   const loggedUser = useSelector((state) => state.auth.user);
   const modals = useSelector((state) => state.modals.modals);
   const [inputValue, setInputValue] = useState("");
@@ -35,6 +36,27 @@ const ModalManager = ({ children }) => {
     "Access them early",
   ];
 
+  const error = (message) => {
+    messageApi.open({
+      type: "error",
+      content: message,
+    });
+  };
+
+  const success = (message) => {
+    messageApi.open({
+      type: "success",
+      content: message,
+    });
+  };
+
+  const warning = (message) => {
+    messageApi.open({
+      type: "warning",
+      content: message,
+    });
+  };
+
   function handlePurchase(plan) {
     api
       .get(`/payment/${plan}`)
@@ -43,23 +65,27 @@ const ModalManager = ({ children }) => {
         closeModalByName(dispatch, "pricingModal");
       })
       .catch((err) => {
-        console.log(err);
+        error(err.response.statusText);
       });
   }
 
   function handleOk() {
-    if (!(inputValue || input2Value)) return alert("Please fill the field!");
+    if (!(inputValue || input2Value)) return warning("Please fill the field!");
     if (activeTab === "freeDomain") {
       api
         .post(`/domain/free/`, { domain: inputValue, id: siteId })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          success("Domain successfully added!");
           dispatch(fetchSites(loggedUser.email));
           closeModalByName(dispatch, "buyDomainModal");
         })
         .catch((err) => {
-          alert(err);
-          console.log(err);
+          if (err.response.status === 402) {
+            openModalByName(dispatch, "pricingModal");
+          }
+          if (err.response.status === 406) {
+            error("Domain already exists!");
+          }
         });
     }
     if (activeTab === "customDomain") {
@@ -73,8 +99,12 @@ const ModalManager = ({ children }) => {
           }
         })
         .catch((err) => {
-          alert(err);
-          console.log(err);
+          if (err.response.status === 402) {
+            openModalByName(dispatch, "pricingModal");
+          }
+          if (err.response.status === 406) {
+            error("Domain already exists!");
+          }
         });
     }
   }
@@ -89,6 +119,7 @@ const ModalManager = ({ children }) => {
 
   return (
     <>
+      {contextHolder}
       {
         // Modal for Log In
         modals.loginModal ? (
@@ -173,19 +204,21 @@ const ModalManager = ({ children }) => {
                   />
                 ),
               },
-              {
-                label: `Custom Domain`,
-                key: "customDomain",
-                children: (
-                  <Input
-                    value={input2Value}
-                    onChange={(e) => setInput2Value(e.target.value.trim())}
-                    allowClear
-                    addonBefore="https://"
-                    placeholder="mysite.com"
-                  />
-                ),
-              },
+              !loggedUser?.premium
+                ? null
+                : {
+                    label: `Custom Domain`,
+                    key: "customDomain",
+                    children: (
+                      <Input
+                        value={input2Value}
+                        onChange={(e) => setInput2Value(e.target.value.trim())}
+                        allowClear
+                        addonBefore="https://"
+                        placeholder="mysite.com"
+                      />
+                    ),
+                  },
             ]}
           />
         </AntdModal>

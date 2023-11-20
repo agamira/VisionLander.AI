@@ -40,7 +40,7 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
         closeSignUpModal();
       })
       .catch((err) => {
-        error(err.data.detail);
+        error(err.statusText);
       });
     reset();
   };

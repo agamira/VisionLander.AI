@@ -59,7 +59,7 @@ const UserDashboard = () => {
         navigate("/");
       })
       .catch((err) => {
-        error(err.message);
+        error(err.statusText);
         error("Something went wrong!");
       });
   }
@@ -67,21 +67,17 @@ const UserDashboard = () => {
   const confirm = (id) => {
     api
       .delete(`/delete/${id}`)
-      .then((res) => {
-        console.log(res);
-        //////!
+      .then(() => {
         dispatch(fetchSites(loggedUser.email));
         message.success("Website deleted!");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         message.error("Something went wrong!");
       });
   };
 
-  const cancel = (e) => {
-    console.log(e);
-    message.error("Click on No");
+  const cancel = () => {
+    message.error("Deleting canceled");
   };
 
   const items = [
@@ -123,20 +119,16 @@ const UserDashboard = () => {
   }
 
   const handleOkay = () => {
-    console.log(siteId);
     if (inputValue === "") return message.warning("Fill the field!");
     api
       .post(`/title/`, { title: inputValue, id: siteId })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         closeModalByName(dispatch, "changeSiteNameModal");
-        //!
         dispatch(fetchSites(loggedUser.email));
         message.success("Website name changed!");
       })
       .catch((err) => {
-        alert(err);
-        console.log(err);
+        error(err.response.statusText);
       });
   };
 
@@ -158,12 +150,6 @@ const UserDashboard = () => {
         collapsed={!collapsed}
         breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
       >
         <Menu
           style={{ background: "#070f23" }}
@@ -303,13 +289,23 @@ const UserDashboard = () => {
                     <MyButton
                       style={{ borderRadius: "8px" }}
                       className="btn btn--outline"
-                      onClick={() => handleDomainChange(id)}
+                      onClick={() =>
+                        loggedUser?.premium
+                          ? handleDomainChange(id)
+                          : openModalByName(dispatch, "pricingModal")
+                      }
                     >
                       {domain ? "Change domain" : "Add domain"}
                     </MyButton>
                   }
                   changeSiteNameAction={
-                    <MyButton onClick={() => handleSiteNameAction(id)}>
+                    <MyButton
+                      onClick={() =>
+                        loggedUser?.premium
+                          ? handleSiteNameAction(id)
+                          : openModalByName(dispatch, "pricingModal")
+                      }
+                    >
                       <img src={editIcon} alt="" />
                     </MyButton>
                   }

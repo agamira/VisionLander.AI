@@ -43,16 +43,12 @@ function redactorInitializer(action, siteId) {
           }
         })
         .catch((err) => {
-          alert(err.message);
           console.error(err);
         });
     },
   });
 
   editor.Panels.removeButton("options", "export-template");
-  editor.on("asset:upload:response", (response) => {
-    console.log(response);
-  });
 
   let responseSent = false;
 
@@ -67,7 +63,6 @@ function redactorInitializer(action, siteId) {
     publishWebsite(editor, siteId)
       .then(() => (responseSent = false))
       .catch((err) => {
-        alert(err.message);
         console.error(err);
       });
   }

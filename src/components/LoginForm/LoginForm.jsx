@@ -44,7 +44,7 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
         }
       })
       .catch((err) => {
-        error(err.message);
+        error(err.response.statusText);
       });
     reset();
   };

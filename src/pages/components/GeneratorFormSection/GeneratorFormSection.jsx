@@ -69,6 +69,13 @@ const GeneratorFormSection = () => {
     if (!subdomain) return warning("Please fill the subdomain!");
     if (!prompt) return warning("Please fill the prompt");
 
+    // Regular expression pattern for subdomain validation
+    const subdomainRegex = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/;
+    // Validate subdomain using the regex pattern
+    if (!subdomainRegex.test(subdomain)) {
+      return warning("Please enter a valid subdomain!");
+    }
+
     if (prompt.length > 2 && templateId) {
       setIsLoading(true);
       generatorFormPost(formData)
@@ -80,9 +87,15 @@ const GeneratorFormSection = () => {
         })
         .catch((err) => {
           setIsLoading(false);
-          if (err.status === 404) {
-            error(err.data.detail);
-            // openModalByName(dispatch, "pricingModal");
+          if (err.status === 402) {
+            error("You have to upgrade your plan!");
+            openModalByName(dispatch, "pricingModal");
+          }
+          if (err.status === 406) {
+            error("Subdomain already exists!");
+          }
+          if (err.status === 400) {
+            error(err.statusText);
           }
         });
     } else {
