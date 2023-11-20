@@ -72,6 +72,13 @@ const ModalManager = ({ children }) => {
   function handleOk() {
     if (!(inputValue || input2Value)) return warning("Please fill the field!");
     if (activeTab === "freeDomain") {
+      // Regular expression pattern for subdomain validation
+      const subdomainRegex = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/;
+
+      // Validate subdomain using the regex pattern
+      if (!subdomainRegex.test(inputValue)) {
+        return warning("Please enter a valid subdomain!");
+      }
       api
         .post(`/domain/free/`, { domain: inputValue, id: siteId })
         .then(() => {
@@ -89,6 +96,13 @@ const ModalManager = ({ children }) => {
         });
     }
     if (activeTab === "customDomain") {
+      // Regular expression pattern for subdomain validation
+      const subdomainRegex = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/;
+
+      // Validate subdomain using the regex pattern
+      if (!subdomainRegex.test(input2Value)) {
+        return warning("Please enter a valid subdomain!");
+      }
       api
         .post(`/domain/premium/`, { domain: input2Value, id: siteId })
         .then((res) => {
