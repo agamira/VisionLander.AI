@@ -87,6 +87,9 @@ const ModalManager = ({ children }) => {
           closeModalByName(dispatch, "buyDomainModal");
         })
         .catch((err) => {
+          if (err.response.status === 400) {
+            error(err.response.statusText);
+          }
           if (err.response.status === 402) {
             openModalByName(dispatch, "pricingModal");
           }
@@ -113,6 +116,9 @@ const ModalManager = ({ children }) => {
           }
         })
         .catch((err) => {
+          if (err.response.status === 400) {
+            error(err.response.statusText);
+          }
           if (err.response.status === 402) {
             openModalByName(dispatch, "pricingModal");
           }
