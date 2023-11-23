@@ -225,9 +225,10 @@ const UserDashboard = () => {
         </Header>
         <Content
           style={{
-            margin: "24px 16px",
             padding: 24,
             minHeight: 280,
+            position: "relative",
+            zIndex: "0",
           }}
         >
           <Image
@@ -256,91 +257,96 @@ const UserDashboard = () => {
             />
           </Modal>
 
-          <p
-            style={{
-              color: "#fff",
-              fontFamily: "Bai Jamjuree",
-              fontSize: "24px",
-              fontStyle: "normal",
-              fontWeight: "600",
-              lineHeight: "150%",
-              marginBottom: "24px",
-            }}
+          <div
+            className="content"
+            style={{ position: "relative", margin: "24px 16px" }}
           >
-            Your sites:
-          </p>
-          <div className="site-card-list">
-            {websites?.length === 0 ? (
-              <Empty className="empty" description={false} />
-            ) : null}
-            {websites?.map(({ id, title, template, domain }) => {
-              return (
-                <SiteCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  template={template}
-                  domain={domain}
-                  deleteAction={
-                    <Popconfirm
-                      title="Delete the task"
-                      description="Are you sure to delete this task?"
-                      onConfirm={() => confirm(id)}
-                      onCancel={cancel}
-                      okText="Yes"
-                      cancelText="No"
-                      placement="right"
-                    >
-                      <Button
-                        type="primary"
-                        danger
-                        style={{ padding: "8px 12px", height: "100%" }}
+            <p
+              style={{
+                color: "#fff",
+                fontFamily: "Bai Jamjuree",
+                fontSize: "24px",
+                fontStyle: "normal",
+                fontWeight: "600",
+                lineHeight: "150%",
+                marginBottom: "24px",
+              }}
+            >
+              Your sites:
+            </p>
+            <div className="site-card-list">
+              {websites?.length === 0 ? (
+                <Empty className="empty" description={false} />
+              ) : null}
+              {websites?.map(({ id, title, template, domain }) => {
+                return (
+                  <SiteCard
+                    key={id}
+                    id={id}
+                    title={title}
+                    template={template}
+                    domain={domain}
+                    deleteAction={
+                      <Popconfirm
+                        title="Delete the task"
+                        description="Are you sure to delete this task?"
+                        onConfirm={() => confirm(id)}
+                        onCancel={cancel}
+                        okText="Yes"
+                        cancelText="No"
+                        placement="right"
                       >
-                        Delete
-                      </Button>
-                    </Popconfirm>
-                  }
-                  changeDomainAction={
-                    <MyButton
-                      style={{ borderRadius: "8px" }}
-                      className="btn btn--outline"
-                      onClick={() =>
-                        loggedUser?.premium
-                          ? handleDomainChange(id)
-                          : openModalByName(dispatch, "pricingModal")
-                      }
-                    >
-                      {domain ? "Change domain" : "Add domain"}
-                    </MyButton>
-                  }
-                  changeSiteNameAction={
-                    <MyButton
-                      onClick={() =>
-                        loggedUser?.premium
-                          ? handleSiteNameAction(id)
-                          : openModalByName(dispatch, "pricingModal")
-                      }
-                    >
-                      <img src={editIcon} alt="" />
-                    </MyButton>
-                  }
-                  editAction={
-                    <Link
-                      color="#fff"
-                      to={`/redactor/${id}`}
-                      target="_blank"
-                      className="btn edit-btn"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <span>
+                        <Button
+                          type="primary"
+                          danger
+                          style={{ padding: "8px 12px", height: "100%" }}
+                        >
+                          Delete
+                        </Button>
+                      </Popconfirm>
+                    }
+                    changeDomainAction={
+                      <MyButton
+                        style={{ borderRadius: "8px" }}
+                        className="btn btn--outline"
+                        onClick={() =>
+                          loggedUser?.premium
+                            ? handleDomainChange(id)
+                            : openModalByName(dispatch, "pricingModal")
+                        }
+                      >
+                        {domain ? "Change domain" : "Add domain"}
+                      </MyButton>
+                    }
+                    changeSiteNameAction={
+                      <MyButton
+                        onClick={() =>
+                          loggedUser?.premium
+                            ? handleSiteNameAction(id)
+                            : openModalByName(dispatch, "pricingModal")
+                        }
+                      >
                         <img src={editIcon} alt="" />
-                      </span>
-                      <span> Edit Site</span>
-                    </Link>
-                  }
-                />
-              );
-            })}
+                      </MyButton>
+                    }
+                    editAction={
+                      <Link
+                        color="#fff"
+                        to={`/redactor/${id}`}
+                        target="_blank"
+                        className="btn edit-btn"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <span>
+                          <img src={editIcon} alt="" />
+                        </span>
+                        <span> Edit Site</span>
+                      </Link>
+                    }
+                  />
+                );
+              })}
+            </div>
           </div>
         </Content>
       </Layout>

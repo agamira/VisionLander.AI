@@ -70,7 +70,8 @@ const GeneratorFormSection = () => {
     if (!prompt) return warning("Please fill the prompt");
 
     // Regular expression pattern for subdomain validation
-    const subdomainRegex = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/;
+    const subdomainRegex =
+      /^([a-zA-Z0-9]([-a-zA-Z0-9]{0,61}[a-zA-Z0-9])?\.)?([a-zA-Z0-9]{1,2}([-a-zA-Z0-9]{0,252}[a-zA-Z0-9])?)\.([a-zA-Z]{2,63})$/;
     // Validate subdomain using the regex pattern
     if (!subdomainRegex.test(subdomain)) {
       return warning("Please enter a valid subdomain!");
