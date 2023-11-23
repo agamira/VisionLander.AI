@@ -104,14 +104,7 @@ const UserDashboard = () => {
     }
   }, [location.search]);
 
-  console.log(bg);
-
   function handleDomainChange(id) {
-    // if (!loggedUser.premium) {
-    //   message.warning("You need to upgrade to premium to change domain!");
-    //   openModalByName(dispatch, "pricingModal");
-    //   return;
-    // }
     navigate(`/dashboard/?${id}`);
     openModalByName(dispatch, "buyDomainModal");
   }

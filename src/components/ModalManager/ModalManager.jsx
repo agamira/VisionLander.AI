@@ -222,7 +222,9 @@ const ModalManager = ({ children }) => {
                     placeholder="mysite"
                     allowClear
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value.trim())}
+                    onChange={(e) =>
+                      setInputValue(e.target.value.trim().toLowerCase())
+                    }
                   />
                 ),
               },
@@ -234,7 +236,9 @@ const ModalManager = ({ children }) => {
                     children: (
                       <Input
                         value={input2Value}
-                        onChange={(e) => setInput2Value(e.target.value.trim())}
+                        onChange={(e) =>
+                          setInput2Value(e.target.value.trim().toLowerCase())
+                        }
                         allowClear
                         addonBefore="https://"
                         placeholder="mysite.com"

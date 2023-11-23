@@ -197,7 +197,9 @@ const GeneratorFormSection = () => {
                       addonBefore="https://"
                       addonAfter=".visionlander.ai"
                       className="input-field"
-                      onChange={(e) => setSubdomain(e.target.value.trim())}
+                      onChange={(e) =>
+                        setSubdomain(e.target.value.trim().toLowerCase())
+                      }
                     />
                   </div>
                 </div>
