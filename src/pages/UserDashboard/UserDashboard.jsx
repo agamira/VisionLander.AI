@@ -1,4 +1,5 @@
 import "./UserDashboard.scss";
+import bg from "../../assets/img/bg-dashboard.png?format=avif;webp;jpg&as=picture";
 import editIcon from "../../assets/icon/pen.svg";
 import { useEffect, useState } from "react";
 import {
@@ -21,7 +22,7 @@ import {
   Modal,
   Input,
 } from "antd";
-import { Logo, SiteCard, Button as MyButton } from "../../components";
+import { Logo, SiteCard, Button as MyButton, Image } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logoutAsync } from "../../redux/authSlice";
@@ -102,6 +103,8 @@ const UserDashboard = () => {
       setSiteId(param[0]);
     }
   }, [location.search]);
+
+  console.log(bg);
 
   function handleDomainChange(id) {
     // if (!loggedUser.premium) {
@@ -227,6 +230,18 @@ const UserDashboard = () => {
             minHeight: 280,
           }}
         >
+          <Image
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "100%" /* Set image width to fill container */,
+              height: "100%" /* Set image height to fill container */,
+              zIndex: "0",
+            }}
+            source={bg}
+            alt={"background"}
+          />
           <Modal
             title="Change site name"
             open={modals.changeSiteNameModal}
