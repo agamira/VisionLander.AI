@@ -150,10 +150,10 @@ const RegisterForm = ({ signUpAction, logInAction, closeSignUpModal }) => {
           </Button>
         </form>
         <div className="links">
-          <a href="#privacy-policy" target="_blank" className="link">
+          <a href="#privacy-policy" className="link">
             Privacy Policy
           </a>
-          <a href="/terms-of-use" target="_blank" className="link">
+          <a href="/terms-of-use" className="link">
             Terms of Use
           </a>
         </div>

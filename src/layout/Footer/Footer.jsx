@@ -59,14 +59,10 @@ const Footer = () => {
                 style={{ flexDirection: "row" }}
               >
                 <li>
-                  <a href="terms-of-use" target="_blank">
-                    Terms of Use
-                  </a>
+                  <a href="terms-of-use">Terms of Use</a>
                 </li>
                 <li>
-                  <a href="privacy-policy" target="_blank">
-                    Privacy Policy
-                  </a>
+                  <a href="privacy-policy">Privacy Policy</a>
                 </li>
               </ul>
             </div>

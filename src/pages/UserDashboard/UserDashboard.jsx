@@ -326,7 +326,6 @@ const UserDashboard = () => {
                       <Link
                         color="#fff"
                         to={`/redactor/${id}`}
-                        target="_blank"
                         className="btn edit-btn"
                         style={{ display: "flex", alignItems: "center" }}
                       >
