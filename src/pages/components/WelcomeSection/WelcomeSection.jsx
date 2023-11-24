@@ -2,7 +2,7 @@ import "./WelcomeSection.scss";
 
 const WelcomeSection = () => {
   return (
-    <section className="welcome-section" id="#home">
+    <section className="welcome-section" id="home">
       <div className="container">
         <div className="welcome">
           <div className="welcome__title">

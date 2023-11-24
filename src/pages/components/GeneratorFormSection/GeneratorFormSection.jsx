@@ -146,7 +146,7 @@ const GeneratorFormSection = () => {
           loadingMessage={"Your page is generating..."}
         />
       )}
-      <section className="generator-form">
+      <section className="generator-form" id="generator">
         <div className="container">
           <div className="form-box">
             <form name="generator-form" onSubmit={(e) => handleSubmit(e)}>
