@@ -6,7 +6,7 @@ import {
   PricingCard,
   RegisterForm,
 } from "../";
-import { Modal as AntdModal, Input, Tabs, message } from "antd";
+import { Modal as AntdModal, Input, Tabs, message, Alert } from "antd";
 import coin from "../../assets/img/coin.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAsync } from "../../redux/authSlice";
@@ -236,15 +236,24 @@ const ModalManager = ({ children }) => {
                     label: `Custom Domain`,
                     key: "customDomain",
                     children: (
-                      <Input
-                        value={input2Value}
-                        onChange={(e) =>
-                          setInput2Value(e.target.value.trim().toLowerCase())
-                        }
-                        allowClear
-                        addonBefore="https://"
-                        placeholder="mysite.com"
-                      />
+                      <>
+                        <Input
+                          value={input2Value}
+                          onChange={(e) =>
+                            setInput2Value(e.target.value.trim().toLowerCase())
+                          }
+                          allowClear
+                          addonBefore="https://"
+                          placeholder="mysite.com"
+                          style={{ marginBottom: "0.8rem" }}
+                        />
+                        <Alert
+                          message="Domain Registration"
+                          description="Domain registration takes some time and it will be available in at least an hour!"
+                          type="warning"
+                          showIcon
+                        />
+                      </>
                     ),
                   },
             ]}
