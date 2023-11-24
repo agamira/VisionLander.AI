@@ -85,6 +85,7 @@ const ModalManager = ({ children }) => {
         .then(() => {
           success("Domain successfully added!");
           dispatch(fetchSites(loggedUser.email));
+          setInputValue("");
           closeModalByName(dispatch, "buyDomainModal");
         })
         .catch((err) => {
@@ -113,6 +114,7 @@ const ModalManager = ({ children }) => {
         .then((res) => {
           const url = res.data.url;
           if (url) {
+            setInput2Value("");
             closeModalByName(dispatch, "buyDomainModal");
             window.location.href = url;
           }
