@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "antd": "^5.9.4",
     "axios": "^1.5.1",
+    "framer-motion": "^10.16.5",
     "grapesjs": "^0.21.7",
     "grapesjs-blocks-basic": "^1.0.2",
     "grapesjs-parser-postcss": "^1.0.3",

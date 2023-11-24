@@ -1,5 +1,5 @@
 import "./Header.scss";
-import burgerMenuIcon from "../../assets/icon/burger-menu.svg";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button, Logo } from "../../components";
 import { Dropdown, Space, message } from "antd";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -68,77 +68,98 @@ const Header = () => {
           <div className="header-elements">
             <div className="header-logo">
               <Logo />
-              <Button
-                className="burger-btn"
+              <div
                 onClick={() => setBurgerMenu((prev) => !prev)}
+                id="burger-menu"
+                className={burgerMenu ? "open" : ""}
               >
-                <img src={burgerMenuIcon} alt="burger-menu" />
-              </Button>
-            </div>
-            {burgerMenu && (
-              <div className="nav">
-                <nav>
-                  <ul>
-                    <li>
-                      <a href="#home">Home</a>
-                    </li>
-                    <li>
-                      <a href="#how-it-works">How it works</a>
-                    </li>
-                    <li>
-                      <a href="#faq">FAQ</a>
-                    </li>
-                    <li>
-                      <a href="#pricing">Pricing</a>
-                    </li>
-                    <li>
-                      <a href="#testimonials">Testimonials</a>
-                    </li>
-                  </ul>
-                </nav>
-                <div className="header-buttons">
-                  {!loggedUser?.email ? (
-                    <>
-                      <Button
-                        onClick={() => openModalByName(dispatch, "loginModal")}
-                        className="btn"
-                      >
-                        Log In
-                      </Button>
-                      <Button
-                        onClick={() =>
-                          openModalByName(dispatch, "registerModal")
-                        }
-                        className={"btn--outline"}
-                      >
-                        Sign Up
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      <Dropdown
-                        menu={{
-                          items,
-                        }}
-                        placement="bottom"
-                        arrow
-                      >
-                        <a
-                          className="btn btn--outline"
-                          style={{ cursor: "pointer" }}
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <Space>
-                            {loggedUser.email}
-                            <DownOutlined />
-                          </Space>
-                        </a>
-                      </Dropdown>
-                    </>
-                  )}
-                </div>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-            )}
+            </div>
+            <AnimatePresence>
+              {burgerMenu && (
+                <motion.div
+                  className="nav"
+                  initial={{ height: 0 }}
+                  animate={{ height: "auto" }}
+                  style={{
+                    maxWidth: "703px",
+                    width: "100%",
+                    overflow: "hidden",
+                  }}
+                  exit={{ height: 0 }}
+                  transition={{
+                    ease: "easeInOut",
+                    duration: 0.5,
+                  }}
+                >
+                  <nav>
+                    <ul>
+                      <li>
+                        <a href="#home">Home</a>
+                      </li>
+                      <li>
+                        <a href="#how-it-works">How it works</a>
+                      </li>
+                      <li>
+                        <a href="#faq">FAQ</a>
+                      </li>
+                      <li>
+                        <a href="#pricing">Pricing</a>
+                      </li>
+                      <li>
+                        <a href="#testimonials">Testimonials</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <div className="header-buttons">
+                    {!loggedUser?.email ? (
+                      <>
+                        <Button
+                          onClick={() =>
+                            openModalByName(dispatch, "loginModal")
+                          }
+                          className="btn"
+                        >
+                          Log In
+                        </Button>
+                        <Button
+                          onClick={() =>
+                            openModalByName(dispatch, "registerModal")
+                          }
+                          className={"btn--outline"}
+                        >
+                          Sign Up
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <Dropdown
+                          menu={{
+                            items,
+                          }}
+                          placement="bottom"
+                          arrow
+                        >
+                          <a
+                            className="btn btn--outline"
+                            style={{ cursor: "pointer" }}
+                            onClick={(e) => e.preventDefault()}
+                          >
+                            <Space>
+                              {loggedUser.email}
+                              <DownOutlined />
+                            </Space>
+                          </a>
+                        </Dropdown>
+                      </>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </header>
