@@ -45,7 +45,7 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
         }
       })
       .catch((err) => {
-        error(err.response.statusText);
+        error(err.message);
       });
     reset();
   };
@@ -99,6 +99,8 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
                 <label htmlFor="remember">Remember Me</label>
               </div>
               <Button
+                type="button"
+                disabled={isSubmitting}
                 onClick={() => openModalByName(dispatch, "forgotPasswordModal")}
               >
                 Forgot Password?

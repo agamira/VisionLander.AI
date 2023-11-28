@@ -7,6 +7,7 @@ import {
   Root,
   TermsOfUse,
   UserDashboard,
+  ForgotPassword,
 } from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
 
@@ -20,6 +21,7 @@ const Routing = () => {
         <Route path="/redactor/:siteId" element={<Redactor />} />
         <Route path="/dashboard" element={<UserDashboard />} />
       </Route>
+      <Route path="/forgot-password/:userId" element={<ForgotPassword />} />
       <Route path="/terms-of-use" element={<TermsOfUse />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="*" element={<NotFound />} />

@@ -13,3 +13,4 @@ export { PricingCard } from "./PricingCard/PricingCard";
 export { TestimonialsCard } from "./TestimonialsCard/TestimonialsCard";
 export { Banner } from "./Banner/Banner";
 export { SiteCard } from "./SiteCard/SiteCard";
+export { ForgotPasswordForm } from "./ForgotPasswordForm/ForgotPasswordForm";

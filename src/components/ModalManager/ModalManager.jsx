@@ -137,8 +137,9 @@ const ModalManager = ({ children }) => {
   function handleForgotPassword(email) {
     api
       .post(`/password/reset`, { email })
-      .then((res) => {
-        success(res.data.message);
+      .then(() => {
+        setEmail("");
+        success("Check your email for further instructions!");
         openModalByName(dispatch, "loginModal");
       })
       .catch((err) => {
@@ -196,7 +197,10 @@ const ModalManager = ({ children }) => {
           open={modals.forgotPasswordModal}
           onOk={() => handleForgotPassword(email)}
           keyboard={true}
-          onCancel={() => closeModalByName(dispatch, "forgotPasswordModal")}
+          onCancel={() => {
+            setEmail("");
+            closeModalByName(dispatch, "forgotPasswordModal");
+          }}
         >
           <Input
             onChange={(e) => setEmail(e.target.value)}
