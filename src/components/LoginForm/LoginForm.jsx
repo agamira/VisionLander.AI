@@ -5,6 +5,7 @@ import { message } from "antd";
 import { Button } from "..";
 import { useDispatch } from "react-redux";
 import { loginGoogleAsync } from "../../redux/authSlice";
+import { openModalByName } from "../../utils/modalUtils";
 
 const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
   const {
@@ -84,7 +85,10 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
                 {errors.password && errors.password.message}
               </p>
             </div>
-            <div className="checkbox-field">
+            <div
+              className="checkbox-field"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
               <div className="checkbox-input">
                 <input
                   id="remember"
@@ -94,6 +98,11 @@ const LoginForm = ({ logInAction, signUpAction, closeLogInModal }) => {
                 />
                 <label htmlFor="remember">Remember Me</label>
               </div>
+              <Button
+                onClick={() => openModalByName(dispatch, "forgotPasswordModal")}
+              >
+                Forgot Password?
+              </Button>
             </div>
           </div>
           <Button

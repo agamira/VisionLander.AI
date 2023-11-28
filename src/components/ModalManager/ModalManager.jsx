@@ -26,6 +26,7 @@ const ModalManager = ({ children }) => {
   const [input2Value, setInput2Value] = useState("");
   const [activeTab, setActiveTab] = useState("freeDomain");
   const [siteId, setSiteId] = useState("");
+  const [email, setEmail] = useState("");
 
   const proFeatures = [
     "Unlimited projects",
@@ -133,6 +134,18 @@ const ModalManager = ({ children }) => {
     }
   }
 
+  function handleForgotPassword(email) {
+    api
+      .post(`/password/reset`, { email })
+      .then((res) => {
+        success(res.data.message);
+        openModalByName(dispatch, "loginModal");
+      })
+      .catch((err) => {
+        error(err.response.statusText);
+      });
+  }
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     // Loop through all query parameters
@@ -175,6 +188,21 @@ const ModalManager = ({ children }) => {
             />
           </Modal>
         ) : null
+      }
+      {
+        // Modal for Forgot Password
+        <AntdModal
+          title="Forgot Password"
+          open={modals.forgotPasswordModal}
+          onOk={() => handleForgotPassword(email)}
+          keyboard={true}
+          onCancel={() => closeModalByName(dispatch, "forgotPasswordModal")}
+        >
+          <Input
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
+        </AntdModal>
       }
       {
         // Modal for Pricing
