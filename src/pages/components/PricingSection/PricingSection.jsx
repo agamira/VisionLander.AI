@@ -6,10 +6,13 @@ import { api } from "../../../api";
 import { closeModalByName } from "../../../utils/modalUtils";
 import { useDispatch } from "react-redux";
 import { message } from "antd";
+import { useEffect, useState } from "react";
 
 const PricingSection = () => {
   const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
+  const [yearly, setYearly] = useState(false);
+  const [priceList, setPriceList] = useState(null);
 
   const freeFeatures = [
     "Limited projects",
@@ -47,6 +50,21 @@ const PricingSection = () => {
         error(err.response.statusText);
       });
   }
+
+  function toggleYearly() {
+    setYearly((prev) => !prev);
+  }
+
+  useEffect(() => {
+    api
+      .get(`/get-price/${yearly ? "yearly" : "monthly"}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [yearly]);
 
   return (
     <section className="pricing-section" id="pricing">
