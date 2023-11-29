@@ -41,14 +41,23 @@
     &__price {
       display: flex;
       margin: 0px 60px;
-      gap: 82px;
       justify-content: space-between;
       align-items: center;
+      @include tablet {
+        margin: 0px 20px;
+      }
+
       .coin-image {
         max-width: 95px;
+        @include mobile-large {
+          display: none;
+        }
       }
       .plan {
         text-align: end;
+        @include mobile-large {
+          text-align: center;
+        }
         .plan-price {
           color: $text-white;
           font-size: 24px;

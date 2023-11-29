@@ -15,8 +15,6 @@ const PricingSection = () => {
   const [yearly, setYearly] = useState(false);
   const plan = useSelector((state) => state.pricing.plan);
 
-  console.log(plan);
-
   const freeFeatures = [
     "Limited projects",
     "Limited generations",
@@ -93,7 +91,7 @@ const PricingSection = () => {
               cardImage={coin}
               planPrice={plan?.price}
               planCurrency={plan?.currency}
-              planLimits={["20 000 words", "10 reports"]}
+              planLimits={plan?.limits}
               planFeatures={
                 <CustomList className="pro" items={plan?.features} />
               }

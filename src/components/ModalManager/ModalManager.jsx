@@ -212,7 +212,7 @@ const ModalManager = ({ children }) => {
               cardImage={coin}
               planPrice={plan?.price}
               planCurrency={plan?.currency}
-              planLimits={["20 000 words", "10 reports"]}
+              planLimits={plan?.limits}
               planFeatures={
                 <CustomList className="pro" items={plan?.features} />
               }
