@@ -5,7 +5,7 @@ import { api } from "../api";
 const fetchPricingFromAPI = async (yearly) => {
   try {
     const response = await api.get(
-      `/get-price/${yearly ? "yearly" : "monthly"}`
+      `/get-price/${yearly ? "year" : "month"}`
     );
     return response.data;
   } catch (error) {
