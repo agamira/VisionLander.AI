@@ -74,7 +74,7 @@ const ForgotPasswordForm = () => {
               },
             ]}
           >
-            <Input />
+            <Input.Password />
           </Form.Item>
 
           {/* Field */}
@@ -98,7 +98,7 @@ const ForgotPasswordForm = () => {
               }),
             ]}
           >
-            <Input />
+            <Input.Password />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
