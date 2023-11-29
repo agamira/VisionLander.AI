@@ -26,7 +26,7 @@ const PricingCard = ({
                 ? "Free website generation"
                 : `${planPrice}${planCurrency}/month`}
             </p>
-            {planLimits.map((limit, index) => {
+            {planLimits?.map((limit, index) => {
               return (
                 <p className="plan-limits" key={index}>
                   {limit}
