@@ -17,6 +17,10 @@
       }
     }
     .pricing-content {
+      text-align: center;
+      .pricing-switch {
+        margin-bottom: 32px;
+      }
       .pricing-card-list {
         display: flex;
         gap: 20px;

@@ -22,20 +22,12 @@ const ModalManager = ({ children }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const loggedUser = useSelector((state) => state.auth.user);
   const modals = useSelector((state) => state.modals.modals);
+  const plan = useSelector((state) => state.pricing.plan);
   const [inputValue, setInputValue] = useState("");
   const [input2Value, setInput2Value] = useState("");
   const [activeTab, setActiveTab] = useState("freeDomain");
   const [siteId, setSiteId] = useState("");
   const [email, setEmail] = useState("");
-
-  const proFeatures = [
-    "Unlimited projects",
-    "Unlimited generations",
-    "Includes 1 page hosting and advanced editor",
-    "Private community",
-    "Choose next features",
-    "Access them early",
-  ];
 
   const error = (message) => {
     messageApi.open({
@@ -58,9 +50,9 @@ const ModalManager = ({ children }) => {
     });
   };
 
-  function handlePurchase(plan) {
+  function handlePurchase(plan, period) {
     api
-      .get(`/payment/${plan}`)
+      .get(`/payment/${plan}/${period}`)
       .then((res) => {
         window.location.href = res.data.url;
         closeModalByName(dispatch, "pricingModal");
@@ -216,14 +208,17 @@ const ModalManager = ({ children }) => {
             closeModal={() => closeModalByName(dispatch, "pricingModal")}
           >
             <PricingCard
-              cardTitle={"Pro plan"}
+              cardTitle={`${plan?.plan} plan`}
               cardImage={coin}
-              planPrice={19}
+              planPrice={plan?.price}
+              planCurrency={plan?.currency}
               planLimits={["20 000 words", "10 reports"]}
-              planFeatures={<CustomList className="pro" items={proFeatures} />}
+              planFeatures={
+                <CustomList className="pro" items={plan?.features} />
+              }
               cardFooter={
                 <Button
-                  onClick={() => handlePurchase("premium")}
+                  onClick={() => handlePurchase(plan?.plan, plan?.period)}
                   className="btn--pricing"
                 >
                   Upgrade

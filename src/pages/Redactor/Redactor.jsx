@@ -6,6 +6,7 @@ import { Banner } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { openModalByName } from "../../utils/modalUtils";
 import { useParams } from "react-router-dom";
+import { fetchPricing } from "../../redux/pricingSlice";
 
 const Redactor = () => {
   const { siteId } = useParams();
@@ -21,6 +22,7 @@ const Redactor = () => {
       }
       if (banner === "banner") {
         if (!loggedUser?.premium) {
+          dispatch(fetchPricing(false));
           openModalByName(dispatch, "pricingModal");
           return false;
         }

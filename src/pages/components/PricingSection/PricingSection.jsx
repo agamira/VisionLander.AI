@@ -4,15 +4,18 @@ import coin from "../../../assets/img/coin.png";
 import { Button } from "../../../components";
 import { api } from "../../../api";
 import { closeModalByName } from "../../../utils/modalUtils";
-import { useDispatch } from "react-redux";
-import { message } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { message, Segmented } from "antd";
 import { useEffect, useState } from "react";
+import { fetchPricing } from "../../../redux/pricingSlice";
 
 const PricingSection = () => {
   const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
   const [yearly, setYearly] = useState(false);
-  const [priceList, setPriceList] = useState(null);
+  const plan = useSelector((state) => state.pricing.plan);
+
+  console.log(plan);
 
   const freeFeatures = [
     "Limited projects",
@@ -23,15 +26,6 @@ const PricingSection = () => {
     "Paid feature",
   ];
 
-  const proFeatures = [
-    "Unlimited projects",
-    "Unlimited generations",
-    "Includes 1 page hosting and advanced editor",
-    "Private community",
-    "Choose next features",
-    "Access them early",
-  ];
-
   const error = (message) => {
     messageApi.open({
       type: "error",
@@ -39,15 +33,17 @@ const PricingSection = () => {
     });
   };
 
-  function handlePurchase(plan) {
+  function handlePurchase(plan, period) {
     api
-      .get(`/payment/${plan}`)
+      .get(`/payment/${plan}/${period}`)
       .then((res) => {
         window.location.href = res.data.url;
         closeModalByName(dispatch, "pricingModal");
       })
       .catch((err) => {
-        error(err.response.statusText);
+        // error(err.response.statusText);
+        console.log(err);
+        if (err.response.status === 401) error("Please log in before payment");
       });
   }
 
@@ -56,15 +52,8 @@ const PricingSection = () => {
   }
 
   useEffect(() => {
-    api
-      .get(`/get-price/${yearly ? "yearly" : "monthly"}`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [yearly]);
+    dispatch(fetchPricing(yearly));
+  }, [dispatch, yearly]);
 
   return (
     <section className="pricing-section" id="pricing">
@@ -74,6 +63,11 @@ const PricingSection = () => {
           <h2>Pricing</h2>
         </div>
         <div className="pricing-content">
+          <Segmented
+            className="pricing-switch"
+            onChange={toggleYearly}
+            options={["Monthly", "Yearly"]}
+          />
           <div className="pricing-card-list">
             <PricingCard
               cardTitle={"Free plan"}
@@ -95,14 +89,17 @@ const PricingSection = () => {
               }
             />
             <PricingCard
-              cardTitle={"Pro plan"}
+              cardTitle={`${plan?.plan} plan`}
               cardImage={coin}
-              planPrice={19}
+              planPrice={plan?.price}
+              planCurrency={plan?.currency}
               planLimits={["20 000 words", "10 reports"]}
-              planFeatures={<CustomList className="pro" items={proFeatures} />}
+              planFeatures={
+                <CustomList className="pro" items={plan?.features} />
+              }
               cardFooter={
                 <Button
-                  onClick={() => handlePurchase("premium")}
+                  onClick={() => handlePurchase(plan?.plan, plan?.period)}
                   className="btn--pricing"
                 >
                   Upgrade

@@ -8,6 +8,7 @@ const PricingCard = ({
   cardFooter,
   planPrice,
   planLimits,
+  planCurrency,
 }) => {
   return (
     <div className={`pricing-card ${className}${planPrice > 0 ? " pro" : ""}`}>
@@ -21,7 +22,9 @@ const PricingCard = ({
           </div>
           <div className="plan">
             <p className="plan-price">
-              {!planPrice ? "Free website generation" : `$${planPrice}.00/Mon`}
+              {!planPrice
+                ? "Free website generation"
+                : `${planPrice}${planCurrency}/month`}
             </p>
             {planLimits.map((limit, index) => {
               return (
