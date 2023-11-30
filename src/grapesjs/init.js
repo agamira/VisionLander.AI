@@ -24,6 +24,16 @@ function redactorInitializer(action, siteId) {
   fetchTemplate(editor, siteId);
 
   editor.Panels.addButton("options", {
+    id: "btn-dashboard",
+    className: "btn-dashboard",
+    label: "Go to dashboard",
+    context: "go-to-dashboard",
+    command() {
+      window.location.href = "/dashboard";
+    },
+  });
+
+  editor.Panels.addButton("options", {
     id: "btn-deploy",
     className: "btn-deploy",
     label: "Save and publish",
