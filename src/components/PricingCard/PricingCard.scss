@@ -45,6 +45,7 @@
       align-items: center;
       @include tablet {
         margin: 0px 20px;
+        justify-content: center;
       }
 
       .coin-image {
